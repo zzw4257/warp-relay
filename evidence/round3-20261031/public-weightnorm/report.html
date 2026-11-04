@@ -1,0 +1,687 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Warp Relay — verification record</title><style>
+      :root{color-scheme:light;--paper:#f7f9fc;--ink:#172c42;--blue:#245da5;--line:#c9d7e6;--green:#23624a;--red:#a53d34}
+      *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Avenir Next",Avenir,"Segoe UI",sans-serif;font-size:16px;line-height:1.6}
+      header{padding:24px 5vw;background:white;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;align-items:center}.brand{font-weight:750;font-size:23px;letter-spacing:-1px}.brand svg{vertical-align:middle;margin-right:12px}a{color:var(--blue);text-underline-offset:4px}a:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:5px}
+      main{max-width:1280px;margin:auto;padding:44px 5vw 80px}.intro{max-width:850px}h1{font-size:clamp(32px,4.3vw,54px);font-weight:650;line-height:1.13;letter-spacing:-2px;margin:12px 0 22px}h2{font-size:23px;margin:0}h3{font-size:15px;margin:0 0 12px;font-weight:650}p{max-width:80ch}small,.muted{color:#52677c}
+      .scope{margin:28px 0 36px;border-left:4px solid var(--blue);padding:12px 20px;background:#eaf0f8;max-width:960px}.scope p{margin:4px 0}.workspace{display:grid;grid-template-columns:205px minmax(0,1fr);gap:36px}nav{align-self:start;position:sticky;top:20px}nav a{display:block;margin:0 0 15px;font-size:14px}nav p{font-weight:650}article{background:white;padding:28px;margin-bottom:24px;border:1px solid var(--line);border-radius:10px}.attempt-top{display:flex;gap:16px;align-items:center}.round{font-size:36px;color:#849bb2;line-height:1}.source-link{margin-left:auto;font-size:13px;white-space:nowrap}.verdict{font-weight:700;margin:2px 0}.verdict span{font-size:12px;font-weight:500;display:block}.pass{color:var(--green)}.fail{color:var(--red)}.split{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:22px}.split section{min-width:0}.witness{color:var(--red);font-size:14px}pre{font:12px/1.7 "SFMono-Regular",Consolas,monospace;overflow:auto;max-height:460px;background:#f1f5fa;padding:18px;border-radius:6px;tab-size:4}dl{margin:0}dt{color:#52677c;font-size:13px}dd{margin:0 0 12px;font-weight:600}.hash{font-size:11px;overflow-wrap:anywhere;color:#52677c}details{border-top:1px solid var(--line);margin-top:24px;padding-top:16px}summary{cursor:pointer;font-size:14px}footer{padding-top:24px;color:#52677c;font-size:13px}.run-mode{font-size:13px;text-align:right}.selection{font-weight:600}
+      @media(max-width:800px){.workspace{grid-template-columns:1fr;gap:12px}nav{position:static;display:flex;flex-wrap:wrap;gap:12px}nav p{width:100%;margin:0}nav a{margin:0}.split{grid-template-columns:1fr}article{padding:20px}.attempt-top{flex-wrap:wrap}.source-link{margin-left:0}.run-mode{max-width:180px}main{padding-top:25px}h1{letter-spacing:-1px}}
+      </style></head><body><header><div class="brand"><svg width="35" height="32" viewBox="0 0 35 32" aria-hidden="true"><path d="M2 7h12l7 18h12M2 25h12L21 7h12" fill="none" stroke="#245da5" stroke-width="3"/><circle cx="17.5" cy="16" r="4" fill="#245da5"/></svg>Warp Relay</div>
+      <div class="run-mode">offline-rule (no model)<br><span class="muted">Recorded local verification</span></div></header><main>
+      <div class="intro"><h1>Verify and test barrier removal in public PyTorch WeightNorm</h1><p>Unmodified public compiler-generated PyTorch WeightNorm forward first-dimension PTX as baseline. Exact upstream input bytes: 2 CTAs of 256 threads, rowSize=1024, dynamic shared memory=1024 bytes per CTA, distinct w/norms/v/g allocations, bf16 w/v/g and float32 norms. Preserve upstream optional assumptions duplicate_tma_store_benign, representative_election and clc_always_fails enabled; other optional assumptions retain pinned defaults (false). No branch decisions or input changes. Try at most three standalone CTA-barrier deletions through the existing verifier loop. Synchronization-only check; no reference execution, model inference, hardware execution or performance measurement.</p></div>
+      <div class="scope"><p class="selection">Selected: 000-baseline</p><p>Acceptance scope: synchronization. Model call: not called. GPU execution: not performed. Speedup: not measured.</p><p>A synchronization-only pass establishes neither numerical equivalence nor whole-program correctness. Inconclusive results establish no pass.</p><p>Stop reason: iteration_budget</p></div>
+      <div class="workspace"><nav aria-label="Verification rounds"><p>Verification rounds</p><a href="#step-0">00 race_free</a><a href="#step-1">01 potential_race</a><a href="#step-2">02 potential_race</a><a href="#step-3">03 potential_race</a><a href="summary.json">Run manifest</a><a href="provenance.json">Provenance</a></nav><div><article id="step-0" class="attempt">
+          <div class="attempt-top"><span class="round">00</span><div>
+          <h2>Baseline</h2><p class="verdict pass">race_free <span>Synchronization-only acceptance</span></p></div>
+          <a class="source-link" href="000-baseline/kernel.ptx">Kernel PTX</a></div>
+          <p>Verify the original kernel before proposing a change.</p>
+          
+          <div class="split"><section><h3>Candidate diff</h3><pre>Original kernel; no change proposed.</pre></section>
+          <section><h3>Check results</h3><dl><dt>Synchronization</dt><dd>passed</dd>
+          <dt>Equivalence</dt><dd>not_requested</dd></dl>
+          <p class="hash">SHA-256 0fa57a8625c2f74ffad1684891484cbddc22e3f01372aaa2881334509ed75288</p>
+          <a href="000-baseline/verification/stdout.json">Raw verifier output</a></section></div>
+          <details><summary>Diagnostics, witnesses and assumptions</summary><pre>{
+  &quot;assumption_dependent&quot;: true,
+  &quot;assumption_reporting&quot;: &quot;triggered=null means applicability was not measured or analysis was not reached&quot;,
+  &quot;assumptions&quot;: [
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: true,
+      &quot;key&quot;: &quot;duplicate_tma_store_benign&quot;,
+      &quot;label&quot;: &quot;Duplicate TMA stores&quot;,
+      &quot;text&quot;: &quot;Matching same-warp duplicate TMA stores are races in the model, but are reported as warnings under the assumption that their stored values agree.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: true,
+      &quot;key&quot;: &quot;representative_election&quot;,
+      &quot;label&quot;: &quot;Representative election&quot;,
+      &quot;text&quot;: &quot;Election selects lane zero when participating, otherwise the lowest participating lane.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: true,
+      &quot;key&quot;: &quot;clc_always_fails&quot;,
+      &quot;label&quot;: &quot;Failed launch cancellation&quot;,
+      &quot;text&quot;: &quot;Every cluster launch cancellation request fails.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;representative_branches&quot;,
+      &quot;label&quot;: &quot;Representative branches&quot;,
+      &quot;text&quot;: &quot;Choose fallthrough for an unresolved structured if/else; unknown ordinary instruction guards execute. Terminal control uses CFG classification. Known control and explicit choices take precedence.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;bounded_computation_loops&quot;,
+      &quot;label&quot;: &quot;Bounded computation loops&quot;,
+      &quot;text&quot;: &quot;Execute a configured number of body iterations for unresolved recognized computation loops, counted separately per invocation. Polling and unclassified loops are never forced to complete.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;order_independent_atomics&quot;,
+      &quot;label&quot;: &quot;Order-independent atomics&quot;,
+      &quot;text&quot;: &quot;The kernel is correct for every order in which concurrent atomics (atom, red) on the same element take effect. Each atomic is one indivisible access; two atomics on the same element whose scopes include both threads do not race.&quot;,
+      &quot;triggered&quot;: false
+    }
+  ],
+  &quot;checks&quot;: {
+    &quot;equivalence&quot;: &quot;not_requested&quot;,
+    &quot;synchronization&quot;: &quot;passed&quot;
+  },
+  &quot;diagnostics&quot;: [],
+  &quot;evidence&quot;: {
+    &quot;race_count&quot;: 0,
+    &quot;race_samples_truncated&quot;: false,
+    &quot;races&quot;: []
+  },
+  &quot;frontend_assumptions&quot;: {
+    &quot;assertion_failure_forms&quot;: [
+      &quot;trap&quot;,
+      &quot;__assertfail&quot;
+    ],
+    &quot;assertion_uses&quot;: 0,
+    &quot;atomic_uses&quot;: 0,
+    &quot;bounded_loop_uses&quot;: 0,
+    &quot;clc_failure&quot;: true,
+    &quot;clc_uses&quot;: 0,
+    &quot;data_branch_decisions&quot;: [],
+    &quot;election_policy&quot;: {
+      &quot;fallback&quot;: &quot;lowest_member&quot;,
+      &quot;preferred_lane&quot;: 0,
+      &quot;strategy&quot;: &quot;preferred_member&quot;
+    },
+    &quot;election_uses&quot;: 0,
+    &quot;fixed_election&quot;: true,
+    &quot;isolated_launch&quot;: true,
+    &quot;noalias_unbounded&quot;: false,
+    &quot;opaque_compute_regions&quot;: [],
+    &quot;pointer_contract&quot;: {
+      &quot;aliasing&quot;: &quot;distinct_objects_noalias&quot;,
+      &quot;extent_bytes&quot;: &quot;unbounded&quot;
+    },
+    &quot;representative_branch_uses&quot;: 0,
+    &quot;trap_only_equality_assertions_hold&quot;: true
+  },
+  &quot;peak_rss_mib&quot;: 61.515625,
+  &quot;pipeline_elapsed_seconds&quot;: 0.051934541,
+  &quot;result&quot;: &quot;race_free&quot;,
+  &quot;rss_limit_mib&quot;: 1024,
+  &quot;schema&quot;: &quot;spverify.native-result/v1&quot;,
+  &quot;scope&quot;: {
+    &quot;operation&quot;: &quot;kernel_verification&quot;
+  },
+  &quot;verification_limitations&quot;: [],
+  &quot;warning_count&quot;: 0,
+  &quot;warning_samples_truncated&quot;: false,
+  &quot;warnings&quot;: [],
+  &quot;wellsync_timeout_seconds&quot;: 9.99994,
+  &quot;whole_pipeline_timeout_seconds&quot;: 9.99994,
+  &quot;elapsed_seconds&quot;: 0.0670435830252245
+}</pre></details>
+          </article><article id="step-1" class="attempt">
+          <div class="attempt-top"><span class="round">01</span><div>
+          <h2>Candidate</h2><p class="verdict fail">potential_race <span>Finding; not accepted</span></p></div>
+          <a class="source-link" href="001-candidate/kernel.ptx">Kernel PTX</a></div>
+          <p>Test removal of the barrier at line 127; reverify before retaining. This is not a speedup claim.</p>
+          <p class="witness">Witness: write at line 126 / read at line 136</p>
+          <div class="split"><section><h3>Candidate diff</h3><pre>--- previous.ptx
++++ candidate.ptx
+@@ -124,7 +124,6 @@
+ 	add.s32 	%r19, %r60, %r59;
+ 	@%p7 bra 	$L__BB2_9;
+ 	st.shared.f32 	[%r19], %f100;
+-	bar.sync 	0;
+ $L__BB2_9:
+ 	setp.lt.u32 	%p8, %r18, 128;
+ 	@%p8 bra 	$L__BB2_52;
+</pre></section>
+          <section><h3>Check results</h3><dl><dt>Synchronization</dt><dd>failed</dd>
+          <dt>Equivalence</dt><dd>not_requested</dd></dl>
+          <p class="hash">SHA-256 b3c7876bacaeb8078a2b9731fb620cbf25fc7ce1aaab344da939f393db404e87</p>
+          <a href="001-candidate/verification/stdout.json">Raw verifier output</a></section></div>
+          <details><summary>Diagnostics, witnesses and assumptions</summary><pre>{
+  &quot;assumption_dependent&quot;: true,
+  &quot;assumption_reporting&quot;: &quot;triggered=null means applicability was not measured or analysis was not reached&quot;,
+  &quot;assumptions&quot;: [
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: true,
+      &quot;key&quot;: &quot;duplicate_tma_store_benign&quot;,
+      &quot;label&quot;: &quot;Duplicate TMA stores&quot;,
+      &quot;text&quot;: &quot;Matching same-warp duplicate TMA stores are races in the model, but are reported as warnings under the assumption that their stored values agree.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: true,
+      &quot;key&quot;: &quot;representative_election&quot;,
+      &quot;label&quot;: &quot;Representative election&quot;,
+      &quot;text&quot;: &quot;Election selects lane zero when participating, otherwise the lowest participating lane.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: true,
+      &quot;key&quot;: &quot;clc_always_fails&quot;,
+      &quot;label&quot;: &quot;Failed launch cancellation&quot;,
+      &quot;text&quot;: &quot;Every cluster launch cancellation request fails.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;representative_branches&quot;,
+      &quot;label&quot;: &quot;Representative branches&quot;,
+      &quot;text&quot;: &quot;Choose fallthrough for an unresolved structured if/else; unknown ordinary instruction guards execute. Terminal control uses CFG classification. Known control and explicit choices take precedence.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;bounded_computation_loops&quot;,
+      &quot;label&quot;: &quot;Bounded computation loops&quot;,
+      &quot;text&quot;: &quot;Execute a configured number of body iterations for unresolved recognized computation loops, counted separately per invocation. Polling and unclassified loops are never forced to complete.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;order_independent_atomics&quot;,
+      &quot;label&quot;: &quot;Order-independent atomics&quot;,
+      &quot;text&quot;: &quot;The kernel is correct for every order in which concurrent atomics (atom, red) on the same element take effect. Each atomic is one indivisible access; two atomics on the same element whose scopes include both threads do not race.&quot;,
+      &quot;triggered&quot;: false
+    }
+  ],
+  &quot;checks&quot;: {
+    &quot;equivalence&quot;: &quot;not_requested&quot;,
+    &quot;synchronization&quot;: &quot;failed&quot;
+  },
+  &quot;diagnostics&quot;: [
+    {
+      &quot;code&quot;: &quot;conflicting_accesses_unordered&quot;,
+      &quot;details&quot;: {
+        &quot;count&quot;: 1,
+        &quot;internal_stage&quot;: &quot;memory_check&quot;,
+        &quot;witnesses_path&quot;: &quot;races&quot;
+      },
+      &quot;message&quot;: &quot;Conflicting accesses have no proven required ordering&quot;,
+      &quot;stage&quot;: &quot;synchronization&quot;
+    }
+  ],
+  &quot;evidence&quot;: {
+    &quot;race_count&quot;: 1,
+    &quot;race_samples_truncated&quot;: false,
+    &quot;races&quot;: [
+      {
+        &quot;first&quot;: {
+          &quot;access_index&quot;: 0,
+          &quot;actor&quot;: 128,
+          &quot;bytes&quot;: 4,
+          &quot;effect_index&quot;: 0,
+          &quot;endpoint&quot;: {
+            &quot;address&quot;: 5,
+            &quot;kind&quot;: &quot;memory&quot;
+          },
+          &quot;event&quot;: 8301,
+          &quot;instruction&quot;: 3750,
+          &quot;location&quot;: {
+            &quot;column&quot;: 2,
+            &quot;file&quot;: &quot;kernel.ptx&quot;,
+            &quot;line&quot;: 126
+          },
+          &quot;mode&quot;: &quot;write&quot;
+        },
+        &quot;overlap&quot;: &quot;constant byte ranges intersect&quot;,
+        &quot;region&quot;: {
+          &quot;address_space&quot;: &quot;shared&quot;,
+          &quot;allocation&quot;: &quot;cta:(0, 0, 0):shared:physical.shared.cta.0&quot;,
+          &quot;bytes&quot;: 4,
+          &quot;offset&quot;: 512
+        },
+        &quot;second&quot;: {
+          &quot;access_index&quot;: 0,
+          &quot;actor&quot;: 0,
+          &quot;bytes&quot;: 4,
+          &quot;effect_index&quot;: 0,
+          &quot;endpoint&quot;: {
+            &quot;address&quot;: 5,
+            &quot;kind&quot;: &quot;memory&quot;
+          },
+          &quot;event&quot;: 13,
+          &quot;instruction&quot;: 6,
+          &quot;location&quot;: {
+            &quot;column&quot;: 2,
+            &quot;file&quot;: &quot;kernel.ptx&quot;,
+            &quot;line&quot;: 136
+          },
+          &quot;mode&quot;: &quot;read&quot;
+        }
+      }
+    ]
+  },
+  &quot;frontend_assumptions&quot;: {
+    &quot;assertion_failure_forms&quot;: [
+      &quot;trap&quot;,
+      &quot;__assertfail&quot;
+    ],
+    &quot;assertion_uses&quot;: 0,
+    &quot;atomic_uses&quot;: 0,
+    &quot;bounded_loop_uses&quot;: 0,
+    &quot;clc_failure&quot;: true,
+    &quot;clc_uses&quot;: 0,
+    &quot;data_branch_decisions&quot;: [],
+    &quot;election_policy&quot;: {
+      &quot;fallback&quot;: &quot;lowest_member&quot;,
+      &quot;preferred_lane&quot;: 0,
+      &quot;strategy&quot;: &quot;preferred_member&quot;
+    },
+    &quot;election_uses&quot;: 0,
+    &quot;fixed_election&quot;: true,
+    &quot;isolated_launch&quot;: true,
+    &quot;noalias_unbounded&quot;: false,
+    &quot;opaque_compute_regions&quot;: [],
+    &quot;pointer_contract&quot;: {
+      &quot;aliasing&quot;: &quot;distinct_objects_noalias&quot;,
+      &quot;extent_bytes&quot;: &quot;unbounded&quot;
+    },
+    &quot;representative_branch_uses&quot;: 0,
+    &quot;trap_only_equality_assertions_hold&quot;: true
+  },
+  &quot;peak_rss_mib&quot;: 61.140625,
+  &quot;pipeline_elapsed_seconds&quot;: 0.042254875,
+  &quot;result&quot;: &quot;potential_race&quot;,
+  &quot;rss_limit_mib&quot;: 1024,
+  &quot;schema&quot;: &quot;spverify.native-result/v1&quot;,
+  &quot;scope&quot;: {
+    &quot;operation&quot;: &quot;kernel_verification&quot;
+  },
+  &quot;verification_limitations&quot;: [],
+  &quot;warning_count&quot;: 0,
+  &quot;warning_samples_truncated&quot;: false,
+  &quot;warnings&quot;: [],
+  &quot;wellsync_timeout_seconds&quot;: 9.99994,
+  &quot;whole_pipeline_timeout_seconds&quot;: 9.99994,
+  &quot;elapsed_seconds&quot;: 0.05314133397769183
+}</pre></details>
+          </article><article id="step-2" class="attempt">
+          <div class="attempt-top"><span class="round">02</span><div>
+          <h2>Candidate</h2><p class="verdict fail">potential_race <span>Finding; not accepted</span></p></div>
+          <a class="source-link" href="002-candidate/kernel.ptx">Kernel PTX</a></div>
+          <p>Test removal of the barrier at line 141; reverify before retaining. This is not a speedup claim.</p>
+          <p class="witness">Witness: write at line 139 / read at line 149</p>
+          <div class="split"><section><h3>Candidate diff</h3><pre>--- previous.ptx
++++ candidate.ptx
+@@ -138,7 +138,6 @@
+ 	add.f32 	%f28, %f26, %f27;
+ 	st.shared.f32 	[%r19], %f28;
+ $L__BB2_12:
+-	bar.sync 	0;
+ 	setp.lt.u32 	%p10, %r18, 256;
+ 	@%p10 bra 	$L__BB2_52;
+ 	shr.u32 	%r63, %r18, 2;
+</pre></section>
+          <section><h3>Check results</h3><dl><dt>Synchronization</dt><dd>failed</dd>
+          <dt>Equivalence</dt><dd>not_requested</dd></dl>
+          <p class="hash">SHA-256 20d83d6d168b5abb10166bbf17f5c55ea533eb36a5b581b02d250261da59929c</p>
+          <a href="002-candidate/verification/stdout.json">Raw verifier output</a></section></div>
+          <details><summary>Diagnostics, witnesses and assumptions</summary><pre>{
+  &quot;assumption_dependent&quot;: true,
+  &quot;assumption_reporting&quot;: &quot;triggered=null means applicability was not measured or analysis was not reached&quot;,
+  &quot;assumptions&quot;: [
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: true,
+      &quot;key&quot;: &quot;duplicate_tma_store_benign&quot;,
+      &quot;label&quot;: &quot;Duplicate TMA stores&quot;,
+      &quot;text&quot;: &quot;Matching same-warp duplicate TMA stores are races in the model, but are reported as warnings under the assumption that their stored values agree.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: true,
+      &quot;key&quot;: &quot;representative_election&quot;,
+      &quot;label&quot;: &quot;Representative election&quot;,
+      &quot;text&quot;: &quot;Election selects lane zero when participating, otherwise the lowest participating lane.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: true,
+      &quot;key&quot;: &quot;clc_always_fails&quot;,
+      &quot;label&quot;: &quot;Failed launch cancellation&quot;,
+      &quot;text&quot;: &quot;Every cluster launch cancellation request fails.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;representative_branches&quot;,
+      &quot;label&quot;: &quot;Representative branches&quot;,
+      &quot;text&quot;: &quot;Choose fallthrough for an unresolved structured if/else; unknown ordinary instruction guards execute. Terminal control uses CFG classification. Known control and explicit choices take precedence.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;bounded_computation_loops&quot;,
+      &quot;label&quot;: &quot;Bounded computation loops&quot;,
+      &quot;text&quot;: &quot;Execute a configured number of body iterations for unresolved recognized computation loops, counted separately per invocation. Polling and unclassified loops are never forced to complete.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;order_independent_atomics&quot;,
+      &quot;label&quot;: &quot;Order-independent atomics&quot;,
+      &quot;text&quot;: &quot;The kernel is correct for every order in which concurrent atomics (atom, red) on the same element take effect. Each atomic is one indivisible access; two atomics on the same element whose scopes include both threads do not race.&quot;,
+      &quot;triggered&quot;: false
+    }
+  ],
+  &quot;checks&quot;: {
+    &quot;equivalence&quot;: &quot;not_requested&quot;,
+    &quot;synchronization&quot;: &quot;failed&quot;
+  },
+  &quot;diagnostics&quot;: [
+    {
+      &quot;code&quot;: &quot;conflicting_accesses_unordered&quot;,
+      &quot;details&quot;: {
+        &quot;count&quot;: 1,
+        &quot;internal_stage&quot;: &quot;memory_check&quot;,
+        &quot;witnesses_path&quot;: &quot;races&quot;
+      },
+      &quot;message&quot;: &quot;Conflicting accesses have no proven required ordering&quot;,
+      &quot;stage&quot;: &quot;synchronization&quot;
+    }
+  ],
+  &quot;evidence&quot;: {
+    &quot;race_count&quot;: 1,
+    &quot;race_samples_truncated&quot;: false,
+    &quot;races&quot;: [
+      {
+        &quot;first&quot;: {
+          &quot;access_index&quot;: 0,
+          &quot;actor&quot;: 64,
+          &quot;bytes&quot;: 4,
+          &quot;effect_index&quot;: 0,
+          &quot;endpoint&quot;: {
+            &quot;address&quot;: 6,
+            &quot;kind&quot;: &quot;memory&quot;
+          },
+          &quot;event&quot;: 5621,
+          &quot;instruction&quot;: 2410,
+          &quot;location&quot;: {
+            &quot;column&quot;: 2,
+            &quot;file&quot;: &quot;kernel.ptx&quot;,
+            &quot;line&quot;: 139
+          },
+          &quot;mode&quot;: &quot;write&quot;
+        },
+        &quot;overlap&quot;: &quot;constant byte ranges intersect&quot;,
+        &quot;region&quot;: {
+          &quot;address_space&quot;: &quot;shared&quot;,
+          &quot;allocation&quot;: &quot;cta:(0, 0, 0):shared:physical.shared.cta.0&quot;,
+          &quot;bytes&quot;: 4,
+          &quot;offset&quot;: 256
+        },
+        &quot;second&quot;: {
+          &quot;access_index&quot;: 0,
+          &quot;actor&quot;: 0,
+          &quot;bytes&quot;: 4,
+          &quot;effect_index&quot;: 0,
+          &quot;endpoint&quot;: {
+            &quot;address&quot;: 6,
+            &quot;kind&quot;: &quot;memory&quot;
+          },
+          &quot;event&quot;: 21,
+          &quot;instruction&quot;: 10,
+          &quot;location&quot;: {
+            &quot;column&quot;: 2,
+            &quot;file&quot;: &quot;kernel.ptx&quot;,
+            &quot;line&quot;: 149
+          },
+          &quot;mode&quot;: &quot;read&quot;
+        }
+      }
+    ]
+  },
+  &quot;frontend_assumptions&quot;: {
+    &quot;assertion_failure_forms&quot;: [
+      &quot;trap&quot;,
+      &quot;__assertfail&quot;
+    ],
+    &quot;assertion_uses&quot;: 0,
+    &quot;atomic_uses&quot;: 0,
+    &quot;bounded_loop_uses&quot;: 0,
+    &quot;clc_failure&quot;: true,
+    &quot;clc_uses&quot;: 0,
+    &quot;data_branch_decisions&quot;: [],
+    &quot;election_policy&quot;: {
+      &quot;fallback&quot;: &quot;lowest_member&quot;,
+      &quot;preferred_lane&quot;: 0,
+      &quot;strategy&quot;: &quot;preferred_member&quot;
+    },
+    &quot;election_uses&quot;: 0,
+    &quot;fixed_election&quot;: true,
+    &quot;isolated_launch&quot;: true,
+    &quot;noalias_unbounded&quot;: false,
+    &quot;opaque_compute_regions&quot;: [],
+    &quot;pointer_contract&quot;: {
+      &quot;aliasing&quot;: &quot;distinct_objects_noalias&quot;,
+      &quot;extent_bytes&quot;: &quot;unbounded&quot;
+    },
+    &quot;representative_branch_uses&quot;: 0,
+    &quot;trap_only_equality_assertions_hold&quot;: true
+  },
+  &quot;peak_rss_mib&quot;: 59.796875,
+  &quot;pipeline_elapsed_seconds&quot;: 0.043240458,
+  &quot;result&quot;: &quot;potential_race&quot;,
+  &quot;rss_limit_mib&quot;: 1024,
+  &quot;schema&quot;: &quot;spverify.native-result/v1&quot;,
+  &quot;scope&quot;: {
+    &quot;operation&quot;: &quot;kernel_verification&quot;
+  },
+  &quot;verification_limitations&quot;: [],
+  &quot;warning_count&quot;: 0,
+  &quot;warning_samples_truncated&quot;: false,
+  &quot;warnings&quot;: [],
+  &quot;wellsync_timeout_seconds&quot;: 9.99994,
+  &quot;whole_pipeline_timeout_seconds&quot;: 9.99994,
+  &quot;elapsed_seconds&quot;: 0.05348062497796491
+}</pre></details>
+          </article><article id="step-3" class="attempt">
+          <div class="attempt-top"><span class="round">03</span><div>
+          <h2>Candidate</h2><p class="verdict fail">potential_race <span>Finding; not accepted</span></p></div>
+          <a class="source-link" href="003-candidate/kernel.ptx">Kernel PTX</a></div>
+          <p>Test removal of the barrier at line 154; reverify before retaining. This is not a speedup claim.</p>
+          <p class="witness">Witness: write at line 152 / read at line 316</p>
+          <div class="split"><section><h3>Candidate diff</h3><pre>--- previous.ptx
++++ candidate.ptx
+@@ -151,7 +151,6 @@
+ 	add.f32 	%f31, %f29, %f30;
+ 	st.shared.f32 	[%r19], %f31;
+ $L__BB2_15:
+-	bar.sync 	0;
+ 	setp.lt.u32 	%p12, %r18, 512;
+ 	@%p12 bra 	$L__BB2_52;
+ 	shr.u32 	%r21, %r18, 3;
+</pre></section>
+          <section><h3>Check results</h3><dl><dt>Synchronization</dt><dd>failed</dd>
+          <dt>Equivalence</dt><dd>not_requested</dd></dl>
+          <p class="hash">SHA-256 8accff8b9563acf3032d25118b8ac94c5b5c6347e5cb2a9beb78409418051261</p>
+          <a href="003-candidate/verification/stdout.json">Raw verifier output</a></section></div>
+          <details><summary>Diagnostics, witnesses and assumptions</summary><pre>{
+  &quot;assumption_dependent&quot;: true,
+  &quot;assumption_reporting&quot;: &quot;triggered=null means applicability was not measured or analysis was not reached&quot;,
+  &quot;assumptions&quot;: [
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: true,
+      &quot;key&quot;: &quot;duplicate_tma_store_benign&quot;,
+      &quot;label&quot;: &quot;Duplicate TMA stores&quot;,
+      &quot;text&quot;: &quot;Matching same-warp duplicate TMA stores are races in the model, but are reported as warnings under the assumption that their stored values agree.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: true,
+      &quot;key&quot;: &quot;representative_election&quot;,
+      &quot;label&quot;: &quot;Representative election&quot;,
+      &quot;text&quot;: &quot;Election selects lane zero when participating, otherwise the lowest participating lane.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: true,
+      &quot;key&quot;: &quot;clc_always_fails&quot;,
+      &quot;label&quot;: &quot;Failed launch cancellation&quot;,
+      &quot;text&quot;: &quot;Every cluster launch cancellation request fails.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;representative_branches&quot;,
+      &quot;label&quot;: &quot;Representative branches&quot;,
+      &quot;text&quot;: &quot;Choose fallthrough for an unresolved structured if/else; unknown ordinary instruction guards execute. Terminal control uses CFG classification. Known control and explicit choices take precedence.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;bounded_computation_loops&quot;,
+      &quot;label&quot;: &quot;Bounded computation loops&quot;,
+      &quot;text&quot;: &quot;Execute a configured number of body iterations for unresolved recognized computation loops, counted separately per invocation. Polling and unclassified loops are never forced to complete.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;category&quot;: &quot;analysis assumption&quot;,
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;order_independent_atomics&quot;,
+      &quot;label&quot;: &quot;Order-independent atomics&quot;,
+      &quot;text&quot;: &quot;The kernel is correct for every order in which concurrent atomics (atom, red) on the same element take effect. Each atomic is one indivisible access; two atomics on the same element whose scopes include both threads do not race.&quot;,
+      &quot;triggered&quot;: false
+    }
+  ],
+  &quot;checks&quot;: {
+    &quot;equivalence&quot;: &quot;not_requested&quot;,
+    &quot;synchronization&quot;: &quot;failed&quot;
+  },
+  &quot;diagnostics&quot;: [
+    {
+      &quot;code&quot;: &quot;conflicting_accesses_unordered&quot;,
+      &quot;details&quot;: {
+        &quot;count&quot;: 1,
+        &quot;internal_stage&quot;: &quot;memory_check&quot;,
+        &quot;witnesses_path&quot;: &quot;races&quot;
+      },
+      &quot;message&quot;: &quot;Conflicting accesses have no proven required ordering&quot;,
+      &quot;stage&quot;: &quot;synchronization&quot;
+    }
+  ],
+  &quot;evidence&quot;: {
+    &quot;race_count&quot;: 1,
+    &quot;race_samples_truncated&quot;: false,
+    &quot;races&quot;: [
+      {
+        &quot;first&quot;: {
+          &quot;access_index&quot;: 0,
+          &quot;actor&quot;: 32,
+          &quot;bytes&quot;: 4,
+          &quot;effect_index&quot;: 0,
+          &quot;endpoint&quot;: {
+            &quot;address&quot;: 7,
+            &quot;kind&quot;: &quot;memory&quot;
+          },
+          &quot;event&quot;: 4093,
+          &quot;instruction&quot;: 1646,
+          &quot;location&quot;: {
+            &quot;column&quot;: 2,
+            &quot;file&quot;: &quot;kernel.ptx&quot;,
+            &quot;line&quot;: 152
+          },
+          &quot;mode&quot;: &quot;write&quot;
+        },
+        &quot;overlap&quot;: &quot;constant byte ranges intersect&quot;,
+        &quot;region&quot;: {
+          &quot;address_space&quot;: &quot;shared&quot;,
+          &quot;allocation&quot;: &quot;cta:(0, 0, 0):shared:physical.shared.cta.0&quot;,
+          &quot;bytes&quot;: 4,
+          &quot;offset&quot;: 128
+        },
+        &quot;second&quot;: {
+          &quot;access_index&quot;: 0,
+          &quot;actor&quot;: 0,
+          &quot;bytes&quot;: 4,
+          &quot;effect_index&quot;: 0,
+          &quot;endpoint&quot;: {
+            &quot;address&quot;: 7,
+            &quot;kind&quot;: &quot;memory&quot;
+          },
+          &quot;event&quot;: 29,
+          &quot;instruction&quot;: 14,
+          &quot;location&quot;: {
+            &quot;column&quot;: 2,
+            &quot;file&quot;: &quot;kernel.ptx&quot;,
+            &quot;line&quot;: 316
+          },
+          &quot;mode&quot;: &quot;read&quot;
+        }
+      }
+    ]
+  },
+  &quot;frontend_assumptions&quot;: {
+    &quot;assertion_failure_forms&quot;: [
+      &quot;trap&quot;,
+      &quot;__assertfail&quot;
+    ],
+    &quot;assertion_uses&quot;: 0,
+    &quot;atomic_uses&quot;: 0,
+    &quot;bounded_loop_uses&quot;: 0,
+    &quot;clc_failure&quot;: true,
+    &quot;clc_uses&quot;: 0,
+    &quot;data_branch_decisions&quot;: [],
+    &quot;election_policy&quot;: {
+      &quot;fallback&quot;: &quot;lowest_member&quot;,
+      &quot;preferred_lane&quot;: 0,
+      &quot;strategy&quot;: &quot;preferred_member&quot;
+    },
+    &quot;election_uses&quot;: 0,
+    &quot;fixed_election&quot;: true,
+    &quot;isolated_launch&quot;: true,
+    &quot;noalias_unbounded&quot;: false,
+    &quot;opaque_compute_regions&quot;: [],
+    &quot;pointer_contract&quot;: {
+      &quot;aliasing&quot;: &quot;distinct_objects_noalias&quot;,
+      &quot;extent_bytes&quot;: &quot;unbounded&quot;
+    },
+    &quot;representative_branch_uses&quot;: 0,
+    &quot;trap_only_equality_assertions_hold&quot;: true
+  },
+  &quot;peak_rss_mib&quot;: 60.296875,
+  &quot;pipeline_elapsed_seconds&quot;: 0.042611625,
+  &quot;result&quot;: &quot;potential_race&quot;,
+  &quot;rss_limit_mib&quot;: 1024,
+  &quot;schema&quot;: &quot;spverify.native-result/v1&quot;,
+  &quot;scope&quot;: {
+    &quot;operation&quot;: &quot;kernel_verification&quot;
+  },
+  &quot;verification_limitations&quot;: [],
+  &quot;warning_count&quot;: 0,
+  &quot;warning_samples_truncated&quot;: false,
+  &quot;warnings&quot;: [],
+  &quot;wellsync_timeout_seconds&quot;: 9.99994,
+  &quot;whole_pipeline_timeout_seconds&quot;: 9.99994,
+  &quot;elapsed_seconds&quot;: 0.05270037497393787
+}</pre></details>
+          </article></div></div>
+      <footer>Static analysis only. Results apply to the saved launch, input contracts and verifier assumptions. SentryWard does not model the full PTX memory model; reference equivalence, when requested, uses real arithmetic. Verifier wall time is not GPU kernel latency.<br>Public SentryWard commit 421ff2c7d140341f64d2bc1f1edd045b65a7c403. <a href="https://github.com/gpu-verifier/sentryward">Upstream source</a>.</footer></main></body></html>

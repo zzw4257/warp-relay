@@ -1,0 +1,12 @@
+{
+  "arguments": [
+    "./runner",
+    "benchmark",
+    "baseline.ptx",
+    "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i",
+    "selected.ptx"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "elapsed_seconds": 0.8938798904418945
+}

@@ -1,0 +1,158 @@
+{
+  "runs": [
+    {
+      "name": "repair",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "warp_relay",
+        "run",
+        "examples/neighbor_exchange/task.json",
+        "--out",
+        "runs/round48-repair",
+        "--iterations",
+        "3",
+        "--timeout",
+        "15",
+        "--memory-mib",
+        "1024"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "elapsed_s": 0.226,
+      "summary": {
+        "selected": "001-candidate",
+        "stop_reason": "accepted_repair",
+        "model_executed": false,
+        "gpu_executed": false
+      },
+      "rounds": [
+        {
+          "path": "000-baseline",
+          "accepted": false,
+          "result": "potential_race",
+          "kernel_sha256": "abec6d18fce79d5aff52b93183871cb0f3e2950860ac95d80e64baa35040c5f7"
+        },
+        {
+          "path": "001-candidate",
+          "accepted": true,
+          "result": "race_free",
+          "kernel_sha256": "83c90188eca101e1060ddad9ce20335742a266e31f0c3683f7df6445276634e0"
+        }
+      ]
+    },
+    {
+      "name": "weightnorm",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "warp_relay",
+        "run",
+        "examples/pytorch_weightnorm/runtime-task.json",
+        "--out",
+        "runs/round48-weightnorm",
+        "--iterations",
+        "4",
+        "--timeout",
+        "10",
+        "--memory-mib",
+        "1024"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "elapsed_s": 0.703,
+      "summary": {
+        "selected": "004-candidate",
+        "stop_reason": "iteration_budget",
+        "model_executed": false,
+        "gpu_executed": false
+      },
+      "rounds": [
+        {
+          "path": "000-baseline",
+          "accepted": true,
+          "result": "race_free",
+          "kernel_sha256": "0fa57a8625c2f74ffad1684891484cbddc22e3f01372aaa2881334509ed75288"
+        },
+        {
+          "path": "001-candidate",
+          "accepted": false,
+          "result": "potential_race",
+          "kernel_sha256": "b3c7876bacaeb8078a2b9731fb620cbf25fc7ce1aaab344da939f393db404e87"
+        },
+        {
+          "path": "002-candidate",
+          "accepted": false,
+          "result": "potential_race",
+          "kernel_sha256": "20d83d6d168b5abb10166bbf17f5c55ea533eb36a5b581b02d250261da59929c"
+        },
+        {
+          "path": "003-candidate",
+          "accepted": false,
+          "result": "potential_race",
+          "kernel_sha256": "8accff8b9563acf3032d25118b8ac94c5b5c6347e5cb2a9beb78409418051261"
+        },
+        {
+          "path": "004-candidate",
+          "accepted": true,
+          "result": "race_free",
+          "kernel_sha256": "30ca6d115fd93f5bf7f5c2cccadf3dbc35dfd040ac9401df470d3c93a9a874a8"
+        }
+      ]
+    },
+    {
+      "name": "unsupported",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "warp_relay",
+        "run",
+        "examples/pytorch_multimargin/task.json",
+        "--out",
+        "runs/round48-unsupported",
+        "--timeout",
+        "10",
+        "--memory-mib",
+        "1024"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "elapsed_s": 0.185,
+      "summary": {
+        "selected": null,
+        "stop_reason": "inspection_complete",
+        "model_executed": false,
+        "gpu_executed": false
+      },
+      "rounds": [
+        {
+          "path": "000-baseline",
+          "accepted": false,
+          "result": "unsupported",
+          "kernel_sha256": "149349f2c99a1dcefe1fa96de5833cb19c9c94b16d5dbbc0dcf1d47df3ed495e"
+        }
+      ]
+    },
+    {
+      "name": "meta-audit",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/audit_meta_review.py",
+        "evidence/round23-meta/first-response",
+        "--out",
+        "runs/round48-meta-audit",
+        "--no-install"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "elapsed_s": 0.064
+    }
+  ],
+  "timing_scope": "Local CLI wall time only; no kernel performance measurement.",
+  "new_model_calls": 0,
+  "new_gpu_runs": 0
+}

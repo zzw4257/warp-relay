@@ -1,0 +1,71 @@
+{
+  "schema": "warp-relay.run/v1",
+  "name": "Verify and test barrier removal in public PyTorch WeightNorm",
+  "objective": "optimize",
+  "started_at": "2026-10-31T16:35:31.975648+00:00",
+  "provider": "offline-rule (no model)",
+  "acceptance_scope": "synchronization",
+  "description": "Unmodified public compiler-generated PyTorch WeightNorm forward first-dimension PTX as baseline. Exact upstream input bytes: 2 CTAs of 256 threads, rowSize=1024, dynamic shared memory=1024 bytes per CTA, distinct w/norms/v/g allocations, bf16 w/v/g and float32 norms. Preserve upstream optional assumptions duplicate_tma_store_benign, representative_election and clc_always_fails enabled; other optional assumptions retain pinned defaults (false). No branch decisions or input changes. Try at most three standalone CTA-barrier deletions through the existing verifier loop. Synchronization-only check; no reference execution, model inference, hardware execution or performance measurement.",
+  "model_executed": false,
+  "model_status": "not_called",
+  "gpu_executed": false,
+  "speedup": null,
+  "performance_status": "not_measured",
+  "iterations": [
+    {
+      "path": "000-baseline",
+      "kind": "baseline",
+      "kernel_sha256": "0fa57a8625c2f74ffad1684891484cbddc22e3f01372aaa2881334509ed75288",
+      "result": "race_free",
+      "accepted": true
+    },
+    {
+      "path": "001-candidate",
+      "kind": "candidate",
+      "kernel_sha256": "b3c7876bacaeb8078a2b9731fb620cbf25fc7ce1aaab344da939f393db404e87",
+      "rationale": "Test removal of the barrier at line 127; reverify before retaining. This is not a speedup claim.",
+      "accepted": false,
+      "result": "potential_race",
+      "barriers_before": 16,
+      "barriers_after": 15
+    },
+    {
+      "path": "002-candidate",
+      "kind": "candidate",
+      "kernel_sha256": "20d83d6d168b5abb10166bbf17f5c55ea533eb36a5b581b02d250261da59929c",
+      "rationale": "Test removal of the barrier at line 141; reverify before retaining. This is not a speedup claim.",
+      "accepted": false,
+      "result": "potential_race",
+      "barriers_before": 16,
+      "barriers_after": 15
+    },
+    {
+      "path": "003-candidate",
+      "kind": "candidate",
+      "kernel_sha256": "8accff8b9563acf3032d25118b8ac94c5b5c6347e5cb2a9beb78409418051261",
+      "rationale": "Test removal of the barrier at line 154; reverify before retaining. This is not a speedup claim.",
+      "accepted": false,
+      "result": "potential_race",
+      "barriers_before": 16,
+      "barriers_after": 15
+    }
+  ],
+  "selected": "000-baseline",
+  "stop_reason": "iteration_budget",
+  "verifier": {
+    "repository": "https://github.com/gpu-verifier/sentryward",
+    "revision": "421ff2c7d140341f64d2bc1f1edd045b65a7c403",
+    "native_sha256": "dc7ec7c55483eed7e02fa7e8829da1b739f4446a119546899381012f7ac6abea",
+    "python": "3.15.0 (main, Oct  9 2026, 11:16:41) [Clang 21.0.0 (clang-2100.3.34.2)]",
+    "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+    "agent_sources": {
+      "warp_relay/__init__.py": "cb18f16dd36baf409efb05a6f79335f8f300fead503b56cd781d25c8e569be5f",
+      "warp_relay/__main__.py": "71beba5af7127c88d5174d4d6bb8a91a0f86f10c8c9c197c7dd43006821806e8",
+      "warp_relay/core.py": "aa15f01a0db4f1b5e0069d31d207c46b42f90595ebe585da7b2ae268f80aeb77",
+      "warp_relay/providers.py": "c6e3bc1648f94cdeea19b37e63423d3fde15cd56d14cbf09eb216b4e0c1fb18d",
+      "warp_relay/report.py": "cc2d72be81d7eb7dcd6e737bb6b3d16e17ac34e467444c11804b221e75c2764d",
+      "warp_relay/runner.py": "c67e9d7d7a4c1f7eea69af49e59fd6bdb85abfb914b85cf6555b7341d24a81d6"
+    }
+  },
+  "finished_at": "2026-10-31T16:35:32.380425+00:00"
+}

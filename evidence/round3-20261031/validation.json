@@ -1,0 +1,85 @@
+{
+  "schema": "warp-relay.validation/v1",
+  "verifier_revision": "421ff2c7d140341f64d2bc1f1edd045b65a7c403",
+  "verifier_tracked_changes": [],
+  "search_scope": {
+    "saved_outputs_inspected": 169,
+    "matching_recorded_synchronization_passes": 87,
+    "new_kernels_executed": [
+      "pytorch__aten_WeightNorm__sm_100a"
+    ],
+    "selection_only_not_new_benchmark": true
+  },
+  "tests": {
+    "command": "python3 -m unittest discover -s tests -v",
+    "passed": 34,
+    "skipped": 0,
+    "log": "tests.log"
+  },
+  "relative_report_links_resolve": 28,
+  "baseline_public_ptx_unchanged": true,
+  "input_public_bytes_unchanged": true,
+  "selected_equals_baseline": true,
+  "agent_hashes_match_recorded_provenance": true,
+  "result_sequence": [
+    "race_free",
+    "potential_race",
+    "potential_race",
+    "potential_race"
+  ],
+  "assumptions": [
+    {
+      "category": "analysis assumption",
+      "enabled": true,
+      "key": "duplicate_tma_store_benign",
+      "label": "Duplicate TMA stores",
+      "text": "Matching same-warp duplicate TMA stores are races in the model, but are reported as warnings under the assumption that their stored values agree.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": true,
+      "key": "representative_election",
+      "label": "Representative election",
+      "text": "Election selects lane zero when participating, otherwise the lowest participating lane.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": true,
+      "key": "clc_always_fails",
+      "label": "Failed launch cancellation",
+      "text": "Every cluster launch cancellation request fails.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": false,
+      "key": "representative_branches",
+      "label": "Representative branches",
+      "text": "Choose fallthrough for an unresolved structured if/else; unknown ordinary instruction guards execute. Terminal control uses CFG classification. Known control and explicit choices take precedence.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": false,
+      "key": "bounded_computation_loops",
+      "label": "Bounded computation loops",
+      "text": "Execute a configured number of body iterations for unresolved recognized computation loops, counted separately per invocation. Polling and unclassified loops are never forced to complete.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": false,
+      "key": "order_independent_atomics",
+      "label": "Order-independent atomics",
+      "text": "The kernel is correct for every order in which concurrent atomics (atom, red) on the same element take effect. Each atomic is one indivisible access; two atomics on the same element whose scopes include both threads do not race.",
+      "triggered": false
+    }
+  ],
+  "assumption_dependent": true,
+  "equivalence": "not_requested",
+  "gpu_executed": false,
+  "model_executed": false,
+  "speedup": null
+}

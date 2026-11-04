@@ -1,0 +1,221 @@
+{
+  "schema": "spverify.input-binding-audit/v1",
+  "status": "coverage_complete",
+  "entry": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i",
+  "parameters": [
+    {
+      "index": 0,
+      "name": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_0",
+      "size_bytes": 8,
+      "line": 15
+    },
+    {
+      "index": 1,
+      "name": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_1",
+      "size_bytes": 8,
+      "line": 16
+    },
+    {
+      "index": 2,
+      "name": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_2",
+      "size_bytes": 8,
+      "line": 17
+    },
+    {
+      "index": 3,
+      "name": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_3",
+      "size_bytes": 8,
+      "line": 18
+    },
+    {
+      "index": 4,
+      "name": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_4",
+      "size_bytes": 4,
+      "line": 19
+    }
+  ],
+  "reads": [
+    {
+      "line": 28,
+      "instruction": "ld.param.u64 \t%rd5, [_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_0];",
+      "width_bytes": 8,
+      "status": "covered",
+      "parameter": 0,
+      "parameter_name": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_0",
+      "byte_range": [
+        0,
+        8
+      ],
+      "address_kind": "direct_parameter",
+      "alias_definition_lines": [],
+      "bindings": [
+        {
+          "kind": "ptx_symbolic_pointer",
+          "path": "PTX parameter declaration",
+          "byte_range": [
+            0,
+            8
+          ]
+        },
+        {
+          "kind": "symbolic_pointer",
+          "path": "declarations[0]",
+          "byte_range": [
+            0,
+            8
+          ]
+        }
+      ],
+      "uncovered_ranges": []
+    },
+    {
+      "line": 29,
+      "instruction": "ld.param.u64 \t%rd3, [_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_1];",
+      "width_bytes": 8,
+      "status": "covered",
+      "parameter": 1,
+      "parameter_name": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_1",
+      "byte_range": [
+        0,
+        8
+      ],
+      "address_kind": "direct_parameter",
+      "alias_definition_lines": [],
+      "bindings": [
+        {
+          "kind": "ptx_symbolic_pointer",
+          "path": "PTX parameter declaration",
+          "byte_range": [
+            0,
+            8
+          ]
+        },
+        {
+          "kind": "symbolic_pointer",
+          "path": "declarations[1]",
+          "byte_range": [
+            0,
+            8
+          ]
+        }
+      ],
+      "uncovered_ranges": []
+    },
+    {
+      "line": 30,
+      "instruction": "ld.param.u64 \t%rd6, [_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_2];",
+      "width_bytes": 8,
+      "status": "covered",
+      "parameter": 2,
+      "parameter_name": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_2",
+      "byte_range": [
+        0,
+        8
+      ],
+      "address_kind": "direct_parameter",
+      "alias_definition_lines": [],
+      "bindings": [
+        {
+          "kind": "ptx_symbolic_pointer",
+          "path": "PTX parameter declaration",
+          "byte_range": [
+            0,
+            8
+          ]
+        },
+        {
+          "kind": "symbolic_pointer",
+          "path": "declarations[2]",
+          "byte_range": [
+            0,
+            8
+          ]
+        }
+      ],
+      "uncovered_ranges": []
+    },
+    {
+      "line": 31,
+      "instruction": "ld.param.u64 \t%rd4, [_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_3];",
+      "width_bytes": 8,
+      "status": "covered",
+      "parameter": 3,
+      "parameter_name": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_3",
+      "byte_range": [
+        0,
+        8
+      ],
+      "address_kind": "direct_parameter",
+      "alias_definition_lines": [],
+      "bindings": [
+        {
+          "kind": "ptx_symbolic_pointer",
+          "path": "PTX parameter declaration",
+          "byte_range": [
+            0,
+            8
+          ]
+        },
+        {
+          "kind": "symbolic_pointer",
+          "path": "declarations[3]",
+          "byte_range": [
+            0,
+            8
+          ]
+        }
+      ],
+      "uncovered_ranges": []
+    },
+    {
+      "line": 32,
+      "instruction": "ld.param.u32 \t%r44, [_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_4];",
+      "width_bytes": 4,
+      "status": "covered",
+      "parameter": 4,
+      "parameter_name": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_4",
+      "byte_range": [
+        0,
+        4
+      ],
+      "address_kind": "direct_parameter",
+      "alias_definition_lines": [],
+      "bindings": [
+        {
+          "kind": "scalar_value",
+          "path": "arguments[0]",
+          "byte_range": [
+            0,
+            4
+          ]
+        }
+      ],
+      "uncovered_ranges": []
+    }
+  ],
+  "descriptors": [],
+  "issues": [],
+  "branch_scope": [],
+  "configured_assumptions": {
+    "duplicate_tma_store_benign": true,
+    "representative_election": true,
+    "clc_always_fails": true
+  },
+  "address_invariants": [],
+  "limitations": [
+    "All syntactic ld.param reads are inventoried, including unreachable paths; parameter-base aliases use only unique dominating mov/cvta and constant add/sub definitions.",
+    "Coverage does not validate supplied values against source construction.",
+    "Assumption names and effective defaults are validated by the verifier; this audit only checks object/key/Boolean types and records explicitly configured values.",
+    "Indirect reads, helper calls, and runtime descriptor updates require review.",
+    "Pointer inference from instruction use is not performed; explicit PTX .ptr inputs are recognized."
+  ],
+  "tma_instruction_lines": [],
+  "descriptor_update_lines": [],
+  "summary": {
+    "direct_read_count": 5,
+    "covered_read_count": 5,
+    "unbound_read_count": 0,
+    "review_read_count": 0,
+    "descriptor_count": 0
+  }
+}

@@ -1,0 +1,116 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Warp Relay — verification record</title><style>
+      :root{color-scheme:light;--paper:#f7f9fc;--ink:#172c42;--blue:#245da5;--line:#c9d7e6;--green:#23624a;--red:#a53d34}
+      *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Avenir Next",Avenir,"Segoe UI",sans-serif;font-size:16px;line-height:1.6}
+      header{padding:24px 5vw;background:white;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;align-items:center}.brand{font-weight:750;font-size:23px;letter-spacing:-1px}.brand svg{vertical-align:middle;margin-right:12px}a{color:var(--blue);text-underline-offset:4px}a:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:5px}
+      main{max-width:1280px;margin:auto;padding:44px 5vw 80px}.intro{max-width:850px}h1{font-size:clamp(32px,4.3vw,54px);font-weight:650;line-height:1.13;letter-spacing:-2px;margin:12px 0 22px}h2{font-size:23px;margin:0}h3{font-size:15px;margin:0 0 12px;font-weight:650}p{max-width:80ch}small,.muted{color:#52677c}
+      .scope{margin:28px 0 36px;border-left:4px solid var(--blue);padding:12px 20px;background:#eaf0f8;max-width:960px}.scope p{margin:4px 0}.workspace{display:grid;grid-template-columns:205px minmax(0,1fr);gap:36px}nav{align-self:start;position:sticky;top:20px}nav a{display:block;margin:0 0 15px;font-size:14px}nav p{font-weight:650}article{background:white;padding:28px;margin-bottom:24px;border:1px solid var(--line);border-radius:10px}.attempt-top{display:flex;gap:16px;align-items:center}.round{font-size:36px;color:#849bb2;line-height:1}.source-link{margin-left:auto;font-size:13px;white-space:nowrap}.verdict{font-weight:700;margin:2px 0}.verdict span{font-size:12px;font-weight:500;display:block}.pass{color:var(--green)}.fail{color:var(--red)}.split{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:22px}.split section{min-width:0}.witness{color:var(--red);font-size:14px}pre{font:12px/1.7 "SFMono-Regular",Consolas,monospace;overflow:auto;max-height:460px;background:#f1f5fa;padding:18px;border-radius:6px;tab-size:4}dl{margin:0}dt{color:#52677c;font-size:13px}dd{margin:0 0 12px;font-weight:600}.hash{font-size:11px;overflow-wrap:anywhere;color:#52677c}details{border-top:1px solid var(--line);margin-top:24px;padding-top:16px}summary{cursor:pointer;font-size:14px}footer{padding-top:24px;color:#52677c;font-size:13px}.run-mode{font-size:13px;text-align:right}.selection{font-weight:600}
+      @media(max-width:800px){.workspace{grid-template-columns:1fr;gap:12px}nav{position:static;display:flex;flex-wrap:wrap;gap:12px}nav p{width:100%;margin:0}nav a{margin:0}.split{grid-template-columns:1fr}article{padding:20px}.attempt-top{flex-wrap:wrap}.source-link{margin-left:0}.run-mode{max-width:180px}main{padding-top:25px}h1{letter-spacing:-1px}}
+      </style></head><body><header><div class="brand"><svg width="35" height="32" viewBox="0 0 35 32" aria-hidden="true"><path d="M2 7h12l7 18h12M2 25h12L21 7h12" fill="none" stroke="#245da5" stroke-width="3"/><circle cx="17.5" cy="16" r="4" fill="#245da5"/></svg>Warp Relay</div>
+      <div class="run-mode">offline-rule (no model)<br><span class="muted">Recorded local verification</span></div></header><main>
+      <div class="intro"><h1>Inspect public PyTorch MultiMarginLoss backward</h1><p>Unmodified compiler-generated PTX from the pinned public SentryWard corpus, mapped in its header to PyTorch commit 2b3ec34829036a65cd9d1398ea72a0167dc37470. Float32 backward, P=1, nframe=1, dim=8, weights=null, margin=1, mean reduction; one CTA of 128 threads, fixed read-only target[0]=5. Unlike the upstream saved scenario, no branch decision is supplied; all six optional assumptions are disabled. Input tensor values remain symbolic. Inspect only: no candidate generation, reference execution, GPU run or performance claim.</p></div>
+      <div class="scope"><p class="selection">Selected: No accepted candidate</p><p>Acceptance scope: synchronization. Model call: not called. GPU execution: not performed. Speedup: not measured.</p><p>A synchronization-only pass establishes neither numerical equivalence nor whole-program correctness. Inconclusive results establish no pass.</p><p>Stop reason: inspection_complete</p></div>
+      <div class="workspace"><nav aria-label="Verification rounds"><p>Verification rounds</p><a href="#step-0">00 unsupported</a><a href="summary.json">Run manifest</a><a href="provenance.json">Provenance</a></nav><div><article id="step-0" class="attempt">
+          <div class="attempt-top"><span class="round">00</span><div>
+          <h2>Baseline</h2><p class="verdict fail">unsupported <span>Inconclusive; not accepted</span></p></div>
+          <a class="source-link" href="000-baseline/kernel.ptx">Kernel PTX</a></div>
+          <p>Verify the original kernel before proposing a change.</p>
+          
+          <div class="split"><section><h3>Candidate diff</h3><pre>Original kernel; no change proposed.</pre></section>
+          <section><h3>Check results</h3><dl><dt>Synchronization</dt><dd>not_run</dd>
+          <dt>Equivalence</dt><dd>not_requested</dd></dl>
+          <p class="hash">SHA-256 149349f2c99a1dcefe1fa96de5833cb19c9c94b16d5dbbc0dcf1d47df3ed495e</p>
+          <a href="000-baseline/verification/stdout.json">Raw verifier output</a></section></div>
+          <details><summary>Diagnostics, witnesses and assumptions</summary><pre>{
+  &quot;assumption_hints&quot;: [
+    {
+      &quot;key&quot;: &quot;representative_branches&quot;,
+      &quot;label&quot;: &quot;Representative branches&quot;,
+      &quot;message&quot;: &quot;Supply the missing control input for exact analysis. This assumption applies only if CFG classification identifies the corresponding structured control; polling and unclassified loops remain unsupported.&quot;,
+      &quot;suggested_value&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;bounded_computation_loops&quot;,
+      &quot;label&quot;: &quot;Bounded computation loops&quot;,
+      &quot;message&quot;: &quot;Supply the missing control input for exact analysis. This assumption applies only if CFG classification identifies the corresponding structured control; polling and unclassified loops remain unsupported.&quot;,
+      &quot;suggested_value&quot;: true
+    }
+  ],
+  &quot;assumptions&quot;: [
+    {
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;duplicate_tma_store_benign&quot;,
+      &quot;label&quot;: &quot;Duplicate TMA stores&quot;,
+      &quot;text&quot;: &quot;Matching same-warp duplicate TMA stores are races in the model, but are reported as warnings under the assumption that their stored values agree.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;representative_election&quot;,
+      &quot;label&quot;: &quot;Representative election&quot;,
+      &quot;text&quot;: &quot;Election selects lane zero when participating, otherwise the lowest participating lane.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;clc_always_fails&quot;,
+      &quot;label&quot;: &quot;Failed launch cancellation&quot;,
+      &quot;text&quot;: &quot;Every cluster launch cancellation request fails.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;representative_branches&quot;,
+      &quot;label&quot;: &quot;Representative branches&quot;,
+      &quot;text&quot;: &quot;Choose fallthrough for an unresolved structured if/else; unknown ordinary instruction guards execute. Terminal control uses CFG classification. Known control and explicit choices take precedence.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;bounded_computation_loops&quot;,
+      &quot;label&quot;: &quot;Bounded computation loops&quot;,
+      &quot;text&quot;: &quot;Execute a configured number of body iterations for unresolved recognized computation loops, counted separately per invocation. Polling and unclassified loops are never forced to complete.&quot;,
+      &quot;triggered&quot;: false
+    },
+    {
+      &quot;enabled&quot;: false,
+      &quot;key&quot;: &quot;order_independent_atomics&quot;,
+      &quot;label&quot;: &quot;Order-independent atomics&quot;,
+      &quot;text&quot;: &quot;The kernel is correct for every order in which concurrent atomics (atom, red) on the same element take effect. Each atomic is one indivisible access; two atomics on the same element whose scopes include both threads do not race.&quot;,
+      &quot;triggered&quot;: false
+    }
+  ],
+  &quot;checks&quot;: {
+    &quot;equivalence&quot;: &quot;not_requested&quot;,
+    &quot;synchronization&quot;: &quot;not_run&quot;
+  },
+  &quot;diagnostics&quot;: [
+    {
+      &quot;code&quot;: &quot;control_predicate_not_static&quot;,
+      &quot;details&quot;: {
+        &quot;internal_stage&quot;: &quot;ptx_execution&quot;,
+        &quot;location&quot;: {
+          &quot;column&quot;: 0,
+          &quot;file&quot;: &quot;kernel.ptx&quot;,
+          &quot;line&quot;: 115
+        },
+        &quot;required_parameters&quot;: []
+      },
+      &quot;message&quot;: &quot;control predicate is not statically determined&quot;,
+      &quot;stage&quot;: &quot;synchronization&quot;
+    }
+  ],
+  &quot;peak_rss_mib&quot;: 7.921875,
+  &quot;pipeline_elapsed_seconds&quot;: 0.007619166,
+  &quot;result&quot;: &quot;unsupported&quot;,
+  &quot;rss_limit_mib&quot;: 1024,
+  &quot;scope&quot;: {
+    &quot;operation&quot;: &quot;kernel_verification&quot;
+  },
+  &quot;warnings&quot;: [],
+  &quot;wellsync_timeout_seconds&quot;: 9.99994,
+  &quot;whole_pipeline_timeout_seconds&quot;: 9.99994,
+  &quot;elapsed_seconds&quot;: 0.016801291960291564
+}</pre></details>
+          </article></div></div>
+      <footer>Static analysis only. Results apply to the saved launch, input contracts and verifier assumptions. SentryWard does not model the full PTX memory model; reference equivalence, when requested, uses real arithmetic. Verifier wall time is not GPU kernel latency.<br>Public SentryWard commit 421ff2c7d140341f64d2bc1f1edd045b65a7c403. <a href="https://github.com/gpu-verifier/sentryward">Upstream source</a>.</footer></main></body></html>

@@ -1,0 +1,9 @@
+{
+  "arguments": [
+    "./runner",
+    "self-test"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "elapsed_seconds": 0.0035572052001953125
+}

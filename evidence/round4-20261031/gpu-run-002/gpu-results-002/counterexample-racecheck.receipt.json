@@ -1,0 +1,21 @@
+{
+  "arguments": [
+    "/usr/local/cuda-13.2/bin/compute-sanitizer",
+    "--tool",
+    "racecheck",
+    "--error-exitcode",
+    "3",
+    "--log-file",
+    "gpu-results-002/counterexample-racecheck.log",
+    "--racecheck-report",
+    "analysis",
+    "./runner",
+    "quick",
+    "counterexample.ptx",
+    "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i",
+    "counterexample.ptx"
+  ],
+  "exit_code": 3,
+  "timeout": false,
+  "elapsed_seconds": 2.241882562637329
+}

@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Warp Relay · Kernel workbench</title><link rel="stylesheet" href="/style.css"><script type="module" src="/workbench.js"></script><script defer src="/app.js"></script></head>
+<body>
+<aside class="sidebar"><a href="#library" class="brand"><img src="/mark.svg" alt="" width="32" height="32">Warp Relay</a>
+<p class="brand-caption">Kernel verification workbench</p><button id="new-run" class="primary">New analysis</button>
+<button id="workspace-toggle" class="nav-toggle" aria-expanded="false" aria-controls="workspace-nav">Workspace ▾</button><nav id="workspace-nav" aria-label="Workspace"><button id="library-nav" class="story-nav">Case library <span>Explore kernels & evidence</span></button><button id="story-nav" class="story-nav">GPU evidence <span>Two recorded B200 runs</span></button>
+<section id="current-analyses" hidden><h2 class="nav-heading">Current analysis</h2><div id="current-list"></div></section>
+<h2 class="nav-heading">Recorded examples</h2><div id="example-list"></div>
+<details id="history"><summary>Saved analyses <span id="history-count">0</span></summary><label class="history-search">Find a run<input id="history-search" type="search" placeholder="Name or run ID"></label><label class="history-filter">Outcome<select id="history-filter"><option value="all">All outcomes</option><option value="completed">Completed</option><option value="inconclusive">Inconclusive</option><option value="failed">Failed / interrupted</option><option value="cancelled">Cancelled</option></select></label><div id="history-list"></div></details></nav>
+<div class="connection"><span id="ready-dot" class="dot"></span><div id="connection-text">Checking verifier…</div><small>Local CPU execution<br>Meta model not connected</small></div></aside>
+<main><div id="notice" role="status" aria-live="polite" hidden></div><section id="content"></section></main>
+<dialog id="detail-dialog"><form method="dialog"><button class="close-dialog" aria-label="Close details">Close</button></form><h2 id="dialog-title"></h2><pre id="dialog-content"></pre></dialog>
+</body></html>

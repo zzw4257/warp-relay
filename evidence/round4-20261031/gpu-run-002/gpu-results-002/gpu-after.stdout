@@ -1,0 +1,8 @@
+index, name, memory.used [MiB], utilization.gpu [%], clocks.current.sm [MHz], temperature.gpu, power.draw [W]
+0, NVIDIA B200, 790 MiB, 0 %, 1965 MHz, 30, 192.14 W
+1, NVIDIA B200, 4 MiB, 0 %, 1965 MHz, 26, 201.92 W
+2, NVIDIA B200, 20036 MiB, 99 %, 1965 MHz, 66, 914.11 W
+3, NVIDIA B200, 20294 MiB, 86 %, 1965 MHz, 54, 681.43 W
+4, NVIDIA B200, 6678 MiB, 0 %, 1965 MHz, 27, 194.31 W
+5, NVIDIA B200, 6678 MiB, 0 %, 1965 MHz, 26, 189.52 W
+6, NVIDIA B200, 4 MiB, 0 %, 120 MHz, 28, 134.96 W

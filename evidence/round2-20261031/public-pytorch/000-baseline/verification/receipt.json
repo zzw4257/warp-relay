@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/opt/homebrew/opt/python@3.15/bin/python3.15",
+    "-m",
+    "sentryward",
+    "./kernel.ptx",
+    "--input",
+    "../inputs/input.json",
+    "--timeout",
+    "10",
+    "--memory-limit-mib",
+    "1024"
+  ],
+  "cwd_relative_to_receipt": "..",
+  "started_at": "2026-10-31T16:30:15.762886+00:00",
+  "kernel_sha256": "149349f2c99a1dcefe1fa96de5833cb19c9c94b16d5dbbc0dcf1d47df3ed495e",
+  "input_sha256": "0ade7c1b723ba89b4cdfb0cef689f0d75a8cb7631acad2486355c7b62c839276",
+  "exit_code": 0,
+  "elapsed_seconds": 0.05434233299456537,
+  "measurement": "CPU verifier wall time, not GPU kernel latency"
+}

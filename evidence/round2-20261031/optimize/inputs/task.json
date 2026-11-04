@@ -1,0 +1,10 @@
+{
+  "schema": "warp-relay.task/v1",
+  "name": "Remove a redundant barrier, retain the necessary one",
+  "kernel": "original.ptx",
+  "input": "input.json",
+  "objective": "optimize",
+  "acceptance": "synchronization",
+  "edit_policy": "cta_barrier_only",
+  "description": "One CTA of 64 threads exchanges two 32-element halves of disjoint uint32 input/output arrays (256 bytes each). Two consecutive CTA barriers separate shared writes from shared reads. Test one-barrier deletions with the fixed launch and all six configurable assumptions disabled. Preserve all computation and memory instructions. Minimize static barrier count while retaining synchronization acceptance. Fewer barriers is a structural change, not a measured speedup; GPU and numerical-equivalence checks are not performed."
+}

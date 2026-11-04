@@ -1,0 +1,10 @@
+{
+  "schema": "warp-relay.task/v1",
+  "name": "Repair a cross-warp shared-memory exchange",
+  "kernel": "original.ptx",
+  "input": "input.json",
+  "objective": "repair",
+  "acceptance": "synchronization",
+  "edit_policy": "cta_barrier_only",
+  "description": "Exactly one CTA of 64 threads. Two disjoint global arrays of 64 uint32 values, at least 256 bytes each. Thread t writes input[t] to shared exchange[t], then reads exchange[t xor 32] into output[t]. Expected output[t] = input[(t+32)%64]. Every thread reaches the same straight-line instructions. Keep the entry ABI, arithmetic, memory operations, launch and all assumptions unchanged. Only insert/remove standalone bar.sync 0 instructions. Numerical equivalence and GPU execution are not tested by this task."
+}

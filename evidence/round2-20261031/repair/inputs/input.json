@@ -1,0 +1,17 @@
+{
+  "schema": "spverify.kernel-input/v1",
+  "entry": "neighbor_exchange",
+  "launch": {"grid_dim": [1, 1, 1], "block_dim": [64, 1, 1]},
+  "declarations": [
+    {"parameter": 0, "type": "pointer", "space": "global", "object": "input"},
+    {"parameter": 1, "type": "pointer", "space": "global", "object": "output"}
+  ],
+  "assumptions": {
+    "duplicate_tma_store_benign": false,
+    "representative_election": false,
+    "clc_always_fails": false,
+    "representative_branches": false,
+    "bounded_computation_loops": false,
+    "order_independent_atomics": false
+  }
+}

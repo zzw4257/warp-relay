@@ -1,0 +1,117 @@
+{
+  "schema": "warp-relay.gpu-run/v1",
+  "manifest_sha256": "a2648b925d9e8a55eb25540eeafb8ba50f5a4a6f756e11f8a9d00d306d726864",
+  "runner_sha256": "b7686499b019a31f94df1b8e450417f1b084840bc14e44387deb57f9e1b7d934",
+  "harness_sha256": "0d9c8fca4b63552d6c422b29dda465149235c6dda8493d18edd2cd314acc911b",
+  "python": "3.12.3",
+  "physical_gpu": "1",
+  "numerical_tests": {
+    "baseline": {
+      "passed": true,
+      "receipt": "baseline-numerical.receipt.json",
+      "sync_gate": "race_free"
+    },
+    "selected": {
+      "passed": true,
+      "receipt": "selected-numerical.receipt.json",
+      "sync_gate": "race_free"
+    },
+    "counterexample": {
+      "passed": true,
+      "receipt": "counterexample-numerical.receipt.json",
+      "sync_gate": "potential_race"
+    }
+  },
+  "sanitizers": {
+    "baseline-memcheck": {
+      "exit_code": 0,
+      "timeout": false,
+      "log": "baseline-memcheck.log",
+      "passed": true
+    },
+    "selected-memcheck": {
+      "exit_code": 0,
+      "timeout": false,
+      "log": "selected-memcheck.log",
+      "passed": true
+    },
+    "counterexample-memcheck": {
+      "exit_code": 0,
+      "timeout": false,
+      "log": "counterexample-memcheck.log",
+      "passed": true
+    },
+    "baseline-racecheck": {
+      "exit_code": 0,
+      "timeout": false,
+      "log": "baseline-racecheck.log",
+      "passed": true
+    },
+    "selected-racecheck": {
+      "exit_code": 0,
+      "timeout": false,
+      "log": "selected-racecheck.log",
+      "passed": true
+    },
+    "counterexample-racecheck": {
+      "exit_code": 3,
+      "timeout": false,
+      "log": "counterexample-racecheck.log",
+      "passed": false
+    }
+  },
+  "benchmark": [
+    {
+      "samples": 31,
+      "baseline_median_us": 1.82720005512,
+      "selected_median_us": 1.82559996843,
+      "paired_ratio_median": 1.0,
+      "baseline_range_us": [
+        1.81792005897,
+        1.83359995484
+      ],
+      "selected_range_us": [
+        1.8147200346,
+        1.84576004744
+      ]
+    },
+    {
+      "samples": 31,
+      "baseline_median_us": 1.82784006,
+      "selected_median_us": 1.82592004538,
+      "paired_ratio_median": 1.0,
+      "baseline_range_us": [
+        1.81183993816,
+        1.84064000845
+      ],
+      "selected_range_us": [
+        1.81408002973,
+        1.8419200182
+      ]
+    },
+    {
+      "samples": 31,
+      "baseline_median_us": 1.81759998202,
+      "selected_median_us": 1.8287999928,
+      "paired_ratio_median": 0.9956039349027972,
+      "baseline_range_us": [
+        1.81183993816,
+        1.83200001717
+      ],
+      "selected_range_us": [
+        1.81439995766,
+        1.84415996075
+      ]
+    }
+  ],
+  "model_executed": false,
+  "formal_equivalence": "not_requested",
+  "performance_claim": "measurement_only; selected deletion is not executed under this fixed launch; no general speedup claim",
+  "limitations": [
+    "Finite numerical tests, not a universal equivalence proof",
+    "One B200 and one fixed public shape",
+    "Hot-cache CUDA graph replay, 100 nodes per sample, 31 alternating pairs per trial",
+    "Shared server; clocks not locked; no other process was stopped"
+  ],
+  "status": "completed"
+}

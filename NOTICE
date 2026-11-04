@@ -1,0 +1,83 @@
+Warp Relay
+Local Meta Global AI Developer Hackathon 2026 entry, started 2026-10-31.
+
+This workspace integrates SentryWard, a pre-existing open-source project:
+  https://github.com/gpu-verifier/sentryward
+  Public revision: 421ff2c7d140341f64d2bc1f1edd045b65a7c403
+  License: Apache License, Version 2.0
+  Upstream author metadata: Zhihao Jia; see the repository for contributors.
+
+The upstream source is fetched unmodified into vendor/sentryward. Its LICENSE
+is preserved there and copied to licenses/SentryWard-Apache-2.0.txt. No
+unpublished research worktree or private group code is included.
+
+New work in this workspace: warp_relay/, gpu/, tests/, scripts/, docs/, and original
+examples/neighbor_exchange microkernels and specifications. SentryWard's
+verifier, public schema, prior research results and benchmark performance are
+pre-existing contributions and are not claimed as new hackathon work.
+
+API documentation used for the adapter:
+  https://dev.meta.ai/docs/protocols/chat-completions
+  Accessed 2026-10-31. No API credentials or model weights are bundled.
+
+The real-case PTX snapshots are pre-existing public SentryWard corpus artifacts
+mapped by their headers to PyTorch MultiMarginLoss.cu, WeightNorm.cu and
+DeviceUtils.cuh at revision 2b3ec34829036a65cd9d1398ea72a0167dc37470.
+They are not original Warp Relay kernels. WeightNorm's input configuration is
+copied unchanged from the pinned public SentryWard example. Candidate PTX files
+are derived from that public baseline by the recorded barrier deletions.
+PyTorch copyright and redistribution terms are preserved in
+licenses/PyTorch-LICENSE.txt. Its CUDA source was inspected at the pinned public
+URL. Compiler reproducibility was not established. Limited numerical,
+racecheck and timing measurements on a real B200 are recorded in
+evidence/round4-20261031, with their fixed launch and testing boundaries.
+
+The historical film's PageCam component is adapted from video-shotcraft:
+  https://github.com/vincentwei1021/video-shotcraft
+  Copyright 2026 Wei Yihao
+  License: Apache License, Version 2.0
+Its license is preserved in licenses/video-shotcraft-Apache-2.0.txt and the
+modified source retains its origin and adaptation notice. No Gallery scene
+implementation is included. Current film audio is separately licensed below.
+
+The workbench UI uses Pierre Diffs 1.6.2 (Apache-2.0), Shiki and other lockfile-pinned open-source libraries. Full bundled dependency notices are retained in licenses/Pierre-Diffs-LICENSE.md and licenses/ui-third-party-notices.txt. The Linear reference image is not redistributed.
+
+Historical explanatory demo music (not the current brand film)
+---------------------------------------------------------------
+“Cylinder Five” by Chris Zabriskie, from Cylinders (2014), © 2014 Chris Zabriskie.
+CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+Source: https://chriszabriskie.com/cylinders/
+Excerpted, faded and volume-adjusted. See demo/explained/MUSIC-LICENSE.md.
+This music retains its CC BY 4.0 terms, separate from the software license.
+
+Case library update: selected PTX and recorded verifier outputs from the pinned
+public SentryWard distribution are bundled under its Apache-2.0 distribution
+license. Original hashes, upstream source links and scope are in each case
+manifest. Public build paths are normalized without changing instruction text
+or line counts. No imported reference Python program is executed.
+Three.js 0.187.0: MIT License, licenses/Three-LICENSE.txt.
+
+Triton Gluon examples reference revision
+c01b6774b1865984607d89d89d3a10833de92037. Triton's MIT license is preserved in
+licenses/Triton-MIT-LICENSE.txt. The twelve-case manifests identify the exact
+public SentryWard distribution and any corroborating source URLs. TileLang's
+Online softmax snapshot has no exact generator URL in that distribution;
+the RMSNorm source link is corroborating evidence, not an exact generator claim.
+
+Current brand film audio and production tools
+----------------------------------------------
+Music: House Vibez by Lily J, licensed under the Mixkit Stock Music Free License.
+Sound effects: Mixkit, under the Mixkit Sound Effects Free License. These
+end-product licenses are separate from Apache-2.0; raw music/SFX and mix stems
+must not be redistributed as public source assets. Local license records and
+cue provenance are retained in the production archive.
+English narration was generated through the existing MiniMax native connector;
+the returned engine version was not disclosed. It is not verified speech-2.8-hd.
+Generated voice assets are excluded from the public code candidate.
+Remotion 4.0.484 permits eligible individual video creation, including commercial
+use. Version-specific terms and application to this project are documented in
+the publication-readiness record under docs/. The film toolchain stays outside the public core.
+Current H3 and native speech outputs use an existing gifted Build entitlement.
+The official FAQ now explicitly connects M Plan and MiniMax Code access, but
+the applicable promotion's competition-publication grant remains unverified;
+see the publication-readiness record under docs/ for official sources and the exact gap.

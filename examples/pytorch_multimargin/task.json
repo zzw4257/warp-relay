@@ -1,0 +1,10 @@
+{
+  "schema": "warp-relay.task/v1",
+  "name": "Inspect public PyTorch MultiMarginLoss backward",
+  "kernel": "../../vendor/sentryward/corpus/pytorch__aten_MultiMarginLoss__sm_100a.ptx",
+  "input": "input.json",
+  "objective": "inspect",
+  "acceptance": "synchronization",
+  "edit_policy": "cta_barrier_only",
+  "description": "Unmodified compiler-generated PTX from the pinned public SentryWard corpus, mapped in its header to PyTorch commit 2b3ec34829036a65cd9d1398ea72a0167dc37470. Float32 backward, P=1, nframe=1, dim=8, weights=null, margin=1, mean reduction; one CTA of 128 threads, fixed read-only target[0]=5. Unlike the upstream saved scenario, no branch decision is supplied; all six optional assumptions are disabled. Input tensor values remain symbolic. Inspect only: no candidate generation, reference execution, GPU run or performance claim."
+}

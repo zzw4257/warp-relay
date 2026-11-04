@@ -1,0 +1,83 @@
+{
+  "result": "unsupported",
+  "checks": {
+    "equivalence": "not_requested",
+    "synchronization": "not_run"
+  },
+  "diagnostics": [
+    {
+      "code": "control_predicate_not_static",
+      "details": {
+        "internal_stage": "ptx_execution",
+        "location": {
+          "column": 0,
+          "file": "kernel.ptx",
+          "line": 115
+        },
+        "required_parameters": []
+      },
+      "message": "control predicate is not statically determined",
+      "stage": "synchronization"
+    }
+  ],
+  "warnings": [],
+  "assumptions": [
+    {
+      "enabled": false,
+      "key": "duplicate_tma_store_benign",
+      "label": "Duplicate TMA stores",
+      "text": "Matching same-warp duplicate TMA stores are races in the model, but are reported as warnings under the assumption that their stored values agree.",
+      "triggered": false
+    },
+    {
+      "enabled": false,
+      "key": "representative_election",
+      "label": "Representative election",
+      "text": "Election selects lane zero when participating, otherwise the lowest participating lane.",
+      "triggered": false
+    },
+    {
+      "enabled": false,
+      "key": "clc_always_fails",
+      "label": "Failed launch cancellation",
+      "text": "Every cluster launch cancellation request fails.",
+      "triggered": false
+    },
+    {
+      "enabled": false,
+      "key": "representative_branches",
+      "label": "Representative branches",
+      "text": "Choose fallthrough for an unresolved structured if/else; unknown ordinary instruction guards execute. Terminal control uses CFG classification. Known control and explicit choices take precedence.",
+      "triggered": false
+    },
+    {
+      "enabled": false,
+      "key": "bounded_computation_loops",
+      "label": "Bounded computation loops",
+      "text": "Execute a configured number of body iterations for unresolved recognized computation loops, counted separately per invocation. Polling and unclassified loops are never forced to complete.",
+      "triggered": false
+    },
+    {
+      "enabled": false,
+      "key": "order_independent_atomics",
+      "label": "Order-independent atomics",
+      "text": "The kernel is correct for every order in which concurrent atomics (atom, red) on the same element take effect. Each atomic is one indivisible access; two atomics on the same element whose scopes include both threads do not race.",
+      "triggered": false
+    }
+  ],
+  "assumption_hints": [
+    {
+      "key": "representative_branches",
+      "label": "Representative branches",
+      "message": "Supply the missing control input for exact analysis. This assumption applies only if CFG classification identifies the corresponding structured control; polling and unclassified loops remain unsupported.",
+      "suggested_value": true
+    },
+    {
+      "key": "bounded_computation_loops",
+      "label": "Bounded computation loops",
+      "message": "Supply the missing control input for exact analysis. This assumption applies only if CFG classification identifies the corresponding structured control; polling and unclassified loops remain unsupported.",
+      "suggested_value": true
+    }
+  ],
+  "action": "This is inconclusive. Do not enable assumptions or shrink input scope to get a pass."
+}

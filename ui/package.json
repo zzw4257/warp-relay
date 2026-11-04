@@ -1,0 +1,1 @@
+{"name":"warp-relay-workbench","private":true,"type":"module","scripts":{"build":"node build.mjs","test":"node --test src/*.test.mjs"},"dependencies":{"@pierre/diffs":"1.6.2","three":"0.187.0"},"devDependencies":{"esbuild":"0.25.12"}}

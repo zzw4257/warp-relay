@@ -1,0 +1,363 @@
+{
+  "assumption_dependent": true,
+  "assumption_reporting": "triggered=null means applicability was not measured or analysis was not reached",
+  "assumptions": [
+    {
+      "category": "analysis assumption",
+      "enabled": true,
+      "key": "duplicate_tma_store_benign",
+      "label": "Duplicate TMA stores",
+      "text": "Matching same-warp duplicate TMA stores are races in the model, but are reported as warnings under the assumption that their stored values agree.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": true,
+      "key": "representative_election",
+      "label": "Representative election",
+      "text": "Election selects lane zero when participating, otherwise the lowest participating lane.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": true,
+      "key": "clc_always_fails",
+      "label": "Failed launch cancellation",
+      "text": "Every cluster launch cancellation request fails.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": false,
+      "key": "representative_branches",
+      "label": "Representative branches",
+      "text": "Choose fallthrough for an unresolved structured if/else; unknown ordinary instruction guards execute. Terminal control uses CFG classification. Known control and explicit choices take precedence.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": false,
+      "key": "bounded_computation_loops",
+      "label": "Bounded computation loops",
+      "text": "Execute a configured number of body iterations for unresolved recognized computation loops, counted separately per invocation. Polling and unclassified loops are never forced to complete.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": false,
+      "key": "order_independent_atomics",
+      "label": "Order-independent atomics",
+      "text": "The kernel is correct for every order in which concurrent atomics (atom, red) on the same element take effect. Each atomic is one indivisible access; two atomics on the same element whose scopes include both threads do not race.",
+      "triggered": false
+    }
+  ],
+  "checks": {
+    "equivalence": "not_requested",
+    "synchronization": "passed"
+  },
+  "diagnostics": [],
+  "evidence": {
+    "race_count": 0,
+    "race_samples_truncated": false,
+    "races": []
+  },
+  "frontend_assumptions": {
+    "assertion_failure_forms": [
+      "trap",
+      "__assertfail"
+    ],
+    "assertion_uses": 0,
+    "atomic_uses": 0,
+    "bounded_loop_uses": 0,
+    "clc_failure": true,
+    "clc_uses": 0,
+    "data_branch_decisions": [],
+    "election_policy": {
+      "fallback": "lowest_member",
+      "preferred_lane": 0,
+      "strategy": "preferred_member"
+    },
+    "election_uses": 0,
+    "fixed_election": true,
+    "isolated_launch": true,
+    "noalias_unbounded": false,
+    "opaque_compute_regions": [],
+    "pointer_contract": {
+      "aliasing": "distinct_objects_noalias",
+      "extent_bytes": "unbounded"
+    },
+    "representative_branch_uses": 0,
+    "trap_only_equality_assertions_hold": true
+  },
+  "internal": {
+    "address_model": {
+      "address_invariants": [],
+      "kind": "symbolic",
+      "layers": [
+        0,
+        2
+      ],
+      "solver": "z3",
+      "solver_timeout_ms": 100
+    },
+    "counts": {
+      "edges": 14436,
+      "events": 13417,
+      "instructions": 6306,
+      "memory_accesses": 4962,
+      "threads": 256
+    },
+    "frontend": {
+      "address_value_bridge": {
+        "diagnostics": [],
+        "first_unavailable_reason": "",
+        "queries": 0,
+        "resolved": 0,
+        "source": "value_lowering",
+        "unavailable": 0,
+        "value_view_complete": true
+      },
+      "cluster_completion_joins": 0,
+      "cta_count": 2,
+      "dependency_compression": {},
+      "diagnostic_sample_count": 0,
+      "executed_records": 74182,
+      "frontend_assumptions": {
+        "assertion_failure_forms": [
+          "trap",
+          "__assertfail"
+        ],
+        "assertion_uses": 0,
+        "atomic_uses": 0,
+        "bounded_loop_uses": 0,
+        "clc_failure": true,
+        "clc_uses": 0,
+        "data_branch_decisions": [],
+        "election_policy": {
+          "fallback": "lowest_member",
+          "preferred_lane": 0,
+          "strategy": "preferred_member"
+        },
+        "election_uses": 0,
+        "fixed_election": true,
+        "isolated_launch": true,
+        "noalias_unbounded": false,
+        "opaque_compute_regions": [],
+        "pointer_contract": {
+          "aliasing": "distinct_objects_noalias",
+          "extent_bytes": "unbounded"
+        },
+        "representative_branch_uses": 0,
+        "trap_only_equality_assertions_hold": true
+      },
+      "implementation": "cpp",
+      "input_objects": [
+        {
+          "bytes": 8,
+          "object": "w",
+          "offset": 0,
+          "parameter": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_0",
+          "source": "declaration"
+        },
+        {
+          "bytes": 8,
+          "object": "norms",
+          "offset": 0,
+          "parameter": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_1",
+          "source": "declaration"
+        },
+        {
+          "bytes": 8,
+          "object": "v",
+          "offset": 0,
+          "parameter": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_2",
+          "source": "declaration"
+        },
+        {
+          "bytes": 8,
+          "object": "g",
+          "offset": 0,
+          "parameter": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i_param_3",
+          "source": "declaration"
+        }
+      ],
+      "lowered_instruction_count": 6306,
+      "reached_opcodes": {
+        "add.f32": 768,
+        "add.s32": 6016,
+        "add.s64": 6658,
+        "and.b32": 1152,
+        "bar.sync": 2048,
+        "bra": 3196,
+        "cvt.f32.bf16": 4608,
+        "cvt.rn.bf16.f32": 2048,
+        "cvt.u64.u32": 1024,
+        "cvta.to.global.u64": 1538,
+        "div.u32": 1024,
+        "fma.rn.f32": 2048,
+        "ld.global.nc.u16": 4608,
+        "ld.param.u32": 512,
+        "ld.param.u64": 2048,
+        "ld.shared.f32": 1408,
+        "mad.lo.s32": 512,
+        "max.u32": 1024,
+        "mov.b32": 640,
+        "mov.f32": 1024,
+        "mov.u32": 3584,
+        "mul.f32": 4096,
+        "mul.lo.s32": 1024,
+        "mul.wide.s32": 1024,
+        "mul.wide.u32": 514,
+        "rcp.rn.f32": 512,
+        "ret": 512,
+        "selp.u32": 1024,
+        "setp.eq.s32": 1024,
+        "setp.ge.s32": 1024,
+        "setp.ge.u32": 1024,
+        "setp.gt.u32": 512,
+        "setp.lt.s32": 1024,
+        "setp.lt.u32": 4160,
+        "setp.ne.s32": 576,
+        "shfl.sync.down.b32": 320,
+        "shl.b32": 2816,
+        "shr.u32": 1024,
+        "sqrt.rn.f32": 512,
+        "st.global.f32": 2,
+        "st.global.u16": 2048,
+        "st.shared.f32": 898,
+        "sub.s32": 1024
+      },
+      "shared_constant_propagation": {
+        "read_from_dependencies": 0,
+        "representation": "sparse_known_bytes",
+        "validation": "pending_backend"
+      },
+      "source_binding_storage": {
+        "binding_templates": 5,
+        "generated_address_rows": 0,
+        "generated_body_rows": 0,
+        "generated_memory_instances": 0,
+        "logical_instructions": 6306,
+        "stored_bindings": 186
+      },
+      "source_edge_storage": {
+        "binding_templates": 256,
+        "logical_edges": 6050,
+        "stored_bindings": 256
+      },
+      "thread_count": 512,
+      "unsupported_occurrence_counts": {},
+      "user_branch_decisions": []
+    },
+    "hb_queries": {
+      "memory": {
+        "algorithm": "not-built",
+        "batches": 0,
+        "cache_hits": 0,
+        "dfs_queries": 0,
+        "edge_visits": 0,
+        "filtered_queries": 0,
+        "queries": 0,
+        "shared_peak_index_bytes": 0
+      }
+    },
+    "implementation": "cpp",
+    "memory_analysis": {
+      "address_candidates": 2340,
+      "address_model": {
+        "cache_hits": 0,
+        "congruence_disjoint": 0,
+        "ground_disjoint": 0,
+        "ground_overlap": 0,
+        "injective_disjoint": 0,
+        "layer0_disjoint": 0,
+        "refined_pairs": 0,
+        "solver_queries": 0,
+        "solver_sat": 0,
+        "solver_unknown": 0,
+        "solver_unsat": 0
+      },
+      "candidate_generation_fallback": false,
+      "exhaustive": false,
+      "family_analysis": {
+        "access_families": 146,
+        "affine_member_rows": 0,
+        "candidate_relations": 92,
+        "hb_frontier_pieces": 0,
+        "hb_member_enumerations": 0,
+        "logical_accesses": 4962
+      },
+      "hb_algorithm": "member-relations",
+      "hb_batches": 2,
+      "hb_cache_hits": 0,
+      "hb_dfs_queries": 0,
+      "hb_edge_visits": 39,
+      "hb_filtered_queries": 0,
+      "hb_peak_index_bytes": 0,
+      "hb_queries": 2340,
+      "hb_query_seconds": 8.5083e-05,
+      "overlap_queries": 0,
+      "strategy": "conflict-family",
+      "unordered_candidates_examined": 0
+    },
+    "memory_analysis_complete": true,
+    "mma_operand_ordering": {},
+    "mode": "verify",
+    "peak_footprint_mib": 37.92228698730469,
+    "required_order_domains": 0,
+    "required_orders": 0,
+    "search_complete": true,
+    "semantic_assumptions": {
+      "bounded_computation_loops": false,
+      "clc_always_fails": true,
+      "duplicate_tma_store_benign": true,
+      "order_independent_atomics": false,
+      "representative_branches": false,
+      "representative_election": true
+    },
+    "source_violations": [],
+    "synchronization_input": {
+      "compute_access_binding": "after_happens_before",
+      "kind": "ordering_endpoints",
+      "memory_address_payloads": false
+    },
+    "template_execution": {
+      "completed_ctas": 2,
+      "coordinate_bindings": 0,
+      "logical_thread_steps": 79306,
+      "path_entries": 1556,
+      "record_bindings": 844,
+      "record_nodes": 902,
+      "splits": 8,
+      "template_steps": 958,
+      "thread_memberships": 512,
+      "value_nodes": 319
+    },
+    "thread_record_compression": {
+      "completed_ctas": 2,
+      "enabled": true,
+      "estimated_pool_bytes_sum": 0,
+      "intern_calls": 0,
+      "logical_records": 74182,
+      "record_handle_bytes": 32,
+      "templates": 0,
+      "unique_bindings": 0
+    },
+    "unresolved_count": 0
+  },
+  "peak_rss_mib": 61.703125,
+  "pipeline_elapsed_seconds": 0.046199083,
+  "result": "race_free",
+  "rss_limit_mib": 1024,
+  "schema": "spverify.native-result/v1",
+  "scope": {
+    "operation": "kernel_verification"
+  },
+  "verification_limitations": [],
+  "warning_count": 0,
+  "warning_samples_truncated": false,
+  "warnings": [],
+  "wellsync_timeout_seconds": 9.99993,
+  "whole_pipeline_timeout_seconds": 9.99993,
+  "elapsed_seconds": 0.05760854104300961
+}

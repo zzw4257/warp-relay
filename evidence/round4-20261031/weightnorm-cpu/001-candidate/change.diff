@@ -1,0 +1,10 @@
+--- previous.ptx
++++ candidate.ptx
+@@ -124,7 +124,6 @@
+ 	add.s32 	%r19, %r60, %r59;
+ 	@%p7 bra 	$L__BB2_9;
+ 	st.shared.f32 	[%r19], %f100;
+-	bar.sync 	0;
+ $L__BB2_9:
+ 	setp.lt.u32 	%p8, %r18, 128;
+ 	@%p8 bra 	$L__BB2_52;

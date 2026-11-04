@@ -1,0 +1,6 @@
+test_http_rejects_cross_origin_unknown_actions_and_bad_payloads (test_workbench.RealWorkbenchTests.test_http_rejects_cross_origin_unknown_actions_and_bad_payloads) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.662s
+
+OK

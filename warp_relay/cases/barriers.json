@@ -1,0 +1,1091 @@
+{
+  "id": "barriers",
+  "title": "Barrier control",
+  "family": "Microfixture",
+  "kind": "Edit policy",
+  "description": "Two barriers, one retained, then an unsafe deletion.",
+  "provenance": "Local record",
+  "run_id": "recorded-barriers",
+  "initial": 2,
+  "versions": [
+    {
+      "label": "Original",
+      "source": "// Original Warp Relay microkernel. One CTA, two warps, 64 uint32 elements.\n// Contract: output[t] = input[(t + 32) % 64].\n// Two barriers are intentionally included for the redundancy experiment.\n.version 8.0\n.target sm_80\n.address_size 64\n.visible .entry neighbor_exchange(\n    .param .u64 input_ptr,\n    .param .u64 output_ptr\n)\n{\n    .reg .u32 %r<8>;\n    .reg .u64 %rd<5>;\n    .shared .align 4 .b8 exchange[256];\n    ld.param.u64 %rd0, [input_ptr];\n    ld.param.u64 %rd1, [output_ptr];\n    mov.u32 %r0, %tid.x;\n    mul.wide.u32 %rd2, %r0, 4;\n    add.u64 %rd3, %rd0, %rd2;\n    ld.global.u32 %r1, [%rd3];\n    mul.lo.u32 %r2, %r0, 4;\n    mov.u32 %r3, exchange;\n    add.u32 %r4, %r3, %r2;\n    st.shared.u32 [%r4], %r1;\n    xor.b32 %r5, %r0, 32;\n    mul.lo.u32 %r6, %r5, 4;\n    add.u32 %r7, %r3, %r6;\n    bar.sync 0;\n    bar.sync 0;\n    ld.shared.u32 %r1, [%r7];\n    add.u64 %rd4, %rd1, %rd2;\n    st.global.u32 [%rd4], %r1;\n    ret;\n}\n",
+      "raw": {
+        "assumption_dependent": false,
+        "assumption_reporting": "triggered=null means applicability was not measured or analysis was not reached",
+        "assumptions": [
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "duplicate_tma_store_benign",
+            "label": "Duplicate TMA stores",
+            "text": "Matching same-warp duplicate TMA stores are races in the model, but are reported as warnings under the assumption that their stored values agree.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "representative_election",
+            "label": "Representative election",
+            "text": "Election selects lane zero when participating, otherwise the lowest participating lane.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "clc_always_fails",
+            "label": "Failed launch cancellation",
+            "text": "Every cluster launch cancellation request fails.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "representative_branches",
+            "label": "Representative branches",
+            "text": "Choose fallthrough for an unresolved structured if/else; unknown ordinary instruction guards execute. Terminal control uses CFG classification. Known control and explicit choices take precedence.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "bounded_computation_loops",
+            "label": "Bounded computation loops",
+            "text": "Execute a configured number of body iterations for unresolved recognized computation loops, counted separately per invocation. Polling and unclassified loops are never forced to complete.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "order_independent_atomics",
+            "label": "Order-independent atomics",
+            "text": "The kernel is correct for every order in which concurrent atomics (atom, red) on the same element take effect. Each atomic is one indivisible access; two atomics on the same element whose scopes include both threads do not race.",
+            "triggered": false
+          }
+        ],
+        "checks": {
+          "equivalence": "not_requested",
+          "synchronization": "passed"
+        },
+        "diagnostics": [],
+        "evidence": {
+          "race_count": 0,
+          "race_samples_truncated": false,
+          "races": []
+        },
+        "frontend_assumptions": {
+          "assertion_failure_forms": [
+            "trap",
+            "__assertfail"
+          ],
+          "assertion_uses": 0,
+          "atomic_uses": 0,
+          "bounded_loop_uses": 0,
+          "clc_failure": false,
+          "clc_uses": 0,
+          "data_branch_decisions": [],
+          "election_policy": {
+            "fallback": "lowest_member",
+            "preferred_lane": 0,
+            "strategy": "preferred_member"
+          },
+          "election_uses": 0,
+          "fixed_election": false,
+          "isolated_launch": true,
+          "noalias_unbounded": false,
+          "opaque_compute_regions": [],
+          "pointer_contract": {
+            "aliasing": "distinct_objects_noalias",
+            "extent_bytes": "unbounded"
+          },
+          "representative_branch_uses": 0,
+          "trap_only_equality_assertions_hold": true
+        },
+        "internal": {
+          "address_model": {
+            "address_invariants": [],
+            "kind": "symbolic",
+            "layers": [
+              0,
+              2
+            ],
+            "solver": "z3",
+            "solver_timeout_ms": 100
+          },
+          "counts": {
+            "edges": 704,
+            "events": 768,
+            "instructions": 384,
+            "memory_accesses": 256,
+            "threads": 64
+          },
+          "frontend": {
+            "address_value_bridge": {
+              "diagnostics": [],
+              "first_unavailable_reason": "",
+              "queries": 0,
+              "resolved": 0,
+              "source": "value_lowering",
+              "unavailable": 0,
+              "value_view_complete": true
+            },
+            "cluster_completion_joins": 0,
+            "cta_count": 1,
+            "dependency_compression": {},
+            "diagnostic_sample_count": 0,
+            "executed_records": 1216,
+            "frontend_assumptions": {
+              "assertion_failure_forms": [
+                "trap",
+                "__assertfail"
+              ],
+              "assertion_uses": 0,
+              "atomic_uses": 0,
+              "bounded_loop_uses": 0,
+              "clc_failure": false,
+              "clc_uses": 0,
+              "data_branch_decisions": [],
+              "election_policy": {
+                "fallback": "lowest_member",
+                "preferred_lane": 0,
+                "strategy": "preferred_member"
+              },
+              "election_uses": 0,
+              "fixed_election": false,
+              "isolated_launch": true,
+              "noalias_unbounded": false,
+              "opaque_compute_regions": [],
+              "pointer_contract": {
+                "aliasing": "distinct_objects_noalias",
+                "extent_bytes": "unbounded"
+              },
+              "representative_branch_uses": 0,
+              "trap_only_equality_assertions_hold": true
+            },
+            "implementation": "cpp",
+            "input_objects": [
+              {
+                "bytes": 8,
+                "object": "input",
+                "offset": 0,
+                "parameter": "input_ptr",
+                "source": "declaration"
+              },
+              {
+                "bytes": 8,
+                "object": "output",
+                "offset": 0,
+                "parameter": "output_ptr",
+                "source": "declaration"
+              }
+            ],
+            "lowered_instruction_count": 384,
+            "reached_opcodes": {
+              "add.u32": 128,
+              "add.u64": 128,
+              "bar.sync": 128,
+              "ld.global.u32": 64,
+              "ld.param.u64": 128,
+              "ld.shared.u32": 64,
+              "mov.u32": 128,
+              "mul.lo.u32": 128,
+              "mul.wide.u32": 64,
+              "ret": 64,
+              "st.global.u32": 64,
+              "st.shared.u32": 64,
+              "xor.b32": 64
+            },
+            "shared_constant_propagation": {
+              "read_from_dependencies": 0,
+              "representation": "sparse_known_bytes",
+              "validation": "pending_backend"
+            },
+            "source_binding_storage": {
+              "binding_templates": 1,
+              "generated_address_rows": 0,
+              "generated_body_rows": 0,
+              "generated_memory_instances": 0,
+              "logical_instructions": 384,
+              "stored_bindings": 10
+            },
+            "source_edge_storage": {
+              "binding_templates": 64,
+              "logical_edges": 320,
+              "stored_bindings": 64
+            },
+            "thread_count": 64,
+            "unsupported_occurrence_counts": {},
+            "user_branch_decisions": []
+          },
+          "hb_queries": {
+            "memory": {
+              "algorithm": "not-built",
+              "batches": 0,
+              "cache_hits": 0,
+              "dfs_queries": 0,
+              "edge_visits": 0,
+              "filtered_queries": 0,
+              "queries": 0,
+              "shared_peak_index_bytes": 0
+            }
+          },
+          "implementation": "cpp",
+          "memory_analysis": {
+            "address_candidates": 128,
+            "address_model": {
+              "cache_hits": 0,
+              "congruence_disjoint": 0,
+              "ground_disjoint": 0,
+              "ground_overlap": 0,
+              "injective_disjoint": 0,
+              "layer0_disjoint": 0,
+              "refined_pairs": 0,
+              "solver_queries": 0,
+              "solver_sat": 0,
+              "solver_unknown": 0,
+              "solver_unsat": 0
+            },
+            "candidate_generation_fallback": false,
+            "exhaustive": false,
+            "family_analysis": {
+              "access_families": 8,
+              "affine_member_rows": 0,
+              "candidate_relations": 4,
+              "hb_frontier_pieces": 0,
+              "hb_member_enumerations": 0,
+              "logical_accesses": 256
+            },
+            "hb_algorithm": "member-relations",
+            "hb_batches": 1,
+            "hb_cache_hits": 0,
+            "hb_dfs_queries": 0,
+            "hb_edge_visits": 5,
+            "hb_filtered_queries": 0,
+            "hb_peak_index_bytes": 0,
+            "hb_queries": 128,
+            "hb_query_seconds": 1.6875e-05,
+            "overlap_queries": 0,
+            "strategy": "conflict-family",
+            "unordered_candidates_examined": 0
+          },
+          "memory_analysis_complete": true,
+          "mma_operand_ordering": {},
+          "mode": "verify",
+          "peak_footprint_mib": 20.1097412109375,
+          "required_order_domains": 0,
+          "required_orders": 0,
+          "search_complete": true,
+          "semantic_assumptions": {
+            "bounded_computation_loops": false,
+            "clc_always_fails": false,
+            "duplicate_tma_store_benign": false,
+            "order_independent_atomics": false,
+            "representative_branches": false,
+            "representative_election": false
+          },
+          "source_violations": [],
+          "synchronization_input": {
+            "compute_access_binding": "after_happens_before",
+            "kind": "ordering_endpoints",
+            "memory_address_payloads": false
+          },
+          "template_execution": {
+            "completed_ctas": 1,
+            "coordinate_bindings": 0,
+            "logical_thread_steps": 1216,
+            "path_entries": 19,
+            "record_bindings": 16,
+            "record_nodes": 19,
+            "splits": 0,
+            "template_steps": 19,
+            "thread_memberships": 64,
+            "value_nodes": 20
+          },
+          "thread_record_compression": {
+            "completed_ctas": 1,
+            "enabled": true,
+            "estimated_pool_bytes_sum": 0,
+            "intern_calls": 0,
+            "logical_records": 1216,
+            "record_handle_bytes": 32,
+            "templates": 0,
+            "unique_bindings": 0
+          },
+          "unresolved_count": 0
+        },
+        "peak_rss_mib": 27.078125,
+        "pipeline_elapsed_seconds": 0.004368792,
+        "result": "race_free",
+        "rss_limit_mib": 1024,
+        "schema": "spverify.native-result/v1",
+        "scope": {
+          "operation": "kernel_verification"
+        },
+        "verification_limitations": [],
+        "warning_count": 0,
+        "warning_samples_truncated": false,
+        "warnings": [],
+        "wellsync_timeout_seconds": 9.99994,
+        "whole_pipeline_timeout_seconds": 9.99994,
+        "elapsed_seconds": 0.01373150001745671
+      },
+      "accepted": true,
+      "path": "000-baseline"
+    },
+    {
+      "label": "Candidate 1",
+      "source": "// Original Warp Relay microkernel. One CTA, two warps, 64 uint32 elements.\n// Contract: output[t] = input[(t + 32) % 64].\n// Two barriers are intentionally included for the redundancy experiment.\n.version 8.0\n.target sm_80\n.address_size 64\n.visible .entry neighbor_exchange(\n    .param .u64 input_ptr,\n    .param .u64 output_ptr\n)\n{\n    .reg .u32 %r<8>;\n    .reg .u64 %rd<5>;\n    .shared .align 4 .b8 exchange[256];\n    ld.param.u64 %rd0, [input_ptr];\n    ld.param.u64 %rd1, [output_ptr];\n    mov.u32 %r0, %tid.x;\n    mul.wide.u32 %rd2, %r0, 4;\n    add.u64 %rd3, %rd0, %rd2;\n    ld.global.u32 %r1, [%rd3];\n    mul.lo.u32 %r2, %r0, 4;\n    mov.u32 %r3, exchange;\n    add.u32 %r4, %r3, %r2;\n    st.shared.u32 [%r4], %r1;\n    xor.b32 %r5, %r0, 32;\n    mul.lo.u32 %r6, %r5, 4;\n    add.u32 %r7, %r3, %r6;\n    bar.sync 0;\n    ld.shared.u32 %r1, [%r7];\n    add.u64 %rd4, %rd1, %rd2;\n    st.global.u32 [%rd4], %r1;\n    ret;\n}\n",
+      "raw": {
+        "assumption_dependent": false,
+        "assumption_reporting": "triggered=null means applicability was not measured or analysis was not reached",
+        "assumptions": [
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "duplicate_tma_store_benign",
+            "label": "Duplicate TMA stores",
+            "text": "Matching same-warp duplicate TMA stores are races in the model, but are reported as warnings under the assumption that their stored values agree.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "representative_election",
+            "label": "Representative election",
+            "text": "Election selects lane zero when participating, otherwise the lowest participating lane.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "clc_always_fails",
+            "label": "Failed launch cancellation",
+            "text": "Every cluster launch cancellation request fails.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "representative_branches",
+            "label": "Representative branches",
+            "text": "Choose fallthrough for an unresolved structured if/else; unknown ordinary instruction guards execute. Terminal control uses CFG classification. Known control and explicit choices take precedence.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "bounded_computation_loops",
+            "label": "Bounded computation loops",
+            "text": "Execute a configured number of body iterations for unresolved recognized computation loops, counted separately per invocation. Polling and unclassified loops are never forced to complete.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "order_independent_atomics",
+            "label": "Order-independent atomics",
+            "text": "The kernel is correct for every order in which concurrent atomics (atom, red) on the same element take effect. Each atomic is one indivisible access; two atomics on the same element whose scopes include both threads do not race.",
+            "triggered": false
+          }
+        ],
+        "checks": {
+          "equivalence": "not_requested",
+          "synchronization": "passed"
+        },
+        "diagnostics": [],
+        "evidence": {
+          "race_count": 0,
+          "race_samples_truncated": false,
+          "races": []
+        },
+        "frontend_assumptions": {
+          "assertion_failure_forms": [
+            "trap",
+            "__assertfail"
+          ],
+          "assertion_uses": 0,
+          "atomic_uses": 0,
+          "bounded_loop_uses": 0,
+          "clc_failure": false,
+          "clc_uses": 0,
+          "data_branch_decisions": [],
+          "election_policy": {
+            "fallback": "lowest_member",
+            "preferred_lane": 0,
+            "strategy": "preferred_member"
+          },
+          "election_uses": 0,
+          "fixed_election": false,
+          "isolated_launch": true,
+          "noalias_unbounded": false,
+          "opaque_compute_regions": [],
+          "pointer_contract": {
+            "aliasing": "distinct_objects_noalias",
+            "extent_bytes": "unbounded"
+          },
+          "representative_branch_uses": 0,
+          "trap_only_equality_assertions_hold": true
+        },
+        "internal": {
+          "address_model": {
+            "address_invariants": [],
+            "kind": "symbolic",
+            "layers": [
+              0,
+              2
+            ],
+            "solver": "z3",
+            "solver_timeout_ms": 100
+          },
+          "counts": {
+            "edges": 576,
+            "events": 640,
+            "instructions": 320,
+            "memory_accesses": 256,
+            "threads": 64
+          },
+          "frontend": {
+            "address_value_bridge": {
+              "diagnostics": [],
+              "first_unavailable_reason": "",
+              "queries": 0,
+              "resolved": 0,
+              "source": "value_lowering",
+              "unavailable": 0,
+              "value_view_complete": true
+            },
+            "cluster_completion_joins": 0,
+            "cta_count": 1,
+            "dependency_compression": {},
+            "diagnostic_sample_count": 0,
+            "executed_records": 1152,
+            "frontend_assumptions": {
+              "assertion_failure_forms": [
+                "trap",
+                "__assertfail"
+              ],
+              "assertion_uses": 0,
+              "atomic_uses": 0,
+              "bounded_loop_uses": 0,
+              "clc_failure": false,
+              "clc_uses": 0,
+              "data_branch_decisions": [],
+              "election_policy": {
+                "fallback": "lowest_member",
+                "preferred_lane": 0,
+                "strategy": "preferred_member"
+              },
+              "election_uses": 0,
+              "fixed_election": false,
+              "isolated_launch": true,
+              "noalias_unbounded": false,
+              "opaque_compute_regions": [],
+              "pointer_contract": {
+                "aliasing": "distinct_objects_noalias",
+                "extent_bytes": "unbounded"
+              },
+              "representative_branch_uses": 0,
+              "trap_only_equality_assertions_hold": true
+            },
+            "implementation": "cpp",
+            "input_objects": [
+              {
+                "bytes": 8,
+                "object": "input",
+                "offset": 0,
+                "parameter": "input_ptr",
+                "source": "declaration"
+              },
+              {
+                "bytes": 8,
+                "object": "output",
+                "offset": 0,
+                "parameter": "output_ptr",
+                "source": "declaration"
+              }
+            ],
+            "lowered_instruction_count": 320,
+            "reached_opcodes": {
+              "add.u32": 128,
+              "add.u64": 128,
+              "bar.sync": 64,
+              "ld.global.u32": 64,
+              "ld.param.u64": 128,
+              "ld.shared.u32": 64,
+              "mov.u32": 128,
+              "mul.lo.u32": 128,
+              "mul.wide.u32": 64,
+              "ret": 64,
+              "st.global.u32": 64,
+              "st.shared.u32": 64,
+              "xor.b32": 64
+            },
+            "shared_constant_propagation": {
+              "read_from_dependencies": 0,
+              "representation": "sparse_known_bytes",
+              "validation": "pending_backend"
+            },
+            "source_binding_storage": {
+              "binding_templates": 1,
+              "generated_address_rows": 0,
+              "generated_body_rows": 0,
+              "generated_memory_instances": 0,
+              "logical_instructions": 320,
+              "stored_bindings": 9
+            },
+            "source_edge_storage": {
+              "binding_templates": 64,
+              "logical_edges": 256,
+              "stored_bindings": 64
+            },
+            "thread_count": 64,
+            "unsupported_occurrence_counts": {},
+            "user_branch_decisions": []
+          },
+          "hb_queries": {
+            "memory": {
+              "algorithm": "not-built",
+              "batches": 0,
+              "cache_hits": 0,
+              "dfs_queries": 0,
+              "edge_visits": 0,
+              "filtered_queries": 0,
+              "queries": 0,
+              "shared_peak_index_bytes": 0
+            }
+          },
+          "implementation": "cpp",
+          "memory_analysis": {
+            "address_candidates": 128,
+            "address_model": {
+              "cache_hits": 0,
+              "congruence_disjoint": 0,
+              "ground_disjoint": 0,
+              "ground_overlap": 0,
+              "injective_disjoint": 0,
+              "layer0_disjoint": 0,
+              "refined_pairs": 0,
+              "solver_queries": 0,
+              "solver_sat": 0,
+              "solver_unknown": 0,
+              "solver_unsat": 0
+            },
+            "candidate_generation_fallback": false,
+            "exhaustive": false,
+            "family_analysis": {
+              "access_families": 8,
+              "affine_member_rows": 0,
+              "candidate_relations": 4,
+              "hb_frontier_pieces": 0,
+              "hb_member_enumerations": 0,
+              "logical_accesses": 256
+            },
+            "hb_algorithm": "member-relations",
+            "hb_batches": 1,
+            "hb_cache_hits": 0,
+            "hb_dfs_queries": 0,
+            "hb_edge_visits": 2,
+            "hb_filtered_queries": 0,
+            "hb_peak_index_bytes": 0,
+            "hb_queries": 128,
+            "hb_query_seconds": 1.6125e-05,
+            "overlap_queries": 0,
+            "strategy": "conflict-family",
+            "unordered_candidates_examined": 0
+          },
+          "memory_analysis_complete": true,
+          "mma_operand_ordering": {},
+          "mode": "verify",
+          "peak_footprint_mib": 20.0316162109375,
+          "required_order_domains": 0,
+          "required_orders": 0,
+          "search_complete": true,
+          "semantic_assumptions": {
+            "bounded_computation_loops": false,
+            "clc_always_fails": false,
+            "duplicate_tma_store_benign": false,
+            "order_independent_atomics": false,
+            "representative_branches": false,
+            "representative_election": false
+          },
+          "source_violations": [],
+          "synchronization_input": {
+            "compute_access_binding": "after_happens_before",
+            "kind": "ordering_endpoints",
+            "memory_address_payloads": false
+          },
+          "template_execution": {
+            "completed_ctas": 1,
+            "coordinate_bindings": 0,
+            "logical_thread_steps": 1152,
+            "path_entries": 18,
+            "record_bindings": 16,
+            "record_nodes": 18,
+            "splits": 0,
+            "template_steps": 18,
+            "thread_memberships": 64,
+            "value_nodes": 20
+          },
+          "thread_record_compression": {
+            "completed_ctas": 1,
+            "enabled": true,
+            "estimated_pool_bytes_sum": 0,
+            "intern_calls": 0,
+            "logical_records": 1152,
+            "record_handle_bytes": 32,
+            "templates": 0,
+            "unique_bindings": 0
+          },
+          "unresolved_count": 0
+        },
+        "peak_rss_mib": 26.984375,
+        "pipeline_elapsed_seconds": 0.004174667,
+        "result": "race_free",
+        "rss_limit_mib": 1024,
+        "schema": "spverify.native-result/v1",
+        "scope": {
+          "operation": "kernel_verification"
+        },
+        "verification_limitations": [],
+        "warning_count": 0,
+        "warning_samples_truncated": false,
+        "warnings": [],
+        "wellsync_timeout_seconds": 9.99993,
+        "whole_pipeline_timeout_seconds": 9.99993,
+        "elapsed_seconds": 0.013898083998356014
+      },
+      "accepted": true,
+      "path": "001-candidate"
+    },
+    {
+      "label": "Candidate 2",
+      "source": "// Original Warp Relay microkernel. One CTA, two warps, 64 uint32 elements.\n// Contract: output[t] = input[(t + 32) % 64].\n// Two barriers are intentionally included for the redundancy experiment.\n.version 8.0\n.target sm_80\n.address_size 64\n.visible .entry neighbor_exchange(\n    .param .u64 input_ptr,\n    .param .u64 output_ptr\n)\n{\n    .reg .u32 %r<8>;\n    .reg .u64 %rd<5>;\n    .shared .align 4 .b8 exchange[256];\n    ld.param.u64 %rd0, [input_ptr];\n    ld.param.u64 %rd1, [output_ptr];\n    mov.u32 %r0, %tid.x;\n    mul.wide.u32 %rd2, %r0, 4;\n    add.u64 %rd3, %rd0, %rd2;\n    ld.global.u32 %r1, [%rd3];\n    mul.lo.u32 %r2, %r0, 4;\n    mov.u32 %r3, exchange;\n    add.u32 %r4, %r3, %r2;\n    st.shared.u32 [%r4], %r1;\n    xor.b32 %r5, %r0, 32;\n    mul.lo.u32 %r6, %r5, 4;\n    add.u32 %r7, %r3, %r6;\n    ld.shared.u32 %r1, [%r7];\n    add.u64 %rd4, %rd1, %rd2;\n    st.global.u32 [%rd4], %r1;\n    ret;\n}\n",
+      "raw": {
+        "assumption_dependent": false,
+        "assumption_reporting": "triggered=null means applicability was not measured or analysis was not reached",
+        "assumptions": [
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "duplicate_tma_store_benign",
+            "label": "Duplicate TMA stores",
+            "text": "Matching same-warp duplicate TMA stores are races in the model, but are reported as warnings under the assumption that their stored values agree.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "representative_election",
+            "label": "Representative election",
+            "text": "Election selects lane zero when participating, otherwise the lowest participating lane.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "clc_always_fails",
+            "label": "Failed launch cancellation",
+            "text": "Every cluster launch cancellation request fails.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "representative_branches",
+            "label": "Representative branches",
+            "text": "Choose fallthrough for an unresolved structured if/else; unknown ordinary instruction guards execute. Terminal control uses CFG classification. Known control and explicit choices take precedence.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "bounded_computation_loops",
+            "label": "Bounded computation loops",
+            "text": "Execute a configured number of body iterations for unresolved recognized computation loops, counted separately per invocation. Polling and unclassified loops are never forced to complete.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "order_independent_atomics",
+            "label": "Order-independent atomics",
+            "text": "The kernel is correct for every order in which concurrent atomics (atom, red) on the same element take effect. Each atomic is one indivisible access; two atomics on the same element whose scopes include both threads do not race.",
+            "triggered": false
+          }
+        ],
+        "checks": {
+          "equivalence": "not_requested",
+          "synchronization": "failed"
+        },
+        "diagnostics": [
+          {
+            "code": "conflicting_accesses_unordered",
+            "details": {
+              "count": 1,
+              "internal_stage": "memory_check",
+              "witnesses_path": "races"
+            },
+            "message": "Conflicting accesses have no proven required ordering",
+            "stage": "synchronization"
+          }
+        ],
+        "evidence": {
+          "race_count": 1,
+          "race_samples_truncated": false,
+          "races": [
+            {
+              "first": {
+                "access_index": 0,
+                "actor": 0,
+                "bytes": 4,
+                "effect_index": 0,
+                "endpoint": {
+                  "address": 1,
+                  "kind": "memory"
+                },
+                "event": 3,
+                "instruction": 1,
+                "location": {
+                  "column": 5,
+                  "file": "kernel.ptx",
+                  "line": 24
+                },
+                "mode": "write"
+              },
+              "overlap": "constant byte ranges intersect",
+              "region": {
+                "address_space": "shared",
+                "allocation": "cta:(0, 0, 0):shared:physical.shared.cta.0",
+                "bytes": 4,
+                "offset": 0
+              },
+              "second": {
+                "access_index": 0,
+                "actor": 32,
+                "bytes": 4,
+                "effect_index": 0,
+                "endpoint": {
+                  "address": 1,
+                  "kind": "memory"
+                },
+                "event": 261,
+                "instruction": 130,
+                "location": {
+                  "column": 5,
+                  "file": "kernel.ptx",
+                  "line": 28
+                },
+                "mode": "read"
+              }
+            }
+          ]
+        },
+        "frontend_assumptions": {
+          "assertion_failure_forms": [
+            "trap",
+            "__assertfail"
+          ],
+          "assertion_uses": 0,
+          "atomic_uses": 0,
+          "bounded_loop_uses": 0,
+          "clc_failure": false,
+          "clc_uses": 0,
+          "data_branch_decisions": [],
+          "election_policy": {
+            "fallback": "lowest_member",
+            "preferred_lane": 0,
+            "strategy": "preferred_member"
+          },
+          "election_uses": 0,
+          "fixed_election": false,
+          "isolated_launch": true,
+          "noalias_unbounded": false,
+          "opaque_compute_regions": [],
+          "pointer_contract": {
+            "aliasing": "distinct_objects_noalias",
+            "extent_bytes": "unbounded"
+          },
+          "representative_branch_uses": 0,
+          "trap_only_equality_assertions_hold": true
+        },
+        "internal": {
+          "address_model": {
+            "address_invariants": [],
+            "kind": "symbolic",
+            "layers": [
+              0,
+              2
+            ],
+            "solver": "z3",
+            "solver_timeout_ms": 100
+          },
+          "counts": {
+            "edges": 448,
+            "events": 512,
+            "instructions": 256,
+            "memory_accesses": 256,
+            "threads": 64
+          },
+          "frontend": {
+            "address_value_bridge": {
+              "diagnostics": [],
+              "first_unavailable_reason": "",
+              "queries": 0,
+              "resolved": 0,
+              "source": "value_lowering",
+              "unavailable": 0,
+              "value_view_complete": true
+            },
+            "cluster_completion_joins": 0,
+            "cta_count": 1,
+            "dependency_compression": {},
+            "diagnostic_sample_count": 0,
+            "executed_records": 1088,
+            "frontend_assumptions": {
+              "assertion_failure_forms": [
+                "trap",
+                "__assertfail"
+              ],
+              "assertion_uses": 0,
+              "atomic_uses": 0,
+              "bounded_loop_uses": 0,
+              "clc_failure": false,
+              "clc_uses": 0,
+              "data_branch_decisions": [],
+              "election_policy": {
+                "fallback": "lowest_member",
+                "preferred_lane": 0,
+                "strategy": "preferred_member"
+              },
+              "election_uses": 0,
+              "fixed_election": false,
+              "isolated_launch": true,
+              "noalias_unbounded": false,
+              "opaque_compute_regions": [],
+              "pointer_contract": {
+                "aliasing": "distinct_objects_noalias",
+                "extent_bytes": "unbounded"
+              },
+              "representative_branch_uses": 0,
+              "trap_only_equality_assertions_hold": true
+            },
+            "implementation": "cpp",
+            "input_objects": [
+              {
+                "bytes": 8,
+                "object": "input",
+                "offset": 0,
+                "parameter": "input_ptr",
+                "source": "declaration"
+              },
+              {
+                "bytes": 8,
+                "object": "output",
+                "offset": 0,
+                "parameter": "output_ptr",
+                "source": "declaration"
+              }
+            ],
+            "lowered_instruction_count": 256,
+            "reached_opcodes": {
+              "add.u32": 128,
+              "add.u64": 128,
+              "ld.global.u32": 64,
+              "ld.param.u64": 128,
+              "ld.shared.u32": 64,
+              "mov.u32": 128,
+              "mul.lo.u32": 128,
+              "mul.wide.u32": 64,
+              "ret": 64,
+              "st.global.u32": 64,
+              "st.shared.u32": 64,
+              "xor.b32": 64
+            },
+            "shared_constant_propagation": {
+              "read_from_dependencies": 0,
+              "representation": "sparse_known_bytes",
+              "validation": "pending_backend"
+            },
+            "source_binding_storage": {
+              "binding_templates": 1,
+              "generated_address_rows": 8,
+              "generated_body_rows": 4,
+              "generated_memory_instances": 256,
+              "logical_instructions": 256,
+              "stored_bindings": 0
+            },
+            "source_edge_storage": {
+              "binding_templates": 64,
+              "logical_edges": 192,
+              "stored_bindings": 64
+            },
+            "thread_count": 64,
+            "unsupported_occurrence_counts": {},
+            "user_branch_decisions": []
+          },
+          "hb_queries": {
+            "memory": {
+              "algorithm": "not-built",
+              "batches": 0,
+              "cache_hits": 0,
+              "dfs_queries": 0,
+              "edge_visits": 0,
+              "filtered_queries": 0,
+              "queries": 0,
+              "shared_peak_index_bytes": 0
+            }
+          },
+          "implementation": "cpp",
+          "memory_analysis": {
+            "address_candidates": 128,
+            "address_model": {
+              "cache_hits": 0,
+              "congruence_disjoint": 0,
+              "ground_disjoint": 0,
+              "ground_overlap": 0,
+              "injective_disjoint": 0,
+              "layer0_disjoint": 0,
+              "refined_pairs": 0,
+              "solver_queries": 0,
+              "solver_sat": 0,
+              "solver_unknown": 0,
+              "solver_unsat": 0
+            },
+            "candidate_generation_fallback": false,
+            "exhaustive": false,
+            "family_analysis": {
+              "access_families": 8,
+              "affine_member_rows": 0,
+              "candidate_relations": 4,
+              "hb_frontier_pieces": 0,
+              "hb_member_enumerations": 0,
+              "logical_accesses": 256
+            },
+            "first_race_seconds": 6.425e-05,
+            "hb_algorithm": "member-relations",
+            "hb_batches": 1,
+            "hb_cache_hits": 0,
+            "hb_dfs_queries": 0,
+            "hb_edge_visits": 0,
+            "hb_filtered_queries": 0,
+            "hb_peak_index_bytes": 0,
+            "hb_queries": 128,
+            "hb_query_seconds": 1.3042e-05,
+            "overlap_queries": 1,
+            "strategy": "conflict-family",
+            "unordered_candidates_examined": 1
+          },
+          "memory_analysis_complete": true,
+          "mma_operand_ordering": {},
+          "mode": "verify",
+          "peak_footprint_mib": 19.9066162109375,
+          "required_order_domains": 0,
+          "required_orders": 0,
+          "search_complete": false,
+          "semantic_assumptions": {
+            "bounded_computation_loops": false,
+            "clc_always_fails": false,
+            "duplicate_tma_store_benign": false,
+            "order_independent_atomics": false,
+            "representative_branches": false,
+            "representative_election": false
+          },
+          "source_violations": [],
+          "stage": "memory_check",
+          "synchronization_input": {
+            "compute_access_binding": "after_happens_before",
+            "kind": "ordering_endpoints",
+            "memory_address_payloads": false
+          },
+          "template_execution": {
+            "completed_ctas": 1,
+            "coordinate_bindings": 0,
+            "logical_thread_steps": 1088,
+            "path_entries": 17,
+            "record_bindings": 16,
+            "record_nodes": 17,
+            "splits": 0,
+            "template_steps": 17,
+            "thread_memberships": 64,
+            "value_nodes": 20
+          },
+          "thread_record_compression": {
+            "completed_ctas": 1,
+            "enabled": true,
+            "estimated_pool_bytes_sum": 0,
+            "intern_calls": 0,
+            "logical_records": 1088,
+            "record_handle_bytes": 32,
+            "templates": 0,
+            "unique_bindings": 0
+          },
+          "unresolved_count": 0
+        },
+        "peak_rss_mib": 26.75,
+        "pipeline_elapsed_seconds": 0.003521792,
+        "result": "potential_race",
+        "rss_limit_mib": 1024,
+        "schema": "spverify.native-result/v1",
+        "scope": {
+          "operation": "kernel_verification"
+        },
+        "verification_limitations": [],
+        "warning_count": 0,
+        "warning_samples_truncated": false,
+        "warnings": [],
+        "wellsync_timeout_seconds": 9.99994,
+        "whole_pipeline_timeout_seconds": 9.99994,
+        "elapsed_seconds": 0.012918209016788751
+      },
+      "accepted": false,
+      "path": "002-candidate"
+    }
+  ],
+  "contract": {
+    "schema": "spverify.kernel-input/v1",
+    "entry": "neighbor_exchange",
+    "launch": {
+      "grid_dim": [
+        1,
+        1,
+        1
+      ],
+      "block_dim": [
+        64,
+        1,
+        1
+      ]
+    },
+    "declarations": [
+      {
+        "parameter": 0,
+        "type": "pointer",
+        "space": "global",
+        "object": "input"
+      },
+      {
+        "parameter": 1,
+        "type": "pointer",
+        "space": "global",
+        "object": "output"
+      }
+    ],
+    "assumptions": {
+      "duplicate_tma_store_benign": false,
+      "representative_election": false,
+      "clc_always_fails": false,
+      "representative_branches": false,
+      "bounded_computation_loops": false,
+      "order_independent_atomics": false
+    }
+  },
+  "retained": "001-candidate",
+  "source_url": "https://github.com/gpu-verifier/sentryward/tree/421ff2c7d140341f64d2bc1f1edd045b65a7c403",
+  "scope_note": "Locally recorded synchronization-only checks. Finite GPU tests are a separate WeightNorm record; no timing claim.",
+  "manifest": {
+    "record": "evidence/round2-20261031/optimize",
+    "summary_sha256": "ea887f93094d09f7d1cdb992186013e71d36cca4d6a435e6a397655bf9633084",
+    "normalization": "Public build path prefixes removed; PTX line count unchanged."
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema": "warp-relay.gpu-run/v1",
+  "manifest_sha256": "475028d9f70dbf8c922182ee6efe4e084ec5d0d4ca8ed6fad9bca5df8c9c9a0e",
+  "runner_sha256": "b7686499b019a31f94df1b8e450417f1b084840bc14e44387deb57f9e1b7d934",
+  "harness_sha256": "0d9c8fca4b63552d6c422b29dda465149235c6dda8493d18edd2cd314acc911b",
+  "python": "3.12.3",
+  "physical_gpu": "4",
+  "numerical_tests": {
+    "baseline": {
+      "passed": true,
+      "receipt": "baseline-numerical.receipt.json",
+      "sync_gate": "race_free"
+    },
+    "selected": {
+      "passed": true,
+      "receipt": "selected-numerical.receipt.json",
+      "sync_gate": "race_free"
+    },
+    "counterexample": {
+      "passed": false,
+      "receipt": "counterexample-numerical.receipt.json",
+      "sync_gate": "potential_race"
+    }
+  },
+  "sanitizers": {
+    "baseline-memcheck": {
+      "exit_code": 0,
+      "timeout": false,
+      "log": "baseline-memcheck.log",
+      "passed": true
+    },
+    "selected-memcheck": {
+      "exit_code": 0,
+      "timeout": false,
+      "log": "selected-memcheck.log",
+      "passed": true
+    },
+    "counterexample-memcheck": {
+      "exit_code": 0,
+      "timeout": false,
+      "log": "counterexample-memcheck.log",
+      "passed": true
+    },
+    "baseline-racecheck": {
+      "exit_code": 0,
+      "timeout": false,
+      "log": "baseline-racecheck.log",
+      "passed": false
+    },
+    "selected-racecheck": {
+      "exit_code": 0,
+      "timeout": false,
+      "log": "selected-racecheck.log",
+      "passed": false
+    },
+    "counterexample-racecheck": {
+      "exit_code": 3,
+      "timeout": false,
+      "log": "counterexample-racecheck.log",
+      "passed": false
+    }
+  },
+  "benchmark": [],
+  "model_executed": false,
+  "formal_equivalence": "not_requested",
+  "performance_claim": "measurement_only; selected deletion is not executed under this fixed launch; no general speedup claim",
+  "limitations": [
+    "Finite numerical tests, not a universal equivalence proof",
+    "One B200 and one fixed public shape",
+    "Hot-cache CUDA graph replay, 100 nodes per sample, 31 alternating pairs per trial",
+    "Shared server; clocks not locked; no other process was stopped"
+  ],
+  "benchmark_status": "blocked_by_runtime_validation",
+  "status": "runtime_validation_failed"
+}

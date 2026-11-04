@@ -1,0 +1,347 @@
+{
+  "revision": "R48",
+  "date": "2026-11-04",
+  "method": "Fresh build of the pinned public verifier in an isolated extraction of the delivered R47 public-core ZIP. Source seeded by local clone of the already verified clean public commit, not by reusing a binary.",
+  "source_archive_sha256": "b14caf537150d2ca9f45537baf8d8f3b4cdfcbc04bd783e6de58a2b994f4ddbc",
+  "verifier_commit": "421ff2c7d140341f64d2bc1f1edd045b65a7c403",
+  "native_binary_sha256": "b2ec8160a4c3441591867f180ccbf2a6068e0484cfc3fb61ea4f1198b53929ad",
+  "build": {
+    "build_command": "sh scripts/bootstrap.sh",
+    "exit_code": 0,
+    "architecture": "arm64",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+    "cmake": "cmake version 3.31.5",
+    "ninja": "1.13.2",
+    "python": "3.15.0",
+    "z3_enabled": true,
+    "new_installs": 0
+  },
+  "native_dependencies": {
+    "OpenSSL": "4.0.3 (linked libcrypto.4)",
+    "Boost": "1.92.0 headers",
+    "Z3": "4.15.4"
+  },
+  "tests": {
+    "unique_tests": 73,
+    "passed": 73,
+    "skipped": 0,
+    "initial_run": "72 pass; one HTTP test cannot bind loopback in sandbox",
+    "targeted_retest": "The exact HTTP test passes using authorized host execution and an ephemeral loopback port; no network settings changed",
+    "previous_seven_errors_resolved": true,
+    "results": [
+      {
+        "test": "test_diagnosis.DiagnosisTests.test_all_real_cases_have_valid_baseline",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.DiagnosisTests.test_default_review_never_calls_network",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.DiagnosisTests.test_exact_claim_from_debug_region_rejected",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.DiagnosisTests.test_execution_claims_rejected",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.DiagnosisTests.test_invented_line_and_malformed_reference_rejected",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.DiagnosisTests.test_missing_authorization_and_key_stop_before_network",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.DiagnosisTests.test_path_and_version_are_bounded",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.DiagnosisTests.test_real_debug_mapping_is_not_exact_instruction",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.DiagnosisTests.test_true_access_coordinates",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.DiagnosisTests.test_truncated_response_rejected",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.DiagnosisTests.test_unknown_citation_rejected",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.DiagnosisTests.test_unsupported_not_promoted_to_race",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.InvestigationTests.test_context_is_real_bounded_and_deduplicated",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.InvestigationTests.test_no_fake_rounds_without_model",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.InvestigationTests.test_round_budget_checked_before_writing",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.ReviewTransportTests.test_baseline_combines_same_inspection_without_losing_evidence",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.ReviewTransportTests.test_context_budget_stops_before_files_or_request",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.ReviewTransportTests.test_import_revalidates_source_request_and_response",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.ReviewTransportTests.test_malformed_received_response_is_rejected",
+        "result": "ok"
+      },
+      {
+        "test": "test_diagnosis.ReviewTransportTests.test_timeout_is_uncertain_and_never_retried",
+        "result": "ok"
+      },
+      {
+        "test": "test_gpu_protocol.RuntimeEvidenceTests.test_bundle_contract_rejects_modified_input_before_staging",
+        "result": "ok"
+      },
+      {
+        "test": "test_gpu_protocol.RuntimeEvidenceTests.test_partial_or_failed_numerical_run_does_not_pass",
+        "result": "ok"
+      },
+      {
+        "test": "test_gpu_protocol.RuntimeEvidenceTests.test_sanitizer_formats_require_zero_findings_and_target_execution",
+        "result": "ok"
+      },
+      {
+        "test": "test_gpu_protocol.RuntimeEvidenceTests.test_timing_summary_requires_all_finite_pairs",
+        "result": "ok"
+      },
+      {
+        "test": "test_local_secret.LocalSecretTests.test_cancel_before_key_or_request",
+        "result": "ok"
+      },
+      {
+        "test": "test_local_secret.LocalSecretTests.test_pipes_refused_before_prompt",
+        "result": "ok"
+      },
+      {
+        "test": "test_local_secret.LocalSecretTests.test_process_local_secret_is_never_exported_or_echoed",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.BoundaryTests.test_invalid_budgets_rejected_before_process",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.BoundaryTests.test_malformed_model_choices_and_oversized_candidate",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.BoundaryTests.test_malformed_result_types_are_fail_closed",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.BoundaryTests.test_shell_or_python_payload_is_never_an_allowed_candidate",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.BoundaryTests.test_token_boundaries_and_string_literals_cannot_change",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.LoopQualityTests.test_inconclusive_baseline_never_reaches_candidate_provider",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.LoopQualityTests.test_invalid_proposal_is_recorded_without_verification",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.LoopQualityTests.test_public_kernel_uses_real_frontend_and_does_not_choose_branches",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.LoopQualityTests.test_public_weightnorm_preserves_contract_and_rejects_unsafe_deletions",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.LoopQualityTests.test_reference_python_requires_opt_in_and_is_not_executed",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.LoopQualityTests.test_selected_kernel_survives_provider_failure",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.ModelFailureTests.test_transport_error_keeps_unknown_outcome_and_never_retries",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.ProcessTests.test_arguments_are_not_shell_commands",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.ProcessTests.test_missing_worker_keeps_failure_receipt",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.ProcessTests.test_timeout_kills_child_process_group",
+        "result": "ok"
+      },
+      {
+        "test": "test_quality.ProcessTests.test_unsupported_payload_preserved_verbatim",
+        "result": "ok"
+      },
+      {
+        "test": "test_workbench.InputBoundaryTests.test_artifact_traversal_and_symlink_escape_are_rejected",
+        "result": "ok"
+      },
+      {
+        "test": "test_workbench.InputBoundaryTests.test_atomic_json_is_always_parseable_during_concurrent_reads",
+        "result": "ok"
+      },
+      {
+        "test": "test_workbench.InputBoundaryTests.test_cancellation_terminates_owned_descendant_group_and_keeps_output",
+        "result": "ok"
+      },
+      {
+        "test": "test_workbench.InputBoundaryTests.test_example_can_load_from_packaged_snapshot_without_vendor_checkout",
+        "result": "ok"
+      },
+      {
+        "test": "test_workbench.InputBoundaryTests.test_invalid_inputs_do_not_become_paths_or_execution_options",
+        "result": "ok"
+      },
+      {
+        "test": "test_workbench.RealWorkbenchTests.test_cancel_after_baseline_preserves_last_accepted_artifact",
+        "result": "ok"
+      },
+      {
+        "test": "test_workbench.RealWorkbenchTests.test_cancel_at_provider_return_is_not_lost_as_exhaustion",
+        "result": "ok"
+      },
+      {
+        "test": "test_workbench.RealWorkbenchTests.test_cancel_at_verifier_return_cannot_commit_candidate",
+        "result": "ok"
+      },
+      {
+        "test": "test_workbench.RealWorkbenchTests.test_cancel_real_native_analysis_and_continue_queue",
+        "result": "ok"
+      },
+      {
+        "test": "test_workbench.RealWorkbenchTests.test_http_rejects_cross_origin_unknown_actions_and_bad_payloads",
+        "result": "ok",
+        "initial_result": "sandbox loopback bind PermissionError",
+        "retest": "unittest-http-host.log"
+      },
+      {
+        "test": "test_workbench.RealWorkbenchTests.test_orchestration_failure_is_visible_and_retryable",
+        "result": "ok"
+      },
+      {
+        "test": "test_workbench.RealWorkbenchTests.test_real_public_run_and_retry_keep_independent_evidence",
+        "result": "ok"
+      },
+      {
+        "test": "test_workbench.RealWorkbenchTests.test_real_unsupported_is_completed_and_inconclusive_without_selection",
+        "result": "ok"
+      },
+      {
+        "test": "test_workbench.RealWorkbenchTests.test_restart_marks_abandoned_job_interrupted_without_rerun",
+        "result": "ok"
+      },
+      {
+        "test": "test_workbench.RealWorkbenchTests.test_second_state_owner_cannot_change_first_owners_live_evidence",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.AcceptanceTests.test_all_diagnostics_and_truncation_are_retained",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.AcceptanceTests.test_inconclusive_results_never_pass_even_with_partial_passed_check",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.AcceptanceTests.test_only_barrier_edits_allowed",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.AcceptanceTests.test_scope_and_checks_are_both_required",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.AdapterTests.test_crash_with_passing_payload_is_not_accepted",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.AdapterTests.test_malformed_output_is_tool_failure_and_kept",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.AdapterTests.test_timeout_retains_partial_output",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.AdapterTests.test_zero_exit_code_is_not_a_pass",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.ModelContractTests.test_meta_is_disabled_without_explicit_flag_even_with_ambient_key",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.ModelContractTests.test_schema_accepts_only_source_and_rationale",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.ModelContractTests.test_truncated_or_malformed_generation_is_rejected",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.RealVerifierTests.test_noop_model_cannot_pass_by_deleting_computation",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.RealVerifierTests.test_reference_scope_cannot_silently_downgrade",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.RealVerifierTests.test_repair_uses_real_witness_and_reverification",
+        "result": "ok"
+      },
+      {
+        "test": "test_workflow.RealVerifierTests.test_unsafe_optimization_is_rejected_and_prior_candidate_retained",
+        "result": "ok"
+      }
+    ]
+  },
+  "dependency_check": {
+    "lock_entries": 79,
+    "license_counts": {
+      "MIT": 73,
+      "apache-2.0": 4,
+      "ISC": 1,
+      "BSD-3-Clause": 1
+    },
+    "missing_notice_candidates": []
+  },
+  "new_system_installs": 0,
+  "new_model_calls": 0,
+  "new_gpu_runs": 0,
+  "limitations": [
+    "One Mac arm64 environment; no fresh network fetch or another OS validated.",
+    "The native binary and vendor tree are not redistributed.",
+    "Test transport mocks do not count as model calls.",
+    "Dependency inventory is not a vulnerability scan."
+  ]
+}

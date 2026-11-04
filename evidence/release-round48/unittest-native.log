@@ -1,0 +1,98 @@
+test_all_real_cases_have_valid_baseline (test_diagnosis.DiagnosisTests.test_all_real_cases_have_valid_baseline) ... ok
+test_default_review_never_calls_network (test_diagnosis.DiagnosisTests.test_default_review_never_calls_network) ... ok
+test_exact_claim_from_debug_region_rejected (test_diagnosis.DiagnosisTests.test_exact_claim_from_debug_region_rejected) ... ok
+test_execution_claims_rejected (test_diagnosis.DiagnosisTests.test_execution_claims_rejected) ... ok
+test_invented_line_and_malformed_reference_rejected (test_diagnosis.DiagnosisTests.test_invented_line_and_malformed_reference_rejected) ... ok
+test_missing_authorization_and_key_stop_before_network (test_diagnosis.DiagnosisTests.test_missing_authorization_and_key_stop_before_network) ... ok
+test_path_and_version_are_bounded (test_diagnosis.DiagnosisTests.test_path_and_version_are_bounded) ... ok
+test_real_debug_mapping_is_not_exact_instruction (test_diagnosis.DiagnosisTests.test_real_debug_mapping_is_not_exact_instruction) ... ok
+test_true_access_coordinates (test_diagnosis.DiagnosisTests.test_true_access_coordinates) ... ok
+test_truncated_response_rejected (test_diagnosis.DiagnosisTests.test_truncated_response_rejected) ... ok
+test_unknown_citation_rejected (test_diagnosis.DiagnosisTests.test_unknown_citation_rejected) ... ok
+test_unsupported_not_promoted_to_race (test_diagnosis.DiagnosisTests.test_unsupported_not_promoted_to_race) ... ok
+test_context_is_real_bounded_and_deduplicated (test_diagnosis.InvestigationTests.test_context_is_real_bounded_and_deduplicated) ... ok
+test_no_fake_rounds_without_model (test_diagnosis.InvestigationTests.test_no_fake_rounds_without_model) ... ok
+test_round_budget_checked_before_writing (test_diagnosis.InvestigationTests.test_round_budget_checked_before_writing) ... ok
+test_baseline_combines_same_inspection_without_losing_evidence (test_diagnosis.ReviewTransportTests.test_baseline_combines_same_inspection_without_losing_evidence) ... ok
+test_context_budget_stops_before_files_or_request (test_diagnosis.ReviewTransportTests.test_context_budget_stops_before_files_or_request) ... ok
+test_import_revalidates_source_request_and_response (test_diagnosis.ReviewTransportTests.test_import_revalidates_source_request_and_response) ... ok
+test_malformed_received_response_is_rejected (test_diagnosis.ReviewTransportTests.test_malformed_received_response_is_rejected) ... ok
+test_timeout_is_uncertain_and_never_retried (test_diagnosis.ReviewTransportTests.test_timeout_is_uncertain_and_never_retried) ... ok
+test_bundle_contract_rejects_modified_input_before_staging (test_gpu_protocol.RuntimeEvidenceTests.test_bundle_contract_rejects_modified_input_before_staging) ... ok
+test_partial_or_failed_numerical_run_does_not_pass (test_gpu_protocol.RuntimeEvidenceTests.test_partial_or_failed_numerical_run_does_not_pass) ... ok
+test_sanitizer_formats_require_zero_findings_and_target_execution (test_gpu_protocol.RuntimeEvidenceTests.test_sanitizer_formats_require_zero_findings_and_target_execution) ... ok
+test_timing_summary_requires_all_finite_pairs (test_gpu_protocol.RuntimeEvidenceTests.test_timing_summary_requires_all_finite_pairs) ... ok
+test_cancel_before_key_or_request (test_local_secret.LocalSecretTests.test_cancel_before_key_or_request) ... ok
+test_pipes_refused_before_prompt (test_local_secret.LocalSecretTests.test_pipes_refused_before_prompt) ... ok
+test_process_local_secret_is_never_exported_or_echoed (test_local_secret.LocalSecretTests.test_process_local_secret_is_never_exported_or_echoed) ... ok
+test_invalid_budgets_rejected_before_process (test_quality.BoundaryTests.test_invalid_budgets_rejected_before_process) ... ok
+test_malformed_model_choices_and_oversized_candidate (test_quality.BoundaryTests.test_malformed_model_choices_and_oversized_candidate) ... ok
+test_malformed_result_types_are_fail_closed (test_quality.BoundaryTests.test_malformed_result_types_are_fail_closed) ... ok
+test_shell_or_python_payload_is_never_an_allowed_candidate (test_quality.BoundaryTests.test_shell_or_python_payload_is_never_an_allowed_candidate) ... ok
+test_token_boundaries_and_string_literals_cannot_change (test_quality.BoundaryTests.test_token_boundaries_and_string_literals_cannot_change) ... ok
+test_inconclusive_baseline_never_reaches_candidate_provider (test_quality.LoopQualityTests.test_inconclusive_baseline_never_reaches_candidate_provider) ... ok
+test_invalid_proposal_is_recorded_without_verification (test_quality.LoopQualityTests.test_invalid_proposal_is_recorded_without_verification) ... ok
+test_public_kernel_uses_real_frontend_and_does_not_choose_branches (test_quality.LoopQualityTests.test_public_kernel_uses_real_frontend_and_does_not_choose_branches) ... ok
+test_public_weightnorm_preserves_contract_and_rejects_unsafe_deletions (test_quality.LoopQualityTests.test_public_weightnorm_preserves_contract_and_rejects_unsafe_deletions) ... ok
+test_reference_python_requires_opt_in_and_is_not_executed (test_quality.LoopQualityTests.test_reference_python_requires_opt_in_and_is_not_executed) ... ok
+test_selected_kernel_survives_provider_failure (test_quality.LoopQualityTests.test_selected_kernel_survives_provider_failure) ... ok
+test_transport_error_keeps_unknown_outcome_and_never_retries (test_quality.ModelFailureTests.test_transport_error_keeps_unknown_outcome_and_never_retries) ... ok
+test_arguments_are_not_shell_commands (test_quality.ProcessTests.test_arguments_are_not_shell_commands) ... ok
+test_missing_worker_keeps_failure_receipt (test_quality.ProcessTests.test_missing_worker_keeps_failure_receipt) ... ok
+test_timeout_kills_child_process_group (test_quality.ProcessTests.test_timeout_kills_child_process_group) ... ok
+test_unsupported_payload_preserved_verbatim (test_quality.ProcessTests.test_unsupported_payload_preserved_verbatim) ... ok
+test_artifact_traversal_and_symlink_escape_are_rejected (test_workbench.InputBoundaryTests.test_artifact_traversal_and_symlink_escape_are_rejected) ... ok
+test_atomic_json_is_always_parseable_during_concurrent_reads (test_workbench.InputBoundaryTests.test_atomic_json_is_always_parseable_during_concurrent_reads) ... ok
+test_cancellation_terminates_owned_descendant_group_and_keeps_output (test_workbench.InputBoundaryTests.test_cancellation_terminates_owned_descendant_group_and_keeps_output) ... ok
+test_example_can_load_from_packaged_snapshot_without_vendor_checkout (test_workbench.InputBoundaryTests.test_example_can_load_from_packaged_snapshot_without_vendor_checkout) ... ok
+test_invalid_inputs_do_not_become_paths_or_execution_options (test_workbench.InputBoundaryTests.test_invalid_inputs_do_not_become_paths_or_execution_options) ... ok
+test_cancel_after_baseline_preserves_last_accepted_artifact (test_workbench.RealWorkbenchTests.test_cancel_after_baseline_preserves_last_accepted_artifact) ... ok
+test_cancel_at_provider_return_is_not_lost_as_exhaustion (test_workbench.RealWorkbenchTests.test_cancel_at_provider_return_is_not_lost_as_exhaustion) ... ok
+test_cancel_at_verifier_return_cannot_commit_candidate (test_workbench.RealWorkbenchTests.test_cancel_at_verifier_return_cannot_commit_candidate) ... ok
+test_cancel_real_native_analysis_and_continue_queue (test_workbench.RealWorkbenchTests.test_cancel_real_native_analysis_and_continue_queue) ... ok
+test_http_rejects_cross_origin_unknown_actions_and_bad_payloads (test_workbench.RealWorkbenchTests.test_http_rejects_cross_origin_unknown_actions_and_bad_payloads) ... ERROR
+test_orchestration_failure_is_visible_and_retryable (test_workbench.RealWorkbenchTests.test_orchestration_failure_is_visible_and_retryable) ... ok
+test_real_public_run_and_retry_keep_independent_evidence (test_workbench.RealWorkbenchTests.test_real_public_run_and_retry_keep_independent_evidence) ... ok
+test_real_unsupported_is_completed_and_inconclusive_without_selection (test_workbench.RealWorkbenchTests.test_real_unsupported_is_completed_and_inconclusive_without_selection) ... ok
+test_restart_marks_abandoned_job_interrupted_without_rerun (test_workbench.RealWorkbenchTests.test_restart_marks_abandoned_job_interrupted_without_rerun) ... ok
+test_second_state_owner_cannot_change_first_owners_live_evidence (test_workbench.RealWorkbenchTests.test_second_state_owner_cannot_change_first_owners_live_evidence) ... ok
+test_all_diagnostics_and_truncation_are_retained (test_workflow.AcceptanceTests.test_all_diagnostics_and_truncation_are_retained) ... ok
+test_inconclusive_results_never_pass_even_with_partial_passed_check (test_workflow.AcceptanceTests.test_inconclusive_results_never_pass_even_with_partial_passed_check) ... ok
+test_only_barrier_edits_allowed (test_workflow.AcceptanceTests.test_only_barrier_edits_allowed) ... ok
+test_scope_and_checks_are_both_required (test_workflow.AcceptanceTests.test_scope_and_checks_are_both_required) ... ok
+test_crash_with_passing_payload_is_not_accepted (test_workflow.AdapterTests.test_crash_with_passing_payload_is_not_accepted) ... ok
+test_malformed_output_is_tool_failure_and_kept (test_workflow.AdapterTests.test_malformed_output_is_tool_failure_and_kept) ... ok
+test_timeout_retains_partial_output (test_workflow.AdapterTests.test_timeout_retains_partial_output) ... ok
+test_zero_exit_code_is_not_a_pass (test_workflow.AdapterTests.test_zero_exit_code_is_not_a_pass) ... ok
+test_meta_is_disabled_without_explicit_flag_even_with_ambient_key (test_workflow.ModelContractTests.test_meta_is_disabled_without_explicit_flag_even_with_ambient_key) ... ok
+test_schema_accepts_only_source_and_rationale (test_workflow.ModelContractTests.test_schema_accepts_only_source_and_rationale) ... ok
+test_truncated_or_malformed_generation_is_rejected (test_workflow.ModelContractTests.test_truncated_or_malformed_generation_is_rejected) ... ok
+test_noop_model_cannot_pass_by_deleting_computation (test_workflow.RealVerifierTests.test_noop_model_cannot_pass_by_deleting_computation) ... ok
+test_reference_scope_cannot_silently_downgrade (test_workflow.RealVerifierTests.test_reference_scope_cannot_silently_downgrade) ... ok
+test_repair_uses_real_witness_and_reverification (test_workflow.RealVerifierTests.test_repair_uses_real_witness_and_reverification) ... ok
+test_unsafe_optimization_is_rejected_and_prior_candidate_retained (test_workflow.RealVerifierTests.test_unsafe_optimization_is_rejected_and_prior_candidate_retained) ... ok
+
+======================================================================
+ERROR: test_http_rejects_cross_origin_unknown_actions_and_bad_payloads (test_workbench.RealWorkbenchTests.test_http_rejects_cross_origin_unknown_actions_and_bad_payloads)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "${WORKSPACE}/reviews/round48-native/candidate/tests/test_workbench.py", line 182, in test_http_rejects_cross_origin_unknown_actions_and_bad_payloads
+    server=Server(('127.0.0.1',0),self.jobs)
+  File "${WORKSPACE}/reviews/round48-native/candidate/warp_relay/workbench.py", line 320, in __init__
+    super().__init__(address, Handler)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/socketserver.py", line 454, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/http/server.py", line 122, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/socketserver.py", line 475, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+----------------------------------------------------------------------
+Ran 73 tests in 6.492s
+
+FAILED (errors=1)

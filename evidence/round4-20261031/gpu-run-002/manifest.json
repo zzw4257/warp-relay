@@ -1,0 +1,48 @@
+{
+  "schema": "warp-relay.gpu-bundle/v1",
+  "sentryward_revision": "421ff2c7d140341f64d2bc1f1edd045b65a7c403",
+  "input_sha256": "66dd6502a0e8e24600fc203e574bfeef8f7fe02d1d48dc603765444412ad45c1",
+  "entry": "_ZN2at6native46_GLOBAL__N__ce93b007_13_WeightNorm_cu_b3893b6b32weight_norm_fwd_first_dim_kernelIN3c108BFloat16EfEEvPT_PT0_PKS5_SA_i",
+  "scope": "Unchanged public WeightNorm 2x1024 BF16, grid=2 block=256 dynamic shared=1024; synchronization is separate from numerical testing and performance.",
+  "variants": {
+    "baseline": {
+      "file": "baseline.ptx",
+      "sha256": "0fa57a8625c2f74ffad1684891484cbddc22e3f01372aaa2881334509ed75288",
+      "synchronization_result": "race_free",
+      "accepted_by_sync_gate": true,
+      "source_round": "000-baseline"
+    },
+    "selected": {
+      "file": "selected.ptx",
+      "sha256": "30ca6d115fd93f5bf7f5c2cccadf3dbc35dfd040ac9401df470d3c93a9a874a8",
+      "synchronization_result": "race_free",
+      "accepted_by_sync_gate": true,
+      "source_round": "004-candidate"
+    },
+    "counterexample": {
+      "file": "counterexample.ptx",
+      "sha256": "b3c7876bacaeb8078a2b9731fb620cbf25fc7ce1aaab344da939f393db404e87",
+      "synchronization_result": "potential_race",
+      "accepted_by_sync_gate": false,
+      "source_round": "001-candidate"
+    }
+  },
+  "files": {
+    "baseline.ptx": "0fa57a8625c2f74ffad1684891484cbddc22e3f01372aaa2881334509ed75288",
+    "selected.ptx": "30ca6d115fd93f5bf7f5c2cccadf3dbc35dfd040ac9401df470d3c93a9a874a8",
+    "input.json": "66dd6502a0e8e24600fc203e574bfeef8f7fe02d1d48dc603765444412ad45c1",
+    "SentryWard-Apache-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "PyTorch-LICENSE.txt": "bd018feef8825e88181c84eb7e3aa4eafb8f08a20d9fd6ef948569610c4a3e43",
+    "run_validation.py": "fb7988c50a8b738c9098138299ce38503aa23f8f8d021a91b44d7df106272d5a",
+    "counterexample.ptx": "b3c7876bacaeb8078a2b9731fb620cbf25fc7ce1aaab344da939f393db404e87",
+    "weightnorm_runner.cpp": "0d9c8fca4b63552d6c422b29dda465149235c6dda8493d18edd2cd314acc911b"
+  },
+  "tolerances_fixed_before_run": {
+    "norm_rtol": 2e-06,
+    "norm_atol": 1e-07,
+    "output_bf16_max_ulp": 1
+  },
+  "reference": "Independent CPU long-double row sum of squares, square root and scaling, BF16 nearest-even output; compare NaN class for zero norms.",
+  "cases": "32 deterministic finite random cases and seven structured cases; 3 launches each; 39 cases / 117 launches per variant.",
+  "candidate_scope": "Only removal of original PTX line 167, skipped at the fixed block size. Static barrier count reduction, no expected executed-instruction reduction."
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "warp-relay.run/v1",
+  "name": "Remove a redundant barrier, retain the necessary one",
+  "objective": "optimize",
+  "started_at": "2026-10-31T16:30:15.567662+00:00",
+  "provider": "offline-rule (no model)",
+  "acceptance_scope": "synchronization",
+  "description": "One CTA of 64 threads exchanges two 32-element halves of disjoint uint32 input/output arrays (256 bytes each). Two consecutive CTA barriers separate shared writes from shared reads. Test one-barrier deletions with the fixed launch and all six configurable assumptions disabled. Preserve all computation and memory instructions. Minimize static barrier count while retaining synchronization acceptance. Fewer barriers is a structural change, not a measured speedup; GPU and numerical-equivalence checks are not performed.",
+  "model_executed": false,
+  "model_status": "not_called",
+  "gpu_executed": false,
+  "speedup": null,
+  "performance_status": "not_measured",
+  "iterations": [
+    {
+      "path": "000-baseline",
+      "kind": "baseline",
+      "kernel_sha256": "6523a362df1124296605bae9bd45e319dc98c17c0883e836dc89441adf32d311",
+      "result": "race_free",
+      "accepted": true
+    },
+    {
+      "path": "001-candidate",
+      "kind": "candidate",
+      "kernel_sha256": "fabc1ba233b25677a8b1a0a49486e275ab63067c0d786c99a88ed03db40fb52c",
+      "rationale": "Test removal of the barrier at line 28; reverify before retaining. This is not a speedup claim.",
+      "accepted": true,
+      "result": "race_free",
+      "barriers_before": 2,
+      "barriers_after": 1
+    },
+    {
+      "path": "002-candidate",
+      "kind": "candidate",
+      "kernel_sha256": "82c9547f468b44b9597e8d164ca7aa5fcab3ff546844dc7f3278728a3c4770a2",
+      "rationale": "Test removal of the barrier at line 28; reverify before retaining. This is not a speedup claim.",
+      "accepted": false,
+      "result": "potential_race",
+      "barriers_before": 1,
+      "barriers_after": 0
+    }
+  ],
+  "selected": "001-candidate",
+  "stop_reason": "no_more_candidates",
+  "verifier": {
+    "repository": "https://github.com/gpu-verifier/sentryward",
+    "revision": "421ff2c7d140341f64d2bc1f1edd045b65a7c403",
+    "native_sha256": "dc7ec7c55483eed7e02fa7e8829da1b739f4446a119546899381012f7ac6abea",
+    "python": "3.15.0 (main, Oct  9 2026, 11:16:41) [Clang 21.0.0 (clang-2100.3.34.2)]",
+    "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+    "agent_sources": {
+      "warp_relay/__init__.py": "cb18f16dd36baf409efb05a6f79335f8f300fead503b56cd781d25c8e569be5f",
+      "warp_relay/__main__.py": "71beba5af7127c88d5174d4d6bb8a91a0f86f10c8c9c197c7dd43006821806e8",
+      "warp_relay/core.py": "aa15f01a0db4f1b5e0069d31d207c46b42f90595ebe585da7b2ae268f80aeb77",
+      "warp_relay/providers.py": "c6e3bc1648f94cdeea19b37e63423d3fde15cd56d14cbf09eb216b4e0c1fb18d",
+      "warp_relay/report.py": "cc2d72be81d7eb7dcd6e737bb6b3d16e17ac34e467444c11804b221e75c2764d",
+      "warp_relay/runner.py": "c67e9d7d7a4c1f7eea69af49e59fd6bdb85abfb914b85cf6555b7341d24a81d6"
+    }
+  },
+  "finished_at": "2026-10-31T16:30:15.724978+00:00"
+}

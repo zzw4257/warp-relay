@@ -1,0 +1,866 @@
+{
+  "schema": "warp-relay.diagnostic-packet/v1",
+  "case_id": "tma",
+  "title": "TMA pipeline",
+  "version": 0,
+  "version_label": "Public PTX",
+  "source_sha256": "905051ea85bc9b8444fa65699618c05d632bc87b310bc1f5edbcf92e684f49ce",
+  "verifier_sha256": "7f52423f835367c418ea6b0c4f8f8e9b4ca6a53f14dcff9768dadff85e2958ee",
+  "provenance": "Upstream record",
+  "source_url": "https://github.com/gpu-verifier/sentryward/tree/421ff2c7d140341f64d2bc1f1edd045b65a7c403/examples/tritongluon-04-tma-pipelined",
+  "scope_note": "Upstream test xnumel=1000, ynumel=2000, XBLOCK=32, YBLOCK=64, num_buffers=3; grid cdiv(1000, 32)=32, 128 threads; full 1000x2000 output.",
+  "facts": [
+    {
+      "id": "result",
+      "kind": "verdict",
+      "value": {
+        "result": "potential_race",
+        "checks": {
+          "equivalence": "not_run",
+          "synchronization": "failed"
+        }
+      }
+    },
+    {
+      "id": "scope",
+      "kind": "scope",
+      "value": {
+        "assumption_dependent": true,
+        "assumptions": [
+          {
+            "category": "analysis assumption",
+            "enabled": true,
+            "key": "duplicate_tma_store_benign",
+            "label": "Duplicate TMA stores",
+            "text": "Matching same-warp duplicate TMA stores are races in the model, but are reported as warnings under the assumption that their stored values agree.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": true,
+            "key": "representative_election",
+            "label": "Representative election",
+            "text": "Election selects lane zero when participating, otherwise the lowest participating lane.",
+            "triggered": true
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": true,
+            "key": "clc_always_fails",
+            "label": "Failed launch cancellation",
+            "text": "Every cluster launch cancellation request fails.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "representative_branches",
+            "label": "Representative branches",
+            "text": "Choose fallthrough for an unresolved structured if/else; unknown ordinary instruction guards execute. Terminal control uses CFG classification. Known control and explicit choices take precedence.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "bounded_computation_loops",
+            "label": "Bounded computation loops",
+            "text": "Execute a configured number of body iterations for unresolved recognized computation loops, counted separately per invocation. Polling and unclassified loops are never forced to complete.",
+            "triggered": false
+          },
+          {
+            "category": "analysis assumption",
+            "enabled": false,
+            "key": "order_independent_atomics",
+            "label": "Order-independent atomics",
+            "text": "The kernel is correct for every order in which concurrent atomics (atom, red) on the same element take effect. Each atomic is one indivisible access; two atomics on the same element whose scopes include both threads do not race.",
+            "triggered": false
+          }
+        ],
+        "frontend_assumptions": {
+          "assertion_failure_forms": [
+            "trap",
+            "__assertfail"
+          ],
+          "assertion_uses": 0,
+          "atomic_uses": 0,
+          "bounded_loop_uses": 0,
+          "clc_failure": true,
+          "clc_uses": 0,
+          "data_branch_decisions": [],
+          "election_policy": {
+            "fallback": "lowest_member",
+            "preferred_lane": 0,
+            "strategy": "preferred_member"
+          },
+          "election_uses": 417792,
+          "fixed_election": true,
+          "isolated_launch": true,
+          "noalias_unbounded": false,
+          "opaque_compute_regions": [],
+          "pointer_contract": {
+            "aliasing": "distinct_objects_noalias",
+            "extent_bytes": "unbounded"
+          },
+          "representative_branch_uses": 0,
+          "trap_only_equality_assertions_hold": true
+        },
+        "verification_limitations": []
+      }
+    },
+    {
+      "id": "contract",
+      "kind": "contract",
+      "value": {
+        "schema": "spverify.kernel-input/v1",
+        "entry": "elementwise_add_tma_kernel",
+        "launch": {
+          "grid_dim": [
+            32,
+            1,
+            1
+          ],
+          "block_dim": [
+            128,
+            1,
+            1
+          ],
+          "cluster_dim": [
+            1,
+            1,
+            1
+          ],
+          "dynamic_shared_bytes": 57376
+        },
+        "declarations": [
+          {
+            "parameter": 0,
+            "offset": 0,
+            "type": "tensor_map"
+          },
+          {
+            "parameter": 1,
+            "offset": 0,
+            "type": "u32"
+          },
+          {
+            "parameter": 2,
+            "offset": 0,
+            "type": "u32"
+          },
+          {
+            "parameter": 3,
+            "offset": 0,
+            "type": "u64"
+          },
+          {
+            "parameter": 4,
+            "offset": 0,
+            "type": "u64"
+          },
+          {
+            "parameter": 5,
+            "offset": 0,
+            "type": "tensor_map"
+          },
+          {
+            "parameter": 6,
+            "offset": 0,
+            "type": "u32"
+          },
+          {
+            "parameter": 7,
+            "offset": 0,
+            "type": "u32"
+          },
+          {
+            "parameter": 8,
+            "offset": 0,
+            "type": "u64"
+          },
+          {
+            "parameter": 9,
+            "offset": 0,
+            "type": "u64"
+          },
+          {
+            "parameter": 10,
+            "offset": 0,
+            "type": "tensor_map"
+          },
+          {
+            "parameter": 11,
+            "offset": 0,
+            "type": "u32"
+          },
+          {
+            "parameter": 12,
+            "offset": 0,
+            "type": "u32"
+          },
+          {
+            "parameter": 13,
+            "offset": 0,
+            "type": "u64"
+          },
+          {
+            "parameter": 14,
+            "offset": 0,
+            "type": "u64"
+          },
+          {
+            "parameter": 15,
+            "offset": 0,
+            "type": "u32"
+          },
+          {
+            "parameter": 16,
+            "offset": 0,
+            "type": "u32"
+          },
+          {
+            "parameter": 17,
+            "offset": 0,
+            "type": "pointer",
+            "name": "global_scratch"
+          },
+          {
+            "parameter": 18,
+            "offset": 0,
+            "type": "pointer",
+            "name": "profile_scratch"
+          }
+        ],
+        "arguments": [
+          {
+            "parameter": 1,
+            "type": "u32",
+            "value": 1000
+          },
+          {
+            "parameter": 2,
+            "type": "u32",
+            "value": 2000
+          },
+          {
+            "parameter": 3,
+            "type": "u64",
+            "value": 2000
+          },
+          {
+            "parameter": 4,
+            "type": "u64",
+            "value": 1
+          },
+          {
+            "parameter": 6,
+            "type": "u32",
+            "value": 1000
+          },
+          {
+            "parameter": 7,
+            "type": "u32",
+            "value": 2000
+          },
+          {
+            "parameter": 8,
+            "type": "u64",
+            "value": 2000
+          },
+          {
+            "parameter": 9,
+            "type": "u64",
+            "value": 1
+          },
+          {
+            "parameter": 11,
+            "type": "u32",
+            "value": 1000
+          },
+          {
+            "parameter": 12,
+            "type": "u32",
+            "value": 2000
+          },
+          {
+            "parameter": 13,
+            "type": "u64",
+            "value": 2000
+          },
+          {
+            "parameter": 14,
+            "type": "u64",
+            "value": 1
+          },
+          {
+            "parameter": 15,
+            "type": "u32",
+            "value": 1000
+          },
+          {
+            "parameter": 16,
+            "type": "u32",
+            "value": 2000
+          },
+          {
+            "parameter": 17,
+            "type": "pointer",
+            "value": null
+          },
+          {
+            "parameter": 18,
+            "type": "pointer",
+            "value": null
+          }
+        ],
+        "tma_descriptors": [
+          {
+            "parameter": 0,
+            "object": "A",
+            "element_type": "f32",
+            "rank": 2,
+            "box_shape": [
+              32,
+              32
+            ],
+            "global_shape": [
+              2000,
+              1000
+            ],
+            "global_strides_bytes": [
+              8000
+            ],
+            "element_strides": [
+              1,
+              1
+            ],
+            "swizzle": "128B",
+            "interleave": "none",
+            "oob_fill": "zero"
+          },
+          {
+            "parameter": 5,
+            "object": "B",
+            "element_type": "f32",
+            "rank": 2,
+            "box_shape": [
+              32,
+              32
+            ],
+            "global_shape": [
+              2000,
+              1000
+            ],
+            "global_strides_bytes": [
+              8000
+            ],
+            "element_strides": [
+              1,
+              1
+            ],
+            "swizzle": "128B",
+            "interleave": "none",
+            "oob_fill": "zero"
+          },
+          {
+            "parameter": 10,
+            "object": "C",
+            "element_type": "f32",
+            "rank": 2,
+            "box_shape": [
+              32,
+              32
+            ],
+            "global_shape": [
+              2000,
+              1000
+            ],
+            "global_strides_bytes": [
+              8000
+            ],
+            "element_strides": [
+              1,
+              1
+            ],
+            "swizzle": "128B",
+            "interleave": "none",
+            "oob_fill": "zero"
+          }
+        ],
+        "assumptions": {
+          "duplicate_tma_store_benign": true,
+          "representative_election": true,
+          "clc_always_fails": true
+        }
+      }
+    },
+    {
+      "id": "race:0:first",
+      "kind": "access",
+      "value": {
+        "access_index": 0,
+        "actor": 0,
+        "bytes": 4,
+        "effect_index": 1,
+        "endpoint": {
+          "address": 2064,
+          "kind": "memory"
+        },
+        "event": 2427,
+        "instruction": 89,
+        "location": {
+          "column": 5,
+          "file": "python/tutorials/gluon/04-tma.py",
+          "line": 290
+        },
+        "mode": "write"
+      },
+      "mapping": {
+        "kind": "debug_region",
+        "lines": [
+          348,
+          402,
+          510,
+          613
+        ]
+      },
+      "excerpts": [
+        {
+          "start": 344,
+          "lines": [
+            {
+              "line": 344,
+              "text": "\t.loc\t1 289 5, function_name $L__info_string0, inlined_at 1 326 22 // 04-tma.py:289:5"
+            },
+            {
+              "line": 345,
+              "text": "\tcp.async.bulk.wait_group.read \t0;"
+            },
+            {
+              "line": 346,
+              "text": "\tbar.sync \t0;"
+            },
+            {
+              "line": 347,
+              "text": "\t.loc\t1 290 5, function_name $L__info_string0, inlined_at 1 326 22 // 04-tma.py:290:5"
+            },
+            {
+              "line": 348,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r8], {%r174, %r175, %r176, %r177};"
+            },
+            {
+              "line": 349,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r9], {%r182, %r183, %r184, %r185};"
+            },
+            {
+              "line": 350,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r10], {%r190, %r191, %r192, %r193};"
+            },
+            {
+              "line": 351,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r11], {%r198, %r199, %r200, %r201};"
+            },
+            {
+              "line": 352,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r13], {%r178, %r179, %r180, %r181};"
+            },
+            {
+              "line": 353,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r14], {%r186, %r187, %r188, %r189};"
+            }
+          ]
+        },
+        {
+          "start": 398,
+          "lines": [
+            {
+              "line": 398,
+              "text": "$L__BB0_4:                              // %._crit_edge"
+            },
+            {
+              "line": 399,
+              "text": "\t.loc\t1 287 12, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:287:12"
+            },
+            {
+              "line": 400,
+              "text": "\tshl.b32 \t%r215, %r467, 6;"
+            },
+            {
+              "line": 401,
+              "text": "\t.loc\t1 290 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:290:5"
+            },
+            {
+              "line": 402,
+              "text": "\tadd.s32 \t%r216, %r35, %r466;"
+            },
+            {
+              "line": 403,
+              "text": "\tadd.s32 \t%r217, %r35, %r465;"
+            },
+            {
+              "line": 404,
+              "text": "\tadd.s32 \t%r218, %r35, %r464;"
+            },
+            {
+              "line": 405,
+              "text": "\tadd.s32 \t%r219, %r35, %r463;"
+            },
+            {
+              "line": 406,
+              "text": "\tadd.s32 \t%r220, %r35, %r462;"
+            },
+            {
+              "line": 407,
+              "text": "\tadd.s32 \t%r221, %r35, %r461;"
+            }
+          ]
+        },
+        {
+          "start": 506,
+          "lines": [
+            {
+              "line": 506,
+              "text": "\t.loc\t1 289 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:289:5"
+            },
+            {
+              "line": 507,
+              "text": "\tcp.async.bulk.wait_group.read \t0;"
+            },
+            {
+              "line": 508,
+              "text": "\tbar.sync \t0;"
+            },
+            {
+              "line": 509,
+              "text": "\t.loc\t1 290 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:290:5"
+            },
+            {
+              "line": 510,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r216+49152], {%r308, %r309, %r310, %r311};"
+            },
+            {
+              "line": 511,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r217+49152], {%r316, %r317, %r318, %r319};"
+            },
+            {
+              "line": 512,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r218+49152], {%r324, %r325, %r326, %r327};"
+            },
+            {
+              "line": 513,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r219+49152], {%r332, %r333, %r334, %r335};"
+            },
+            {
+              "line": 514,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r220+49152], {%r312, %r313, %r314, %r315};"
+            },
+            {
+              "line": 515,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r221+49152], {%r320, %r321, %r322, %r323};"
+            }
+          ]
+        },
+        {
+          "start": 609,
+          "lines": [
+            {
+              "line": 609,
+              "text": "\t.loc\t1 289 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:289:5"
+            },
+            {
+              "line": 610,
+              "text": "\tcp.async.bulk.wait_group.read \t0;"
+            },
+            {
+              "line": 611,
+              "text": "\tbar.sync \t0;"
+            },
+            {
+              "line": 612,
+              "text": "\t.loc\t1 290 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:290:5"
+            },
+            {
+              "line": 613,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r216+49152], {%r416, %r417, %r418, %r419};"
+            },
+            {
+              "line": 614,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r217+49152], {%r424, %r425, %r426, %r427};"
+            },
+            {
+              "line": 615,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r218+49152], {%r432, %r433, %r434, %r435};"
+            },
+            {
+              "line": 616,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r219+49152], {%r440, %r441, %r442, %r443};"
+            },
+            {
+              "line": 617,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r220+49152], {%r420, %r421, %r422, %r423};"
+            },
+            {
+              "line": 618,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r221+49152], {%r428, %r429, %r430, %r431};"
+            }
+          ]
+        }
+      ],
+      "unresolved": false
+    },
+    {
+      "id": "race:0:second",
+      "kind": "access",
+      "value": {
+        "access_index": 0,
+        "actor": 64,
+        "bytes": 4,
+        "effect_index": 1,
+        "endpoint": {
+          "address": 2064,
+          "kind": "memory"
+        },
+        "event": 761664,
+        "instruction": 136795,
+        "location": {
+          "column": 5,
+          "file": "python/tutorials/gluon/04-tma.py",
+          "line": 290
+        },
+        "mode": "write"
+      },
+      "mapping": {
+        "kind": "debug_region",
+        "lines": [
+          348,
+          402,
+          510,
+          613
+        ]
+      },
+      "excerpts": [
+        {
+          "start": 344,
+          "lines": [
+            {
+              "line": 344,
+              "text": "\t.loc\t1 289 5, function_name $L__info_string0, inlined_at 1 326 22 // 04-tma.py:289:5"
+            },
+            {
+              "line": 345,
+              "text": "\tcp.async.bulk.wait_group.read \t0;"
+            },
+            {
+              "line": 346,
+              "text": "\tbar.sync \t0;"
+            },
+            {
+              "line": 347,
+              "text": "\t.loc\t1 290 5, function_name $L__info_string0, inlined_at 1 326 22 // 04-tma.py:290:5"
+            },
+            {
+              "line": 348,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r8], {%r174, %r175, %r176, %r177};"
+            },
+            {
+              "line": 349,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r9], {%r182, %r183, %r184, %r185};"
+            },
+            {
+              "line": 350,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r10], {%r190, %r191, %r192, %r193};"
+            },
+            {
+              "line": 351,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r11], {%r198, %r199, %r200, %r201};"
+            },
+            {
+              "line": 352,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r13], {%r178, %r179, %r180, %r181};"
+            },
+            {
+              "line": 353,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r14], {%r186, %r187, %r188, %r189};"
+            }
+          ]
+        },
+        {
+          "start": 398,
+          "lines": [
+            {
+              "line": 398,
+              "text": "$L__BB0_4:                              // %._crit_edge"
+            },
+            {
+              "line": 399,
+              "text": "\t.loc\t1 287 12, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:287:12"
+            },
+            {
+              "line": 400,
+              "text": "\tshl.b32 \t%r215, %r467, 6;"
+            },
+            {
+              "line": 401,
+              "text": "\t.loc\t1 290 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:290:5"
+            },
+            {
+              "line": 402,
+              "text": "\tadd.s32 \t%r216, %r35, %r466;"
+            },
+            {
+              "line": 403,
+              "text": "\tadd.s32 \t%r217, %r35, %r465;"
+            },
+            {
+              "line": 404,
+              "text": "\tadd.s32 \t%r218, %r35, %r464;"
+            },
+            {
+              "line": 405,
+              "text": "\tadd.s32 \t%r219, %r35, %r463;"
+            },
+            {
+              "line": 406,
+              "text": "\tadd.s32 \t%r220, %r35, %r462;"
+            },
+            {
+              "line": 407,
+              "text": "\tadd.s32 \t%r221, %r35, %r461;"
+            }
+          ]
+        },
+        {
+          "start": 506,
+          "lines": [
+            {
+              "line": 506,
+              "text": "\t.loc\t1 289 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:289:5"
+            },
+            {
+              "line": 507,
+              "text": "\tcp.async.bulk.wait_group.read \t0;"
+            },
+            {
+              "line": 508,
+              "text": "\tbar.sync \t0;"
+            },
+            {
+              "line": 509,
+              "text": "\t.loc\t1 290 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:290:5"
+            },
+            {
+              "line": 510,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r216+49152], {%r308, %r309, %r310, %r311};"
+            },
+            {
+              "line": 511,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r217+49152], {%r316, %r317, %r318, %r319};"
+            },
+            {
+              "line": 512,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r218+49152], {%r324, %r325, %r326, %r327};"
+            },
+            {
+              "line": 513,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r219+49152], {%r332, %r333, %r334, %r335};"
+            },
+            {
+              "line": 514,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r220+49152], {%r312, %r313, %r314, %r315};"
+            },
+            {
+              "line": 515,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r221+49152], {%r320, %r321, %r322, %r323};"
+            }
+          ]
+        },
+        {
+          "start": 609,
+          "lines": [
+            {
+              "line": 609,
+              "text": "\t.loc\t1 289 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:289:5"
+            },
+            {
+              "line": 610,
+              "text": "\tcp.async.bulk.wait_group.read \t0;"
+            },
+            {
+              "line": 611,
+              "text": "\tbar.sync \t0;"
+            },
+            {
+              "line": 612,
+              "text": "\t.loc\t1 290 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:290:5"
+            },
+            {
+              "line": 613,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r216+49152], {%r416, %r417, %r418, %r419};"
+            },
+            {
+              "line": 614,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r217+49152], {%r424, %r425, %r426, %r427};"
+            },
+            {
+              "line": 615,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r218+49152], {%r432, %r433, %r434, %r435};"
+            },
+            {
+              "line": 616,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r219+49152], {%r440, %r441, %r442, %r443};"
+            },
+            {
+              "line": 617,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r220+49152], {%r420, %r421, %r422, %r423};"
+            },
+            {
+              "line": 618,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r221+49152], {%r428, %r429, %r430, %r431};"
+            }
+          ]
+        }
+      ],
+      "unresolved": false
+    },
+    {
+      "id": "race:0:relationship",
+      "kind": "relationship",
+      "value": {
+        "overlap": "constant byte ranges intersect",
+        "region": {
+          "address_space": "shared",
+          "allocation": "cta:(0, 0, 0):shared:physical.shared.cta.0",
+          "bytes": 4,
+          "offset": 49152
+        }
+      }
+    },
+    {
+      "id": "diagnostic:0",
+      "kind": "diagnostic",
+      "value": {
+        "code": "conflicting_accesses_unordered",
+        "details": {
+          "count": 1,
+          "internal_stage": "memory_check",
+          "witnesses_path": "races"
+        },
+        "message": "Conflicting accesses have no proven required ordering",
+        "stage": "synchronization"
+      }
+    }
+  ],
+  "context": {
+    "source_lines": 948,
+    "source_excerpt_only": true,
+    "race_records_total": 1,
+    "race_records_included": 1,
+    "excerpt_limit": "at most 8 mapped regions per access; ten source lines per region",
+    "evidence_truncated": false
+  },
+  "boundaries": [
+    "Static witnesses are not measured GPU schedules.",
+    "Debug-region starts are not exact conflicting instructions.",
+    "No GPU run or performance measurement is started.",
+    "A diagnostic narrative cannot establish correctness or override the verifier."
+  ]
+}

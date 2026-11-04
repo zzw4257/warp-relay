@@ -1,0 +1,24 @@
+{
+  "endpoint": "https://api.meta.ai/v1/chat/completions",
+  "requested_model": "muse-spark-1.3",
+  "request_sha256": "349e84ea43d1bb99bce80d1bea809b63efe207ee16f00b3191334d422db38fbe",
+  "key_present": true,
+  "automatic_retries": 0,
+  "maximum_calls": 1,
+  "calls_attempted": 1,
+  "outcome": "received",
+  "elapsed_seconds": 24.525,
+  "response_id": "chatcmpl-01a1a273-d165-758e-8c66-aea476643b2c",
+  "response_model": "muse-spark-1.3",
+  "usage": {
+    "completion_tokens": 3309,
+    "prompt_tokens": 6278,
+    "total_tokens": 9587,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2675
+    },
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}

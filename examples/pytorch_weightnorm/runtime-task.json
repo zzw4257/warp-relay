@@ -1,0 +1,10 @@
+{
+  "schema": "warp-relay.task/v1",
+  "name": "Public WeightNorm runtime validation candidate",
+  "kernel": "../../vendor/sentryward/corpus/pytorch__aten_WeightNorm__sm_100a.ptx",
+  "input": "input.json",
+  "objective": "optimize",
+  "acceptance": "synchronization",
+  "edit_policy": "cta_barrier_only",
+  "description": "Unmodified public compiler-generated PyTorch WeightNorm forward first-dimension PTX as baseline. Exact upstream input bytes: 2 CTAs of 256 threads, rowSize=1024, dynamic shared memory=1024 bytes per CTA, distinct w/norms/v/g allocations, bf16 w/v/g and float32 norms. Preserve upstream optional assumptions duplicate_tma_store_benign, representative_election and clc_always_fails enabled; other optional assumptions retain pinned defaults (false). No branch decisions or input changes. Try at most four standalone CTA-barrier deletions through the existing verifier loop. Synchronization-only check; no reference execution, model inference, hardware execution or performance measurement."
+}

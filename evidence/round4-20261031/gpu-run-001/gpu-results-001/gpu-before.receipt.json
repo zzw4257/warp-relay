@@ -1,0 +1,10 @@
+{
+  "arguments": [
+    "nvidia-smi",
+    "--query-gpu=index,name,memory.used,utilization.gpu,clocks.sm,temperature.gpu,power.draw",
+    "--format=csv"
+  ],
+  "exit_code": 0,
+  "timeout": false,
+  "elapsed_seconds": 0.15769410133361816
+}

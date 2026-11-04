@@ -1,0 +1,3 @@
+{"kind":"environment","gpu":"NVIDIA B200","compute_capability":[10,0],"cuda_driver_api":13020,"grid":[2,1,1],"block":[256,1,1],"shared_bytes":1024,"norm_rtol":2e-06,"norm_atol":1e-07,"max_output_bf16_ulp_allowed":1,"graph_nodes":100,"timing_samples":31}
+{"kind":"case","name":"random_0","repeats":1,"passed":false,"mismatches":2050,"max_output_bf16_ulp":50,"output_bit_differences":2048,"max_norm_relative_error":0.198650508672,"guards_intact":true,"inputs_unchanged":true}
+{"kind":"correctness_summary","passed":false,"cases":1}

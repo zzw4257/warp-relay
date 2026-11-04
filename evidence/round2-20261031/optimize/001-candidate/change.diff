@@ -1,0 +1,10 @@
+--- previous.ptx
++++ candidate.ptx
+@@ -26,7 +26,6 @@
+     mul.lo.u32 %r6, %r5, 4;
+     add.u32 %r7, %r3, %r6;
+     bar.sync 0;
+-    bar.sync 0;
+     ld.shared.u32 %r1, [%r7];
+     add.u64 %rd4, %rd1, %rd2;
+     st.global.u32 [%rd4], %r1;

@@ -1,0 +1,33 @@
+// Original Warp Relay microkernel. One CTA, two warps, 64 uint32 elements.
+// Contract: output[t] = input[(t + 32) % 64].
+// Deliberately missing the shared-memory producer/consumer barrier.
+.version 8.0
+.target sm_80
+.address_size 64
+.visible .entry neighbor_exchange(
+    .param .u64 input_ptr,
+    .param .u64 output_ptr
+)
+{
+    .reg .u32 %r<8>;
+    .reg .u64 %rd<5>;
+    .shared .align 4 .b8 exchange[256];
+    ld.param.u64 %rd0, [input_ptr];
+    ld.param.u64 %rd1, [output_ptr];
+    mov.u32 %r0, %tid.x;
+    mul.wide.u32 %rd2, %r0, 4;
+    add.u64 %rd3, %rd0, %rd2;
+    ld.global.u32 %r1, [%rd3];
+    mul.lo.u32 %r2, %r0, 4;
+    mov.u32 %r3, exchange;
+    add.u32 %r4, %r3, %r2;
+    st.shared.u32 [%r4], %r1;
+    xor.b32 %r5, %r0, 32;
+    mul.lo.u32 %r6, %r5, 4;
+    add.u32 %r7, %r3, %r6;
+    bar.sync 0;
+    ld.shared.u32 %r1, [%r7];
+    add.u64 %rd4, %rd1, %rd2;
+    st.global.u32 [%rd4], %r1;
+    ret;
+}

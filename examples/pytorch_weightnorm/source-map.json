@@ -1,0 +1,17 @@
+{
+  "sentryward_revision": "421ff2c7d140341f64d2bc1f1edd045b65a7c403",
+  "kernel": "pytorch__aten_WeightNorm__sm_100a",
+  "ptx_sha256": "0fa57a8625c2f74ffad1684891484cbddc22e3f01372aaa2881334509ed75288",
+  "input_sha256": "66dd6502a0e8e24600fc203e574bfeef8f7fe02d1d48dc603765444412ad45c1",
+  "input_changes": [],
+  "baseline_ptx_changes": [],
+  "mapping_evidence": "Pinned public PTX source header and public reference_binding provenance; CUDA sources inspected, not independently recompiled.",
+  "source_urls": [
+    "https://github.com/pytorch/pytorch/blob/2b3ec34829036a65cd9d1398ea72a0167dc37470/aten/src/ATen/native/cuda/WeightNorm.cu",
+    "https://github.com/pytorch/pytorch/blob/2b3ec34829036a65cd9d1398ea72a0167dc37470/aten/src/ATen/cuda/DeviceUtils.cuh"
+  ],
+  "public_ptx_url": "https://github.com/gpu-verifier/sentryward/blob/421ff2c7d140341f64d2bc1f1edd045b65a7c403/corpus/pytorch__aten_WeightNorm__sm_100a.ptx",
+  "public_input_url": "https://github.com/gpu-verifier/sentryward/blob/421ff2c7d140341f64d2bc1f1edd045b65a7c403/examples/pytorch__aten_WeightNorm__sm_100a/input.json",
+  "public_reference_binding_url": "https://github.com/gpu-verifier/sentryward/blob/421ff2c7d140341f64d2bc1f1edd045b65a7c403/examples/pytorch__aten_WeightNorm__sm_100a/reference_binding.json",
+  "source_kernel": "weight_norm_fwd_first_dim_kernel<c10::BFloat16, float>"
+}

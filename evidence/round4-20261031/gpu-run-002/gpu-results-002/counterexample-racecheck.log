@@ -1,0 +1,6 @@
+========= COMPUTE-SANITIZER
+========= Error: Race reported between Write access at void at::native::<unnamed>::weight_norm_fwd_first_dim_kernel<c10::BFloat16, float>(T1 *, T2 *, const T1 *, const T1 *, int)+0x5f0
+=========     and Read access at void at::native::<unnamed>::weight_norm_fwd_first_dim_kernel<c10::BFloat16, float>(T1 *, T2 *, const T1 *, const T1 *, int)+0x650 [1024 hazards]
+========= 
+========= Target application returned an error
+========= RACECHECK SUMMARY: 1 hazard displayed (1 error, 0 warnings)

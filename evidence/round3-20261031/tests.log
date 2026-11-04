@@ -1,0 +1,39 @@
+test_credential_shape_blocks_export_before_archive_creation (test_export.ExportTests.test_credential_shape_blocks_export_before_archive_creation) ... ok
+test_redaction_is_disclosed_and_original_not_changed (test_export.ExportTests.test_redaction_is_disclosed_and_original_not_changed) ... ok
+test_symlink_cannot_pull_unlisted_content_into_bundle (test_export.ExportTests.test_symlink_cannot_pull_unlisted_content_into_bundle) ... ok
+test_invalid_budgets_rejected_before_process (test_quality.BoundaryTests.test_invalid_budgets_rejected_before_process) ... ok
+test_malformed_model_choices_and_oversized_candidate (test_quality.BoundaryTests.test_malformed_model_choices_and_oversized_candidate) ... ok
+test_malformed_result_types_are_fail_closed (test_quality.BoundaryTests.test_malformed_result_types_are_fail_closed) ... ok
+test_shell_or_python_payload_is_never_an_allowed_candidate (test_quality.BoundaryTests.test_shell_or_python_payload_is_never_an_allowed_candidate) ... ok
+test_token_boundaries_and_string_literals_cannot_change (test_quality.BoundaryTests.test_token_boundaries_and_string_literals_cannot_change) ... ok
+test_inconclusive_baseline_never_reaches_candidate_provider (test_quality.LoopQualityTests.test_inconclusive_baseline_never_reaches_candidate_provider) ... ok
+test_invalid_proposal_is_recorded_without_verification (test_quality.LoopQualityTests.test_invalid_proposal_is_recorded_without_verification) ... ok
+test_public_kernel_uses_real_frontend_and_does_not_choose_branches (test_quality.LoopQualityTests.test_public_kernel_uses_real_frontend_and_does_not_choose_branches) ... ok
+test_public_weightnorm_preserves_contract_and_rejects_unsafe_deletions (test_quality.LoopQualityTests.test_public_weightnorm_preserves_contract_and_rejects_unsafe_deletions) ... ok
+test_reference_python_requires_opt_in_and_is_not_executed (test_quality.LoopQualityTests.test_reference_python_requires_opt_in_and_is_not_executed) ... ok
+test_selected_kernel_survives_provider_failure (test_quality.LoopQualityTests.test_selected_kernel_survives_provider_failure) ... ok
+test_transport_error_keeps_unknown_outcome_and_never_retries (test_quality.ModelFailureTests.test_transport_error_keeps_unknown_outcome_and_never_retries) ... ok
+test_arguments_are_not_shell_commands (test_quality.ProcessTests.test_arguments_are_not_shell_commands) ... ok
+test_missing_worker_keeps_failure_receipt (test_quality.ProcessTests.test_missing_worker_keeps_failure_receipt) ... ok
+test_timeout_kills_child_process_group (test_quality.ProcessTests.test_timeout_kills_child_process_group) ... ok
+test_unsupported_payload_preserved_verbatim (test_quality.ProcessTests.test_unsupported_payload_preserved_verbatim) ... ok
+test_all_diagnostics_and_truncation_are_retained (test_workflow.AcceptanceTests.test_all_diagnostics_and_truncation_are_retained) ... ok
+test_inconclusive_results_never_pass_even_with_partial_passed_check (test_workflow.AcceptanceTests.test_inconclusive_results_never_pass_even_with_partial_passed_check) ... ok
+test_only_barrier_edits_allowed (test_workflow.AcceptanceTests.test_only_barrier_edits_allowed) ... ok
+test_scope_and_checks_are_both_required (test_workflow.AcceptanceTests.test_scope_and_checks_are_both_required) ... ok
+test_crash_with_passing_payload_is_not_accepted (test_workflow.AdapterTests.test_crash_with_passing_payload_is_not_accepted) ... ok
+test_malformed_output_is_tool_failure_and_kept (test_workflow.AdapterTests.test_malformed_output_is_tool_failure_and_kept) ... ok
+test_timeout_retains_partial_output (test_workflow.AdapterTests.test_timeout_retains_partial_output) ... ok
+test_zero_exit_code_is_not_a_pass (test_workflow.AdapterTests.test_zero_exit_code_is_not_a_pass) ... ok
+test_meta_is_disabled_without_explicit_flag_even_with_ambient_key (test_workflow.ModelContractTests.test_meta_is_disabled_without_explicit_flag_even_with_ambient_key) ... ok
+test_schema_accepts_only_source_and_rationale (test_workflow.ModelContractTests.test_schema_accepts_only_source_and_rationale) ... ok
+test_truncated_or_malformed_generation_is_rejected (test_workflow.ModelContractTests.test_truncated_or_malformed_generation_is_rejected) ... ok
+test_noop_model_cannot_pass_by_deleting_computation (test_workflow.RealVerifierTests.test_noop_model_cannot_pass_by_deleting_computation) ... ok
+test_reference_scope_cannot_silently_downgrade (test_workflow.RealVerifierTests.test_reference_scope_cannot_silently_downgrade) ... ok
+test_repair_uses_real_witness_and_reverification (test_workflow.RealVerifierTests.test_repair_uses_real_witness_and_reverification) ... ok
+test_unsafe_optimization_is_rejected_and_prior_candidate_retained (test_workflow.RealVerifierTests.test_unsafe_optimization_is_rejected_and_prior_candidate_retained) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 1.812s
+
+OK

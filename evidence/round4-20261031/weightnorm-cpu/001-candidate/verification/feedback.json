@@ -1,0 +1,155 @@
+{
+  "result": "potential_race",
+  "checks": {
+    "equivalence": "not_requested",
+    "synchronization": "failed"
+  },
+  "diagnostics": [
+    {
+      "code": "conflicting_accesses_unordered",
+      "details": {
+        "count": 1,
+        "internal_stage": "memory_check",
+        "witnesses_path": "races"
+      },
+      "message": "Conflicting accesses have no proven required ordering",
+      "stage": "synchronization"
+    }
+  ],
+  "warnings": [],
+  "warning_count": 0,
+  "warning_samples_truncated": false,
+  "evidence": {
+    "race_count": 1,
+    "race_samples_truncated": false,
+    "races": [
+      {
+        "first": {
+          "access_index": 0,
+          "actor": 128,
+          "bytes": 4,
+          "effect_index": 0,
+          "endpoint": {
+            "address": 5,
+            "kind": "memory"
+          },
+          "event": 8301,
+          "instruction": 3750,
+          "location": {
+            "column": 2,
+            "file": "kernel.ptx",
+            "line": 126
+          },
+          "mode": "write"
+        },
+        "overlap": "constant byte ranges intersect",
+        "region": {
+          "address_space": "shared",
+          "allocation": "cta:(0, 0, 0):shared:physical.shared.cta.0",
+          "bytes": 4,
+          "offset": 512
+        },
+        "second": {
+          "access_index": 0,
+          "actor": 0,
+          "bytes": 4,
+          "effect_index": 0,
+          "endpoint": {
+            "address": 5,
+            "kind": "memory"
+          },
+          "event": 13,
+          "instruction": 6,
+          "location": {
+            "column": 2,
+            "file": "kernel.ptx",
+            "line": 136
+          },
+          "mode": "read"
+        }
+      }
+    ]
+  },
+  "assumptions": [
+    {
+      "category": "analysis assumption",
+      "enabled": true,
+      "key": "duplicate_tma_store_benign",
+      "label": "Duplicate TMA stores",
+      "text": "Matching same-warp duplicate TMA stores are races in the model, but are reported as warnings under the assumption that their stored values agree.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": true,
+      "key": "representative_election",
+      "label": "Representative election",
+      "text": "Election selects lane zero when participating, otherwise the lowest participating lane.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": true,
+      "key": "clc_always_fails",
+      "label": "Failed launch cancellation",
+      "text": "Every cluster launch cancellation request fails.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": false,
+      "key": "representative_branches",
+      "label": "Representative branches",
+      "text": "Choose fallthrough for an unresolved structured if/else; unknown ordinary instruction guards execute. Terminal control uses CFG classification. Known control and explicit choices take precedence.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": false,
+      "key": "bounded_computation_loops",
+      "label": "Bounded computation loops",
+      "text": "Execute a configured number of body iterations for unresolved recognized computation loops, counted separately per invocation. Polling and unclassified loops are never forced to complete.",
+      "triggered": false
+    },
+    {
+      "category": "analysis assumption",
+      "enabled": false,
+      "key": "order_independent_atomics",
+      "label": "Order-independent atomics",
+      "text": "The kernel is correct for every order in which concurrent atomics (atom, red) on the same element take effect. Each atomic is one indivisible access; two atomics on the same element whose scopes include both threads do not race.",
+      "triggered": false
+    }
+  ],
+  "assumption_reporting": "triggered=null means applicability was not measured or analysis was not reached",
+  "assumption_dependent": true,
+  "frontend_assumptions": {
+    "assertion_failure_forms": [
+      "trap",
+      "__assertfail"
+    ],
+    "assertion_uses": 0,
+    "atomic_uses": 0,
+    "bounded_loop_uses": 0,
+    "clc_failure": true,
+    "clc_uses": 0,
+    "data_branch_decisions": [],
+    "election_policy": {
+      "fallback": "lowest_member",
+      "preferred_lane": 0,
+      "strategy": "preferred_member"
+    },
+    "election_uses": 0,
+    "fixed_election": true,
+    "isolated_launch": true,
+    "noalias_unbounded": false,
+    "opaque_compute_regions": [],
+    "pointer_contract": {
+      "aliasing": "distinct_objects_noalias",
+      "extent_bytes": "unbounded"
+    },
+    "representative_branch_uses": 0,
+    "trap_only_equality_assertions_hold": true
+  },
+  "verification_limitations": [],
+  "action": "Inspect both witnessed accesses and their CTA/warp ownership; establish a legal ordering before consuming shared data."
+}

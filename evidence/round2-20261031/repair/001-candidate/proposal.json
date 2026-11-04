@@ -1,0 +1,5 @@
+{
+  "provider": "offline-rule (no model)",
+  "kernel": "// Original Warp Relay microkernel. One CTA, two warps, 64 uint32 elements.\n// Contract: output[t] = input[(t + 32) % 64].\n// Deliberately missing the shared-memory producer/consumer barrier.\n.version 8.0\n.target sm_80\n.address_size 64\n.visible .entry neighbor_exchange(\n    .param .u64 input_ptr,\n    .param .u64 output_ptr\n)\n{\n    .reg .u32 %r<8>;\n    .reg .u64 %rd<5>;\n    .shared .align 4 .b8 exchange[256];\n    ld.param.u64 %rd0, [input_ptr];\n    ld.param.u64 %rd1, [output_ptr];\n    mov.u32 %r0, %tid.x;\n    mul.wide.u32 %rd2, %r0, 4;\n    add.u64 %rd3, %rd0, %rd2;\n    ld.global.u32 %r1, [%rd3];\n    mul.lo.u32 %r2, %r0, 4;\n    mov.u32 %r3, exchange;\n    add.u32 %r4, %r3, %r2;\n    st.shared.u32 [%r4], %r1;\n    xor.b32 %r5, %r0, 32;\n    mul.lo.u32 %r6, %r5, 4;\n    add.u32 %r7, %r3, %r6;\n    bar.sync 0;\n    ld.shared.u32 %r1, [%r7];\n    add.u64 %rd4, %rd1, %rd2;\n    st.global.u32 [%rd4], %r1;\n    ret;\n}\n",
+  "rationale": "The real witness pairs shared write line 24 with read line 28. Try a CTA barrier before the read."
+}
