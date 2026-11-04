@@ -61,7 +61,7 @@ Full 2:22 film with English audio. For sharper code and selectable English capti
 > [Meta Global AI Developer Hackathon 2026](https://dev.meta.ai/events/global-hackathon),
 > **Indie Developer Track · Push the Frontier**. This public repository contains
 > the source and evidence; the [demo film](https://youtu.be/Dbbt4qoKmiI) is available by link.
-> Competition submission is pending. Warp Relay is an independent project.
+> Submitted on 4 November 2026. Warp Relay is an independent project.
 > [Release scope](docs/release-scope.md) · [Delivery status](docs/hackathon/publication-round55.md).
 
 ## Why Warp Relay

@@ -35,7 +35,8 @@ separate executions of the same counterexample candidate. See the
 
 ## Competition status
 
-Publication does not itself submit an entry. The competition draft has the
-project text, public repository URL and film link. Required personal Meta API opinions remain for the
-creator to answer; no survey answers are inferred from publication approval.
+Submitted on 4 November 2026 to **Indie Developer Track · Push the Frontier**.
+The event page changed to **View Submission**, and reopening the saved entry
+confirmed its project text, public repository URL and film link. The project
+remains an independent entry; submission does not imply an award or endorsement.
 The Most Viral X track is not being entered.
