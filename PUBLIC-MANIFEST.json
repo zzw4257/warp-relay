@@ -2647,10 +2647,10 @@
       "host_path_substitutions": 0
     },
     "README.md": {
-      "source": "R53 delivery integration",
-      "source_sha256": "2bd5dfcce1b577fafadd1c50c2112008145e1f74953fb999aef0e16b93c560f0",
-      "distributed_sha256": "2bd5dfcce1b577fafadd1c50c2112008145e1f74953fb999aef0e16b93c560f0",
-      "bytes": 16853,
+      "source": "docs/release/README.md",
+      "source_sha256": "7278db89306a8df16e030a1d56cd2beb37eda17c3e755c617f3c2ea5f22bd3bb",
+      "distributed_sha256": "7278db89306a8df16e030a1d56cd2beb37eda17c3e755c617f3c2ea5f22bd3bb",
+      "bytes": 17234,
       "host_path_substitutions": 0
     },
     "CONTRIBUTING.md": {
@@ -2868,6 +2868,13 @@
       "source_sha256": "6118e2d703b6daaa92ec5cc8433338784fd2d094035159bee9ffe632e3cef8fa",
       "distributed_sha256": "6118e2d703b6daaa92ec5cc8433338784fd2d094035159bee9ffe632e3cef8fa",
       "bytes": 1660,
+      "host_path_substitutions": 0
+    },
+    "docs/assets/readme/film-cover.svg": {
+      "source": "docs/release/readme-assets/film-cover.svg",
+      "source_sha256": "77eef7767927fa924f95fae1bc9867ff734f59332b9f7f60be45a763f2118290",
+      "distributed_sha256": "77eef7767927fa924f95fae1bc9867ff734f59332b9f7f60be45a763f2118290",
+      "bytes": 1753,
       "host_path_substitutions": 0
     }
   },

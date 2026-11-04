@@ -38,9 +38,11 @@
 </p>
 
 <p align="center">
-  <img src="docs/assets/readme/workbench-weightnorm.png" alt="Warp Relay workbench showing the WeightNorm kernel at Candidate 1: a header with Meta diagnosis, GPU records and Evidence loop; a kernel list on the left where TMA pipeline carries a Meta tag; PTX source with line 126 highlighted in the middle; and a conflict witness on the right linking a shared-memory write at PTX line 126 to a read at line 136." width="900">
+  <a href="https://youtu.be/Dbbt4qoKmiI" title="Play the Warp Relay film on YouTube">
+    <img src="docs/assets/readme/film-cover.svg" alt="Play the 2:22 Warp Relay film — Meta Global AI Developer Hackathon 2026" width="900">
+  </a>
   <br>
-  <sub>Real screen, served from this tree with no GPU or model key. WeightNorm Candidate 1 deletes one barrier; the verifier links an unordered write (PTX L126) to a read (L136), so the candidate is rejected. <b>Meta diagnosis</b> in the header opens the recorded model response.</sub>
+  <a href="https://youtu.be/Dbbt4qoKmiI"><strong>▶ Watch the full film</strong></a> · 2:22 · English captions
 </p>
 
 > [!NOTE]
@@ -68,6 +70,12 @@ results stay distinct. In the bundled demo, every value on screen is read from a
 saved record; a new CPU analysis writes its own record as it runs.
 
 ## What it does
+
+<p align="center">
+  <img src="docs/assets/readme/workbench-weightnorm.png" alt="Warp Relay workbench showing the WeightNorm kernel at Candidate 1: a header with Meta diagnosis, GPU records and Evidence loop; a kernel list on the left where TMA pipeline carries a Meta tag; PTX source with line 126 highlighted in the middle; and a conflict witness on the right linking a shared-memory write at PTX line 126 to a read at line 136." width="900">
+  <br>
+  <sub>Real screen, served from this tree with no GPU or model key. WeightNorm Candidate 1 deletes one barrier; the verifier links an unordered write (PTX L126) to a read (L136), so the candidate is rejected. <b>Meta diagnosis</b> in the header opens the recorded model response.</sub>
+</p>
 
 - **Case library.** Twelve cases from PyTorch, Triton Gluon, TileLang and TIRx
   kernels plus original microfixtures, each with its contract, versions and verifier record.

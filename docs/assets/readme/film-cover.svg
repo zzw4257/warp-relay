@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="540" viewBox="0 0 1280 540" role="img" aria-labelledby="title desc">
+  <title id="title">Play the Warp Relay film — 2 minutes 22 seconds</title>
+  <desc id="desc">Warp Relay's original bracket mark, a large play button, and Meta Global AI Developer Hackathon 2026. Opens the full English-captioned film on YouTube.</desc>
+  <rect width="1280" height="540" rx="20" fill="#f1f0ec"/>
+  <g transform="translate(72 63) scale(1.75)" fill="none" stroke-width="3">
+    <path d="M13 4H5v19h8M19 9h8v19h-8" stroke="#344b52"/>
+    <path d="M12 16h8" stroke="#ac8561"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#344b52">
+    <text x="148" y="105" font-size="38" font-weight="700" letter-spacing="-1">Warp Relay</text>
+    <text x="72" y="228" font-size="54" font-weight="700" letter-spacing="-1.8">Every candidate,</text>
+    <text x="72" y="293" font-size="54" font-weight="700" letter-spacing="-1.8">connected to the evidence.</text>
+    <text x="74" y="349" font-size="23" fill="#667074">The full product film · English captions</text>
+  </g>
+  <circle cx="1062" cy="241" r="82" fill="#344b52"/>
+  <path d="M1045 208L1045 274L1094 241Z" fill="#ffffff"/>
+  <text x="1062" y="367" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="1.2" fill="#344b52">PLAY · 2:22</text>
+  <path d="M72 424H1208" stroke="#d8d8d2"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="21">
+    <text x="74" y="479" font-weight="700" fill="#344b52">zzw4257</text>
+    <path d="M193 472H223" stroke="#ac8561" stroke-width="4"/>
+    <text x="247" y="479" fill="#526065">Meta Global AI Developer Hackathon 2026</text>
+  </g>
+</svg>
