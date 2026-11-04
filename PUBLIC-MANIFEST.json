@@ -2648,8 +2648,8 @@
     },
     "README.md": {
       "source": "docs/release/README.md",
-      "source_sha256": "88de15070013c15ca38b8dc3117c11332ad419c6b3a9552a21cf3def546353b0",
-      "distributed_sha256": "88de15070013c15ca38b8dc3117c11332ad419c6b3a9552a21cf3def546353b0",
+      "source_sha256": "5bd0f603581c98e91ea5ef11da68b83c6a836ad48871ebcd5fa2cc599b401b1a",
+      "distributed_sha256": "5bd0f603581c98e91ea5ef11da68b83c6a836ad48871ebcd5fa2cc599b401b1a",
       "bytes": 17611,
       "host_path_substitutions": 0
     },
@@ -2879,16 +2879,16 @@
     },
     "docs/hackathon/readme-media.md": {
       "source": "docs/release/readme-media.md",
-      "source_sha256": "df73dbed760326c67802fc9d02a2817d8b8f878f0f38b070b187dddf65310c09",
-      "distributed_sha256": "df73dbed760326c67802fc9d02a2817d8b8f878f0f38b070b187dddf65310c09",
-      "bytes": 2142,
+      "source_sha256": "746d9c9da78afcfd460d4500ab277b7e282b42c6de25c8265053062e905fcb2a",
+      "distributed_sha256": "746d9c9da78afcfd460d4500ab277b7e282b42c6de25c8265053062e905fcb2a",
+      "bytes": 2244,
       "host_path_substitutions": 0
     },
     "docs/hackathon/publication-round55.md": {
       "source": "docs/publication-round55.md",
-      "source_sha256": "c2addb8d1ab3401e7915df2d102ee94f19b473aa6dc67b7134fd01a5e5a71323",
-      "distributed_sha256": "c2addb8d1ab3401e7915df2d102ee94f19b473aa6dc67b7134fd01a5e5a71323",
-      "bytes": 2028,
+      "source_sha256": "55173f583eec311205a533d739286703c6cb25e4d83e3bf17f9c92eb3cdbdbef",
+      "distributed_sha256": "55173f583eec311205a533d739286703c6cb25e4d83e3bf17f9c92eb3cdbdbef",
+      "bytes": 2174,
       "host_path_substitutions": 0
     }
   },

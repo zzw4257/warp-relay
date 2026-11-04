@@ -12,8 +12,9 @@ allowlisted core package with its evidence manifest, not the working media archi
 
 The README contains an original brand cover, a linked full film, and a collapsible
 720p GitHub player. A private-review attachment failed anonymous access after the
-repository became public; a new public-context upload is undergoing final access
-verification. [Preview format and credits](readme-media.md).
+repository became public; a new upload was associated using GitHub’s README editor. On 4 November at
+22:26 UTC an anonymous range request returned HTTP 206, `video/mp4`, and the
+expected 9,458,094-byte total length. [Preview format and credits](readme-media.md).
 
 ## Hosted film
 
@@ -35,6 +36,6 @@ separate executions of the same counterexample candidate. See the
 ## Competition status
 
 Publication does not itself submit an entry. The competition draft has the
-project text and film link. Required personal Meta API opinions remain for the
+project text, public repository URL and film link. Required personal Meta API opinions remain for the
 creator to answer; no survey answers are inferred from publication approval.
 The Most Viral X track is not being entered.
