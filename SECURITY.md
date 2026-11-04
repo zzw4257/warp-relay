@@ -24,13 +24,12 @@ running the workbench on their own machine:
 
 ## Reporting a vulnerability
 
-This project does not yet have a public repository or a private reporting
-channel. Until one exists:
+The repository is public. A dedicated private reporting channel has not been
+verified. Until one is available:
 
 - **Do not open a public issue containing secrets, tokens, private paths or
   exploit details.**
-- When a public repository is published, use its private vulnerability
-  reporting feature if enabled. Otherwise, open a minimal public issue that
+- Use the repository’s private vulnerability reporting feature if enabled. Otherwise, open a minimal public issue that
   asks the maintainer for a private channel, with no technical details.
 
 If you find a credential in this tree, treat it as compromised: report its

@@ -158,8 +158,8 @@ def check(root: Path) -> dict:
                 resolve(src, attrs['srcset'], 'image')
 
     readme = (root / 'README.md').read_text(encoding='utf-8')
-    if 'Unpublished' not in readme and not re.search(r'private\s+for\s+review', readme, re.I):
-        errors.append('README.md: preparation/private-review status is not stated')
+    if not re.search(r'Unpublished|private\s+for\s+review|public\s+repository', readme, re.I):
+        errors.append('README.md: repository publication status is not stated')
     stats['external'] = sorted(stats['external'])
     return {'root': '.', 'errors': errors, 'warnings': warnings, **stats, 'network_requests': 0}
 

@@ -9,6 +9,10 @@ file dates on the development machine. `pyproject.toml` declares version
 
 ### Added
 
+- Owner-approved public repository, branded film cover and native 720p README
+  preview, with the 1080p YouTube film retained. See
+  [publication record](docs/hackathon/publication-round55.md).
+
 - Shareable workbench locations: `#case/<id>/<version>/<tab>[/<step>[/L<line>]]`
   restores a case, version, tab, Meta step and inspected PTX region after a
   reload or in a new browser. The address bar follows the selection without

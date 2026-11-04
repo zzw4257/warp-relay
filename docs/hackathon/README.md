@@ -10,7 +10,9 @@ They describe the entry, not the software; for the software start at the
 
 | File | Contents |
 | --- | --- |
-| [delivery-status-round53.md](delivery-status-round53.md) | Current private repository, unlisted film and submission status |
+| [publication-round55.md](publication-round55.md) | Current public repository, film and pending submission |
+| [readme-media.md](readme-media.md) | Native video preview, encoding and licenses |
+| [delivery-status-round53.md](delivery-status-round53.md) | Historical private-review checkpoint |
 | [submission-round52.md](submission-round52.md) | Current submission copy in short, medium and full lengths, prepared locally and not yet submitted |
 | [submission-form-round52.md](submission-form-round52.md) | Verified form fields and copy within the actual character limits |
 | [video-description-round52.md](video-description-round52.md) | Description for the separately produced film (not part of this tree) |

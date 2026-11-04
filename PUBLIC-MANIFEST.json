@@ -1,7 +1,7 @@
 {
   "schema": "warp-relay.public-candidate/v1",
-  "published": false,
-  "candidate_round": "R53",
+  "published": true,
+  "candidate_round": "R55",
   "repository_url": "https://github.com/zzw4257/warp-relay",
   "demo_video_url": "https://youtu.be/Dbbt4qoKmiI",
   "creator": "zzw4257",
@@ -2185,10 +2185,10 @@
       "host_path_substitutions": 0
     },
     "scripts/check_release_docs.py": {
-      "source": "R53: validate explicit private-review status as well as unpublished candidate status",
-      "source_sha256": "a22f2573564b059af4ce7feb21848887295448bf98c89e1aea8a781b76aafe7b",
-      "distributed_sha256": "a22f2573564b059af4ce7feb21848887295448bf98c89e1aea8a781b76aafe7b",
-      "bytes": 8373,
+      "source": "scripts/check_release_docs.py",
+      "source_sha256": "adbfb0009df707c66f2260550ec67b1abe0f4ef0882ff00412b119a090963a66",
+      "distributed_sha256": "adbfb0009df707c66f2260550ec67b1abe0f4ef0882ff00412b119a090963a66",
+      "bytes": 8369,
       "host_path_substitutions": 0
     },
     "scripts/demo.py": {
@@ -2648,30 +2648,30 @@
     },
     "README.md": {
       "source": "docs/release/README.md",
-      "source_sha256": "9ebd2a618eeb3ca9589f4ba80ef44531acff26807936e53be68258df00d403cb",
-      "distributed_sha256": "9ebd2a618eeb3ca9589f4ba80ef44531acff26807936e53be68258df00d403cb",
-      "bytes": 17639,
+      "source_sha256": "88de15070013c15ca38b8dc3117c11332ad419c6b3a9552a21cf3def546353b0",
+      "distributed_sha256": "88de15070013c15ca38b8dc3117c11332ad419c6b3a9552a21cf3def546353b0",
+      "bytes": 17611,
       "host_path_substitutions": 0
     },
     "CONTRIBUTING.md": {
       "source": "docs/release/CONTRIBUTING.md",
-      "source_sha256": "032a64e6de161ca7883c04096b22b723c0591e1955542dca4305a480173a447a",
-      "distributed_sha256": "032a64e6de161ca7883c04096b22b723c0591e1955542dca4305a480173a447a",
-      "bytes": 3033,
+      "source_sha256": "cd0c628f35084423f9c4a4ae6aa3753e7be1d4bc9515815630813cb2f10eda4e",
+      "distributed_sha256": "cd0c628f35084423f9c4a4ae6aa3753e7be1d4bc9515815630813cb2f10eda4e",
+      "bytes": 3024,
       "host_path_substitutions": 0
     },
     "SECURITY.md": {
       "source": "docs/release/SECURITY.md",
-      "source_sha256": "c91d3720d82bd426ba86ee01adf1306e32b97b69925b50ffe1ccd83ca48d1817",
-      "distributed_sha256": "c91d3720d82bd426ba86ee01adf1306e32b97b69925b50ffe1ccd83ca48d1817",
-      "bytes": 1925,
+      "source_sha256": "19ec1cf79d1b02f8f6e1120df40a0463d10d8d293499634fae484f333bc177a5",
+      "distributed_sha256": "19ec1cf79d1b02f8f6e1120df40a0463d10d8d293499634fae484f333bc177a5",
+      "bytes": 1909,
       "host_path_substitutions": 0
     },
     "CHANGELOG.md": {
       "source": "docs/release/CHANGELOG.md",
-      "source_sha256": "085d189a79586c67be0a32aa081eab33c3ac69ec89a13972f5e8ece6e0225fc3",
-      "distributed_sha256": "085d189a79586c67be0a32aa081eab33c3ac69ec89a13972f5e8ece6e0225fc3",
-      "bytes": 5643,
+      "source_sha256": "3fc674b0038e0cb835d02a7e687a1662e31255f493d1d4c2beb478d71f34eaf5",
+      "distributed_sha256": "3fc674b0038e0cb835d02a7e687a1662e31255f493d1d4c2beb478d71f34eaf5",
+      "bytes": 5838,
       "host_path_substitutions": 0
     },
     "docs/README.md": {
@@ -2690,9 +2690,9 @@
     },
     "docs/maintaining.md": {
       "source": "docs/release/maintaining.md",
-      "source_sha256": "d38b06c3426950e5ce9a90cf1e515478bb0bcd470561c0345038ce1e5bfd7255",
-      "distributed_sha256": "d38b06c3426950e5ce9a90cf1e515478bb0bcd470561c0345038ce1e5bfd7255",
-      "bytes": 4360,
+      "source_sha256": "85a02e29fd8a5391195dd49786f96ddaa730013ba97a56edd1b15c0930c523d4",
+      "distributed_sha256": "85a02e29fd8a5391195dd49786f96ddaa730013ba97a56edd1b15c0930c523d4",
+      "bytes": 4595,
       "host_path_substitutions": 0
     },
     "docs/reproduction.md": {
@@ -2711,16 +2711,16 @@
     },
     "docs/release-scope.md": {
       "source": "docs/release/release-scope.md",
-      "source_sha256": "b7e297e116c03442032eb7002e1068f1358b97a6a38e5c72909543443990954d",
-      "distributed_sha256": "b7e297e116c03442032eb7002e1068f1358b97a6a38e5c72909543443990954d",
-      "bytes": 3798,
+      "source_sha256": "8f089b76b553a7cde9fe85bd376b54ebc6c3f969497dc01f0fe3d0d5ee5fa172",
+      "distributed_sha256": "8f089b76b553a7cde9fe85bd376b54ebc6c3f969497dc01f0fe3d0d5ee5fa172",
+      "bytes": 3854,
       "host_path_substitutions": 0
     },
     "docs/hackathon/README.md": {
-      "source": "R53 delivery integration",
-      "source_sha256": "7af6ee73566f618acff1f1e87bba7adc0473711b923ae48cca7dffdfac62fa1c",
-      "distributed_sha256": "7af6ee73566f618acff1f1e87bba7adc0473711b923ae48cca7dffdfac62fa1c",
-      "bytes": 1374,
+      "source": "docs/release/hackathon-index.md",
+      "source_sha256": "ddea31bf482fd0a8d45f7928a4ff6b55554afa598139eb162d0d66505786e3f7",
+      "distributed_sha256": "ddea31bf482fd0a8d45f7928a4ff6b55554afa598139eb162d0d66505786e3f7",
+      "bytes": 1542,
       "host_path_substitutions": 0
     },
     ".github/pull_request_template.md": {
@@ -2879,14 +2879,22 @@
     },
     "docs/hackathon/readme-media.md": {
       "source": "docs/release/readme-media.md",
-      "source_sha256": "75a9ebdf09e90d2cd493a8bf499e03d891fa622cb67ecfd823a97ab91439377e",
-      "distributed_sha256": "75a9ebdf09e90d2cd493a8bf499e03d891fa622cb67ecfd823a97ab91439377e",
-      "bytes": 2040,
+      "source_sha256": "df73dbed760326c67802fc9d02a2817d8b8f878f0f38b070b187dddf65310c09",
+      "distributed_sha256": "df73dbed760326c67802fc9d02a2817d8b8f878f0f38b070b187dddf65310c09",
+      "bytes": 2142,
+      "host_path_substitutions": 0
+    },
+    "docs/hackathon/publication-round55.md": {
+      "source": "docs/publication-round55.md",
+      "source_sha256": "c2addb8d1ab3401e7915df2d102ee94f19b473aa6dc67b7134fd01a5e5a71323",
+      "distributed_sha256": "c2addb8d1ab3401e7915df2d102ee94f19b473aa6dc67b7134fd01a5e5a71323",
+      "bytes": 2028,
       "host_path_substitutions": 0
     }
   },
   "policy": "Allowlisted core code and public/new-project evidence. No credentials, media, private research, server inventory, CLI streams or dependency trees.",
   "audit_limits": "Bounded file-content patterns and explicit inclusion review; no credential-store access or online license/security lookup.",
   "evidence": "Original local inputs untouched. Any release substitution is counted and both hashes retained.",
-  "repository_visibility": "private"
+  "repository_visibility": "public",
+  "repository_visibility_at_preparation": "public"
 }

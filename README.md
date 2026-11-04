@@ -48,7 +48,7 @@
 <details>
 <summary><strong>▶ Play here on GitHub · 720p · 9.5 MB</strong></summary>
 
-https://github.com/user-attachments/assets/8f3c3f2b-b4c7-47ab-8727-ca5d2851cf8b
+https://github.com/user-attachments/assets/072470db-3bcf-4769-8c83-fcb15753ef5e
 
 Full 2:22 film with English audio. For sharper code and selectable English captions,
 [watch the 1080p version on YouTube](https://youtu.be/Dbbt4qoKmiI).
@@ -59,10 +59,10 @@ Full 2:22 film with English audio. For sharper code and selectable English capti
 > [!NOTE]
 > Built by [zzw4257](https://github.com/zzw4257) for the
 > [Meta Global AI Developer Hackathon 2026](https://dev.meta.ai/events/global-hackathon),
-> **Indie Developer Track · Push the Frontier**. This repository is currently
-> private for review; the [demo film](https://youtu.be/Dbbt4qoKmiI) is available by link.
+> **Indie Developer Track · Push the Frontier**. This public repository contains
+> the source and evidence; the [demo film](https://youtu.be/Dbbt4qoKmiI) is available by link.
 > Competition submission is pending. Warp Relay is an independent project.
-> [Release scope](docs/release-scope.md) · [Delivery status](docs/hackathon/delivery-status-round53.md).
+> [Release scope](docs/release-scope.md) · [Delivery status](docs/hackathon/publication-round55.md).
 
 ## Why Warp Relay
 
@@ -303,7 +303,7 @@ only and has no authentication.
 
 ## Contributing
 
-Issues and pull requests are welcome once a public repository exists. Read
+Issues and pull requests are welcome. Read
 [CONTRIBUTING.md](CONTRIBUTING.md) first: evidence records are immutable, new
 claims need a saved record, and limits stay next to results. Please report
 security problems as described in [SECURITY.md](SECURITY.md), and never paste

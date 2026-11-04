@@ -1,9 +1,10 @@
 # Release scope and licenses
 
-This tree is a locally prepared, **unpublished** repository candidate. No
-repository, remote, upload or submission has been created from it. The offline
-audit described here is a bounded engineering check, not legal clearance or a
-guarantee that every possible secret format would be detected.
+This curated source tree was made public with the owner’s approval on November
+4, 2026. The [publication record](hackathon/publication-round55.md) separates
+repository publication, hosted film and the still-pending competition submission.
+The offline audit described here is a bounded engineering check, not legal
+clearance or a guarantee that every possible secret format would be detected.
 
 ## Included
 
@@ -26,7 +27,7 @@ SentryWard is fetched from its pinned public commit only when you run
 - Keys, account and session configuration, local jobs, server inventory,
   machine-specific transfer receipts, agent/CLI transcripts, private research
   trees, feedback attachments, vendor/build/dependency caches and binaries.
-- No `.git` directory, remote URL or publication setting is created.
+- The offline packaging script does not create Git history or change remote visibility.
 - **The promotional film and all production media**: captures, generated
   narration and imagery, music, sound effects, raw audio, mix stems and the film
   toolchain. This is a reproducible core application, not a film project. The
@@ -52,14 +53,13 @@ RMSNorm source corroborates, but is not asserted to produce, the exact PTX. The
 pinned SentryWard distribution is the source actually copied. Keep these gaps
 visible; don't describe these kernels as original.
 
-## Before a public release
+## Publication status
 
-Publication requires a separately approved repository destination and a final
-check of the exact tree being pushed. Current status, destinations and open
-questions are in
-[hackathon/publication-readiness-round48.md](hackathon/publication-readiness-round48.md),
-which supplements the earlier
-[R47 record](hackathon/publication-readiness-round47.md). The current entry copy
-is [hackathon/submission-round52.md](hackathon/submission-round52.md).
-Creating a repository, changing visibility, uploading or submitting are separate
-actions; none has been performed from this tree.
+The source repository is public. The complete film is separately hosted on
+YouTube, with a compressed GitHub attachment linked from the README. Neither
+film is a binary in this core source tree. Their licenses and provenance are
+recorded in [README media](hackathon/readme-media.md).
+
+See [the current publication record](hackathon/publication-round55.md) and
+[submission copy](hackathon/submission-round52.md). The R47–R53 readiness records
+are historical checkpoints, not current claims that hosting is absent.

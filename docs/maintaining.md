@@ -23,7 +23,9 @@ workspace wholesale:
 5. A ZIP is written next to the tree and CRC-checked. Nothing is pushed, uploaded
    or published by the build.
 
-`"published": false` in the manifest stays false until a human publishes the tree.
+The manifest records the repository’s verified publication state. The packaging
+script itself never publishes; the owner separately approved the public
+repository on November 4, 2026.
 
 ## Verify a snapshot
 
@@ -40,7 +42,7 @@ next snapshot is built.
 
 ## README images
 
-All images in `docs/assets/readme/` are real:
+Images in `docs/assets/readme/` use the project’s original brand or actual UI:
 
 | File | How it was made |
 | --- | --- |
@@ -50,6 +52,7 @@ All images in `docs/assets/readme/` are real:
 | `meta-diagnosis-stages.png` | `#case/tma` → Diagnosis → Meta. The evidence panel at each of the four stages, cropped to its own bounds, arranged 2×2 without retouching |
 | `evidence-loop.png` | `#flow`, first step of the saved WeightNorm run |
 | `gpu-records.png` | `#story`, GPU run 2 |
+| `film-cover.svg` | Original vector brand cover and play control; links to the film |
 
 To refresh them after a UI change, serve this tree on a free port with a
 throwaway `--state` directory, capture the same routes with any headless
@@ -77,11 +80,11 @@ released.
 - Use relative links only. `scripts/check_release_docs.py` rejects placeholder
   hosts and links to files that don't exist.
 
-## Before publishing (not done yet)
+## Publication maintenance
 
-- Choose and approve the repository destination; then add its URL where the
-  README currently states that no repository exists.
-- Decide on issue tracking and enable private vulnerability reporting, then
-  update `SECURITY.md`.
+- Keep the [publication record](hackathon/publication-round55.md), README and
+  manifest consistent with actual hosting and submission status.
 - Re-run the checks above on the exact tree being pushed.
-- The current release status lives in [hackathon/publication-readiness-round47.md](hackathon/publication-readiness-round47.md).
+- Verify the native README video without authentication after visibility changes;
+  an attachment uploaded while private can retain restricted access.
+- Confirm private vulnerability reporting before advertising it in `SECURITY.md`.

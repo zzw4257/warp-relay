@@ -4,8 +4,8 @@ Thanks for taking a look. Warp Relay is a small project whose value depends on
 one rule: **every claim on screen must trace back to a saved record.** These
 guidelines exist to keep that true.
 
-> This tree is an unpublished candidate. Until a public repository exists,
-> there is no issue tracker or pull-request queue to send changes to.
+> Use this repository’s Issues and Pull requests tabs for contributions.
+> Keep sensitive security details out of public discussions.
 
 ## Before you start
 

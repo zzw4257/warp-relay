@@ -6,7 +6,7 @@ re-encoded at 1280×720, 30 fps, H.264/AAC. It is 9,458,094 bytes and 142.144 se
 The 1080p version and selectable English captions remain on
 [YouTube](https://youtu.be/Dbbt4qoKmiI).
 
-- [GitHub preview attachment](https://github.com/user-attachments/assets/8f3c3f2b-b4c7-47ab-8727-ca5d2851cf8b)
+- [GitHub preview attachment](https://github.com/user-attachments/assets/072470db-3bcf-4769-8c83-fcb15753ef5e)
 - Preview SHA-256: `0ac72ec451b62d4802a8a8553d3311c2ac7e4a6894a164830c29a6696285fe12`
 - Source master SHA-256: `7492657b300227294b89b0608183d9b87641d7ea664bd35b852fca3c8eb94e99`
 - Encoding: two-pass libx264, 440 kb/s video, Lanczos 1280×720 scaling,
@@ -15,9 +15,11 @@ The 1080p version and selectable English captions remain on
   a native player; authenticated playback progressed with 1280×720 decoded frames.
   Dense code is best viewed in the 1080p film or in the workbench.
 
-The attachment follows repository access while the repository is private, as
-[GitHub documents](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/attaching-files).
-It is hosted as an attachment, not committed as a large binary into the code tree.
+The repository is public. The original attachment was uploaded during private
+review and did not become anonymously readable after publication. A replacement
+was uploaded in the public repository context. Anonymous access is being checked
+as part of the [publication record](publication-round55.md).
+The film is hosted as an attachment, not committed as a large binary into the code tree.
 
 ## Media credits
 
