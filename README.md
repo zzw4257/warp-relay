@@ -48,7 +48,7 @@
 <details>
 <summary><strong>▶ Play here on GitHub · 720p · 9.5 MB</strong></summary>
 
-https://github.com/user-attachments/assets/072470db-3bcf-4769-8c83-fcb15753ef5e
+https://github.com/user-attachments/assets/61e86c13-65b4-424b-8f49-f341599e3d95
 
 Full 2:22 film with English audio. For sharper code and selectable English captions,
 [watch the 1080p version on YouTube](https://youtu.be/Dbbt4qoKmiI).
