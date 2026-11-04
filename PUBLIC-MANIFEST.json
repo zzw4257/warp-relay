@@ -2843,10 +2843,10 @@
       "host_path_substitutions": 0
     },
     ".gitignore": {
-      "source": "generated release document",
+      "source": "R53: scope scratch reviews exclusion to repository root; retain bundled Meta reviews",
       "source_sha256": "92fde239856ea5fcdcc29acee2c1550192bcefd50e6c716d8761b67422dd87e9",
-      "distributed_sha256": "92fde239856ea5fcdcc29acee2c1550192bcefd50e6c716d8761b67422dd87e9",
-      "bytes": 247,
+      "distributed_sha256": "d39d80cd0c681545e58fca8c26983185099abb279d9e995c011f40db38a155e4",
+      "bytes": 248,
       "host_path_substitutions": 0
     },
     "docs/provenance.md": {

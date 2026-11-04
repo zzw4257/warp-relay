@@ -1,0 +1,619 @@
+{
+  "schema": "warp-relay.review-audit/v1",
+  "reviewed_at": "2026-11-03T17:31:33.945538+00:00",
+  "reviewer": "Codex offline source and record review",
+  "case_id": "tma",
+  "version": 0,
+  "source_sha256": "905051ea85bc9b8444fa65699618c05d632bc87b310bc1f5edbcf92e684f49ce",
+  "diagnosis_sha256": "e9093f703f54b3ef40efda54fa721bd55e53629ba17e979144b0d12de4db51f9",
+  "response_sha256": "a5d5b8b33678768198a314cef57972e3d53226e48e233dc720354c3c43a44b21",
+  "integrity_checks": [
+    "Frozen source and verifier identity",
+    "Request hash and exact input packet",
+    "Response model, ID and usage agree with receipt",
+    "Parsed response matches stored diagnosis",
+    "Every typed citation and mapped location revalidated"
+  ],
+  "supported_observations": [
+    "Two modeled 4-byte writes overlap shared offset 49152; the verifier reports no proven required ordering.",
+    "Both accesses map to four PTX debug-region starts, not exact conflicting instructions.",
+    "L402 is address arithmetic; L348, L510 and L613 begin stmatrix regions.",
+    "Nearby wait_group and bar.sync are present, but their presence alone does not establish ordering between the witnessed accesses.",
+    "Representative election is enabled and triggered; the result remains assumption-dependent."
+  ],
+  "comparison": {
+    "access_coverage": "Both fixed rules and Meta cite 2/2 accesses.",
+    "mapping_limits": "Both acknowledge 2/2 ambiguous mappings.",
+    "added_context": "Meta combines overlap, instruction classes and nearby synchronization into a focused source-inspection question.",
+    "win_claim": false,
+    "limitation": "One visible case, no held-out comparison or measured investigation-time improvement."
+  },
+  "remaining": [
+    "Exact conflicting PTX instruction is unresolved.",
+    "No code edit, repair or second model round was executed.",
+    "No numerical equivalence or GPU performance conclusion follows."
+  ],
+  "follow_up": {
+    "action": "inspect_debug_regions",
+    "executed": "Read actual immutable source context locally",
+    "regions": [
+      348,
+      402,
+      510,
+      613
+    ],
+    "source_lines": 124,
+    "context": [
+      {
+        "id": "context:338:368",
+        "kind": "source_context",
+        "requested_by": "race:0:first",
+        "mapping": {
+          "kind": "debug_region",
+          "lines": [
+            348
+          ]
+        },
+        "value": {
+          "source_sha256": "905051ea85bc9b8444fa65699618c05d632bc87b310bc1f5edbcf92e684f49ce",
+          "start": 338,
+          "end": 368,
+          "lines": [
+            {
+              "line": 338,
+              "text": "\tadd.f32 \t%r200, %r112, %r156;"
+            },
+            {
+              "line": 339,
+              "text": "\tadd.f32 \t%r201, %r113, %r157;"
+            },
+            {
+              "line": 340,
+              "text": "\tadd.f32 \t%r202, %r130, %r170;"
+            },
+            {
+              "line": 341,
+              "text": "\tadd.f32 \t%r203, %r131, %r171;"
+            },
+            {
+              "line": 342,
+              "text": "\tadd.f32 \t%r204, %r132, %r172;"
+            },
+            {
+              "line": 343,
+              "text": "\tadd.f32 \t%r205, %r133, %r173;"
+            },
+            {
+              "line": 344,
+              "text": "\t.loc\t1 289 5, function_name $L__info_string0, inlined_at 1 326 22 // 04-tma.py:289:5"
+            },
+            {
+              "line": 345,
+              "text": "\tcp.async.bulk.wait_group.read \t0;"
+            },
+            {
+              "line": 346,
+              "text": "\tbar.sync \t0;"
+            },
+            {
+              "line": 347,
+              "text": "\t.loc\t1 290 5, function_name $L__info_string0, inlined_at 1 326 22 // 04-tma.py:290:5"
+            },
+            {
+              "line": 348,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r8], {%r174, %r175, %r176, %r177};"
+            },
+            {
+              "line": 349,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r9], {%r182, %r183, %r184, %r185};"
+            },
+            {
+              "line": 350,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r10], {%r190, %r191, %r192, %r193};"
+            },
+            {
+              "line": 351,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r11], {%r198, %r199, %r200, %r201};"
+            },
+            {
+              "line": 352,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r13], {%r178, %r179, %r180, %r181};"
+            },
+            {
+              "line": 353,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r14], {%r186, %r187, %r188, %r189};"
+            },
+            {
+              "line": 354,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r15], {%r194, %r195, %r196, %r197};"
+            },
+            {
+              "line": 355,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r16], {%r202, %r203, %r204, %r205};"
+            },
+            {
+              "line": 356,
+              "text": "\t.loc\t1 291 5, function_name $L__info_string0, inlined_at 1 326 22 // 04-tma.py:291:5"
+            },
+            {
+              "line": 357,
+              "text": "\tfence.proxy.async.shared::cta;"
+            },
+            {
+              "line": 358,
+              "text": "\t.loc\t1 293 5, function_name $L__info_string0, inlined_at 1 326 22 // 04-tma.py:293:5"
+            },
+            {
+              "line": 359,
+              "text": "\tbar.sync \t0;"
+            },
+            {
+              "line": 360,
+              "text": "\telect.sync \t%r206|%p24, -1;"
+            },
+            {
+              "line": 361,
+              "text": "\tand.pred \t%p21, %p14, %p24;"
+            },
+            {
+              "line": 362,
+              "text": "\t// begin inline asm"
+            },
+            {
+              "line": 363,
+              "text": "\t@%p21 cp.async.bulk.tensor.2d.global.shared::cta.bulk_group [%rd6, {%r454, %r214}], [%r210];"
+            },
+            {
+              "line": 364,
+              "text": ""
+            },
+            {
+              "line": 365,
+              "text": "\t// end inline asm"
+            },
+            {
+              "line": 366,
+              "text": "\tcp.async.bulk.commit_group;"
+            },
+            {
+              "line": 367,
+              "text": "\t.loc\t1 294 12, function_name $L__info_string0, inlined_at 1 326 22 // 04-tma.py:294:12"
+            },
+            {
+              "line": 368,
+              "text": "\tadd.s32 \t%r457, %r457, 1;"
+            }
+          ]
+        }
+      },
+      {
+        "id": "context:392:422",
+        "kind": "source_context",
+        "requested_by": "race:0:first",
+        "mapping": {
+          "kind": "debug_region",
+          "lines": [
+            402
+          ]
+        },
+        "value": {
+          "source_sha256": "905051ea85bc9b8444fa65699618c05d632bc87b310bc1f5edbcf92e684f49ce",
+          "start": 392,
+          "end": 422,
+          "lines": [
+            {
+              "line": 392,
+              "text": "\tor.b32 \t%r463, %r466, 3072;"
+            },
+            {
+              "line": 393,
+              "text": "\txor.b32 \t%r462, %r466, 576;"
+            },
+            {
+              "line": 394,
+              "text": "\tor.b32 \t%r461, %r462, 1024;"
+            },
+            {
+              "line": 395,
+              "text": "\tor.b32 \t%r460, %r462, 2048;"
+            },
+            {
+              "line": 396,
+              "text": "\tor.b32 \t%r459, %r462, 3072;"
+            },
+            {
+              "line": 397,
+              "text": "\tmov.b32 \t%r467, 0;"
+            },
+            {
+              "line": 398,
+              "text": "$L__BB0_4:                              // %._crit_edge"
+            },
+            {
+              "line": 399,
+              "text": "\t.loc\t1 287 12, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:287:12"
+            },
+            {
+              "line": 400,
+              "text": "\tshl.b32 \t%r215, %r467, 6;"
+            },
+            {
+              "line": 401,
+              "text": "\t.loc\t1 290 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:290:5"
+            },
+            {
+              "line": 402,
+              "text": "\tadd.s32 \t%r216, %r35, %r466;"
+            },
+            {
+              "line": 403,
+              "text": "\tadd.s32 \t%r217, %r35, %r465;"
+            },
+            {
+              "line": 404,
+              "text": "\tadd.s32 \t%r218, %r35, %r464;"
+            },
+            {
+              "line": 405,
+              "text": "\tadd.s32 \t%r219, %r35, %r463;"
+            },
+            {
+              "line": 406,
+              "text": "\tadd.s32 \t%r220, %r35, %r462;"
+            },
+            {
+              "line": 407,
+              "text": "\tadd.s32 \t%r221, %r35, %r461;"
+            },
+            {
+              "line": 408,
+              "text": "\tadd.s32 \t%r222, %r35, %r460;"
+            },
+            {
+              "line": 409,
+              "text": "\tadd.s32 \t%r223, %r35, %r459;"
+            },
+            {
+              "line": 410,
+              "text": "\t.loc\t1 293 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:293:5"
+            },
+            {
+              "line": 411,
+              "text": "\tor.b32 \t%r209, %r215, %r5;"
+            },
+            {
+              "line": 412,
+              "text": "\t.loc\t1 294 12, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:294:12"
+            },
+            {
+              "line": 413,
+              "text": "\tadd.s32 \t%r224, %r467, 1;"
+            },
+            {
+              "line": 414,
+              "text": "\t.loc\t1 282 18, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:282:18"
+            },
+            {
+              "line": 415,
+              "text": "\tmul.hi.u32 \t%r225, %r224, -1431655765;"
+            },
+            {
+              "line": 416,
+              "text": "\tshr.u32 \t%r226, %r225, 1;"
+            },
+            {
+              "line": 417,
+              "text": "\tmul.hi.u32 \t%r227, %r467, -1431655765;"
+            },
+            {
+              "line": 418,
+              "text": "\tshr.u32 \t%r228, %r227, 1;"
+            },
+            {
+              "line": 419,
+              "text": "\tbfe.u32 \t%r208, %r227, 1, 1;"
+            },
+            {
+              "line": 420,
+              "text": "\tbfe.u32 \t%r212, %r225, 1, 1;"
+            },
+            {
+              "line": 421,
+              "text": "\t.loc\t1 283 30, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:283:30"
+            },
+            {
+              "line": 422,
+              "text": "\tmul.lo.s32 \t%r229, %r228, 3;"
+            }
+          ]
+        }
+      },
+      {
+        "id": "context:500:530",
+        "kind": "source_context",
+        "requested_by": "race:0:first",
+        "mapping": {
+          "kind": "debug_region",
+          "lines": [
+            510
+          ]
+        },
+        "value": {
+          "source_sha256": "905051ea85bc9b8444fa65699618c05d632bc87b310bc1f5edbcf92e684f49ce",
+          "start": 500,
+          "end": 530,
+          "lines": [
+            {
+              "line": 500,
+              "text": "\tadd.f32 \t%r334, %r258, %r290;"
+            },
+            {
+              "line": 501,
+              "text": "\tadd.f32 \t%r335, %r259, %r291;"
+            },
+            {
+              "line": 502,
+              "text": "\tadd.f32 \t%r336, %r272, %r304;"
+            },
+            {
+              "line": 503,
+              "text": "\tadd.f32 \t%r337, %r273, %r305;"
+            },
+            {
+              "line": 504,
+              "text": "\tadd.f32 \t%r338, %r274, %r306;"
+            },
+            {
+              "line": 505,
+              "text": "\tadd.f32 \t%r339, %r275, %r307;"
+            },
+            {
+              "line": 506,
+              "text": "\t.loc\t1 289 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:289:5"
+            },
+            {
+              "line": 507,
+              "text": "\tcp.async.bulk.wait_group.read \t0;"
+            },
+            {
+              "line": 508,
+              "text": "\tbar.sync \t0;"
+            },
+            {
+              "line": 509,
+              "text": "\t.loc\t1 290 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:290:5"
+            },
+            {
+              "line": 510,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r216+49152], {%r308, %r309, %r310, %r311};"
+            },
+            {
+              "line": 511,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r217+49152], {%r316, %r317, %r318, %r319};"
+            },
+            {
+              "line": 512,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r218+49152], {%r324, %r325, %r326, %r327};"
+            },
+            {
+              "line": 513,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r219+49152], {%r332, %r333, %r334, %r335};"
+            },
+            {
+              "line": 514,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r220+49152], {%r312, %r313, %r314, %r315};"
+            },
+            {
+              "line": 515,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r221+49152], {%r320, %r321, %r322, %r323};"
+            },
+            {
+              "line": 516,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r222+49152], {%r328, %r329, %r330, %r331};"
+            },
+            {
+              "line": 517,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r223+49152], {%r336, %r337, %r338, %r339};"
+            },
+            {
+              "line": 518,
+              "text": "\t.loc\t1 291 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:291:5"
+            },
+            {
+              "line": 519,
+              "text": "\tfence.proxy.async.shared::cta;"
+            },
+            {
+              "line": 520,
+              "text": "\t.loc\t1 293 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:293:5"
+            },
+            {
+              "line": 521,
+              "text": "\tbar.sync \t0;"
+            },
+            {
+              "line": 522,
+              "text": "\telect.sync \t%r340|%p31, -1;"
+            },
+            {
+              "line": 523,
+              "text": "\tand.pred \t%p26, %p14, %p31;"
+            },
+            {
+              "line": 524,
+              "text": "\t// begin inline asm"
+            },
+            {
+              "line": 525,
+              "text": "\t@%p26 cp.async.bulk.tensor.2d.global.shared::cta.bulk_group [%rd6, {%r209, %r214}], [%r210];"
+            },
+            {
+              "line": 526,
+              "text": ""
+            },
+            {
+              "line": 527,
+              "text": "\t// end inline asm"
+            },
+            {
+              "line": 528,
+              "text": "\tcp.async.bulk.commit_group;"
+            },
+            {
+              "line": 529,
+              "text": "\t.loc\t1 283 19, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:283:19"
+            },
+            {
+              "line": 530,
+              "text": "\tshl.b32 \t%r341, %r231, 3;"
+            }
+          ]
+        }
+      },
+      {
+        "id": "context:603:633",
+        "kind": "source_context",
+        "requested_by": "race:0:first",
+        "mapping": {
+          "kind": "debug_region",
+          "lines": [
+            613
+          ]
+        },
+        "value": {
+          "source_sha256": "905051ea85bc9b8444fa65699618c05d632bc87b310bc1f5edbcf92e684f49ce",
+          "start": 603,
+          "end": 633,
+          "lines": [
+            {
+              "line": 603,
+              "text": "\tadd.f32 \t%r444, %r380, %r412;"
+            },
+            {
+              "line": 604,
+              "text": "\tadd.f32 \t%r445, %r381, %r413;"
+            },
+            {
+              "line": 605,
+              "text": "\tadd.f32 \t%r446, %r382, %r414;"
+            },
+            {
+              "line": 606,
+              "text": "\tadd.f32 \t%r447, %r383, %r415;"
+            },
+            {
+              "line": 607,
+              "text": "\t.loc\t1 287 12, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:287:12"
+            },
+            {
+              "line": 608,
+              "text": "\tshl.b32 \t%r448, %r224, 6;"
+            },
+            {
+              "line": 609,
+              "text": "\t.loc\t1 289 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:289:5"
+            },
+            {
+              "line": 610,
+              "text": "\tcp.async.bulk.wait_group.read \t0;"
+            },
+            {
+              "line": 611,
+              "text": "\tbar.sync \t0;"
+            },
+            {
+              "line": 612,
+              "text": "\t.loc\t1 290 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:290:5"
+            },
+            {
+              "line": 613,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r216+49152], {%r416, %r417, %r418, %r419};"
+            },
+            {
+              "line": 614,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r217+49152], {%r424, %r425, %r426, %r427};"
+            },
+            {
+              "line": 615,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r218+49152], {%r432, %r433, %r434, %r435};"
+            },
+            {
+              "line": 616,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r219+49152], {%r440, %r441, %r442, %r443};"
+            },
+            {
+              "line": 617,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r220+49152], {%r420, %r421, %r422, %r423};"
+            },
+            {
+              "line": 618,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r221+49152], {%r428, %r429, %r430, %r431};"
+            },
+            {
+              "line": 619,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r222+49152], {%r436, %r437, %r438, %r439};"
+            },
+            {
+              "line": 620,
+              "text": "\tstmatrix.sync.aligned.m8n8.x4.shared.b16 [%r223+49152], {%r444, %r445, %r446, %r447};"
+            },
+            {
+              "line": 621,
+              "text": "\t.loc\t1 291 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:291:5"
+            },
+            {
+              "line": 622,
+              "text": "\tfence.proxy.async.shared::cta;"
+            },
+            {
+              "line": 623,
+              "text": "\t.loc\t1 293 5, function_name $L__info_string0, inlined_at 1 329 22 // 04-tma.py:293:5"
+            },
+            {
+              "line": 624,
+              "text": "\tbar.sync \t0;"
+            },
+            {
+              "line": 625,
+              "text": "\telect.sync \t%r449|%p32, -1;"
+            },
+            {
+              "line": 626,
+              "text": "\tand.pred \t%p27, %p14, %p32;"
+            },
+            {
+              "line": 627,
+              "text": "\tor.b32 \t%r213, %r448, %r5;"
+            },
+            {
+              "line": 628,
+              "text": "\t// begin inline asm"
+            },
+            {
+              "line": 629,
+              "text": "\t@%p27 cp.async.bulk.tensor.2d.global.shared::cta.bulk_group [%rd6, {%r213, %r214}], [%r210];"
+            },
+            {
+              "line": 630,
+              "text": ""
+            },
+            {
+              "line": 631,
+              "text": "\t// end inline asm"
+            },
+            {
+              "line": 632,
+              "text": "\tcp.async.bulk.commit_group;"
+            },
+            {
+              "line": 633,
+              "text": "$L__tmp12:"
+            }
+          ]
+        }
+      }
+    ],
+    "additional_model_calls": 0,
+    "next_model_step": "Not authorized or executed"
+  }
+}

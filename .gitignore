@@ -22,7 +22,7 @@ dist/
 runs/
 staging/
 deliverables/
-reviews/
+/reviews/
 work/
 tmp/
 output/
