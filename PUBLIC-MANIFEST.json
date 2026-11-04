@@ -2865,9 +2865,9 @@
     },
     "docs/hackathon/delivery-status-round53.md": {
       "source": "R53 delivery integration",
-      "source_sha256": "c1e781189f40cd956dc1341b79c597bb85604f1048d87b6a2d8e4bb48bea177a",
-      "distributed_sha256": "c1e781189f40cd956dc1341b79c597bb85604f1048d87b6a2d8e4bb48bea177a",
-      "bytes": 1373,
+      "source_sha256": "6118e2d703b6daaa92ec5cc8433338784fd2d094035159bee9ffe632e3cef8fa",
+      "distributed_sha256": "6118e2d703b6daaa92ec5cc8433338784fd2d094035159bee9ffe632e3cef8fa",
+      "bytes": 1660,
       "host_path_substitutions": 0
     }
   },
