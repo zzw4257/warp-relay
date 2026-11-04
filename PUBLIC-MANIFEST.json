@@ -2648,9 +2648,9 @@
     },
     "README.md": {
       "source": "docs/release/README.md",
-      "source_sha256": "7278db89306a8df16e030a1d56cd2beb37eda17c3e755c617f3c2ea5f22bd3bb",
-      "distributed_sha256": "7278db89306a8df16e030a1d56cd2beb37eda17c3e755c617f3c2ea5f22bd3bb",
-      "bytes": 17234,
+      "source_sha256": "9ebd2a618eeb3ca9589f4ba80ef44531acff26807936e53be68258df00d403cb",
+      "distributed_sha256": "9ebd2a618eeb3ca9589f4ba80ef44531acff26807936e53be68258df00d403cb",
+      "bytes": 17639,
       "host_path_substitutions": 0
     },
     "CONTRIBUTING.md": {
@@ -2875,6 +2875,13 @@
       "source_sha256": "77eef7767927fa924f95fae1bc9867ff734f59332b9f7f60be45a763f2118290",
       "distributed_sha256": "77eef7767927fa924f95fae1bc9867ff734f59332b9f7f60be45a763f2118290",
       "bytes": 1753,
+      "host_path_substitutions": 0
+    },
+    "docs/hackathon/readme-media.md": {
+      "source": "docs/release/readme-media.md",
+      "source_sha256": "75a9ebdf09e90d2cd493a8bf499e03d891fa622cb67ecfd823a97ab91439377e",
+      "distributed_sha256": "75a9ebdf09e90d2cd493a8bf499e03d891fa622cb67ecfd823a97ab91439377e",
+      "bytes": 2040,
       "host_path_substitutions": 0
     }
   },

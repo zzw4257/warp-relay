@@ -45,6 +45,17 @@
   <a href="https://youtu.be/Dbbt4qoKmiI"><strong>▶ Watch the full film</strong></a> · 2:22 · English captions
 </p>
 
+<details>
+<summary><strong>▶ Play here on GitHub · 720p · 9.5 MB</strong></summary>
+
+https://github.com/user-attachments/assets/8f3c3f2b-b4c7-47ab-8727-ca5d2851cf8b
+
+Full 2:22 film with English audio. For sharper code and selectable English captions,
+[watch the 1080p version on YouTube](https://youtu.be/Dbbt4qoKmiI).
+[Media credits and preview details](docs/hackathon/readme-media.md).
+
+</details>
+
 > [!NOTE]
 > Built by [zzw4257](https://github.com/zzw4257) for the
 > [Meta Global AI Developer Hackathon 2026](https://dev.meta.ai/events/global-hackathon),
