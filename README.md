@@ -27,6 +27,7 @@
 </p>
 
 <p align="center">
+  <a href="https://youtu.be/Dbbt4qoKmiI">Watch the 2:22 demo</a> —
   <a href="#get-started-in-60-seconds">Quickstart</a> —
   <a href="#how-it-works-in-30-seconds">How it works</a> —
   <a href="#metas-role">Meta’s role</a> —
@@ -43,11 +44,12 @@
 </p>
 
 > [!NOTE]
-> **Unpublished repository candidate.** Prepared locally for the
-> [Meta Global AI Developer Hackathon 2026](https://dev.meta.ai/events/global-hackathon)
-> by [zzw4257](https://github.com/zzw4257). No repository, demo URL or submission
-> exists yet, and this is not an official or endorsed Meta project.
-> [Release scope](docs/release-scope.md) lists exactly what this tree contains.
+> Built by [zzw4257](https://github.com/zzw4257) for the
+> [Meta Global AI Developer Hackathon 2026](https://dev.meta.ai/events/global-hackathon),
+> **Indie Developer Track · Push the Frontier**. This repository is currently
+> private for review; the [demo film](https://youtu.be/Dbbt4qoKmiI) is available by link.
+> Competition submission is pending. Warp Relay is an independent project.
+> [Release scope](docs/release-scope.md) · [Delivery status](docs/hackathon/delivery-status-round53.md).
 
 ## Why Warp Relay
 

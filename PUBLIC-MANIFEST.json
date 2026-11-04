@@ -3,7 +3,7 @@
   "published": false,
   "candidate_round": "R53",
   "repository_url": "https://github.com/zzw4257/warp-relay",
-  "demo_video_url": null,
+  "demo_video_url": "https://youtu.be/Dbbt4qoKmiI",
   "creator": "zzw4257",
   "event": "Meta Global AI Developer Hackathon 2026",
   "files": {
@@ -2185,10 +2185,10 @@
       "host_path_substitutions": 0
     },
     "scripts/check_release_docs.py": {
-      "source": "scripts/check_release_docs.py",
-      "source_sha256": "edf7f2157acf831c6e6487d7bdd8bddfca11d294ff62f5670c742fa5167080ad",
-      "distributed_sha256": "edf7f2157acf831c6e6487d7bdd8bddfca11d294ff62f5670c742fa5167080ad",
-      "bytes": 8299,
+      "source": "R53: validate explicit private-review status as well as unpublished candidate status",
+      "source_sha256": "a22f2573564b059af4ce7feb21848887295448bf98c89e1aea8a781b76aafe7b",
+      "distributed_sha256": "a22f2573564b059af4ce7feb21848887295448bf98c89e1aea8a781b76aafe7b",
+      "bytes": 8373,
       "host_path_substitutions": 0
     },
     "scripts/demo.py": {
@@ -2647,10 +2647,10 @@
       "host_path_substitutions": 0
     },
     "README.md": {
-      "source": "docs/release/README.md",
-      "source_sha256": "62312e13924b008059d3b185871cf054c4bcb9aa6eba4519bc073547e0362382",
-      "distributed_sha256": "62312e13924b008059d3b185871cf054c4bcb9aa6eba4519bc073547e0362382",
-      "bytes": 16671,
+      "source": "R53 delivery integration",
+      "source_sha256": "2bd5dfcce1b577fafadd1c50c2112008145e1f74953fb999aef0e16b93c560f0",
+      "distributed_sha256": "2bd5dfcce1b577fafadd1c50c2112008145e1f74953fb999aef0e16b93c560f0",
+      "bytes": 16853,
       "host_path_substitutions": 0
     },
     "CONTRIBUTING.md": {
@@ -2717,10 +2717,10 @@
       "host_path_substitutions": 0
     },
     "docs/hackathon/README.md": {
-      "source": "docs/release/hackathon-index.md",
-      "source_sha256": "35ece7147a0d1c6e541e29361f6ec598c17cdbd291207e82b307935b40a3f355",
-      "distributed_sha256": "35ece7147a0d1c6e541e29361f6ec598c17cdbd291207e82b307935b40a3f355",
-      "bytes": 1247,
+      "source": "R53 delivery integration",
+      "source_sha256": "7af6ee73566f618acff1f1e87bba7adc0473711b923ae48cca7dffdfac62fa1c",
+      "distributed_sha256": "7af6ee73566f618acff1f1e87bba7adc0473711b923ae48cca7dffdfac62fa1c",
+      "bytes": 1374,
       "host_path_substitutions": 0
     },
     ".github/pull_request_template.md": {
@@ -2861,6 +2861,13 @@
       "source_sha256": "b73444686359878d41f5b9e639c7832298420aa5723b5f7d3ff078379b5a996f",
       "distributed_sha256": "b73444686359878d41f5b9e639c7832298420aa5723b5f7d3ff078379b5a996f",
       "bytes": 27333,
+      "host_path_substitutions": 0
+    },
+    "docs/hackathon/delivery-status-round53.md": {
+      "source": "R53 delivery integration",
+      "source_sha256": "c1e781189f40cd956dc1341b79c597bb85604f1048d87b6a2d8e4bb48bea177a",
+      "distributed_sha256": "c1e781189f40cd956dc1341b79c597bb85604f1048d87b6a2d8e4bb48bea177a",
+      "bytes": 1373,
       "host_path_substitutions": 0
     }
   },
